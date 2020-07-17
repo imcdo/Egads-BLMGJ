@@ -3,10 +3,7 @@
 #include <stb_image.h>
 #include <iostream>
 
-LoadSpriteData Sprite::TextureFromFile(const char* path, const std::string& directory, bool gamma) {
-    std::string filename = std::string(path);
-    filename = directory + '/' + filename;
-
+LoadSpriteData Sprite::TextureFromFile(std::string filename, bool gamma) {
     LoadSpriteData result;
 
     unsigned int textureID;
@@ -35,7 +32,7 @@ LoadSpriteData Sprite::TextureFromFile(const char* path, const std::string& dire
         stbi_image_free(data);
     }
     else {
-        std::cout << "Texture failed to load at path: " << path << std::endl;
+        std::cout << "Texture failed to load at path: " << filename << std::endl;
         stbi_image_free(data);
     }
 
@@ -47,7 +44,7 @@ LoadSpriteData Sprite::TextureFromFile(const char* path, const std::string& dire
 }
 
 Sprite::Sprite(std::string path, SpriteType sType) : 
-    _loadData(TextureFromFile(path.c_str(), "", false)), 
+    _loadData(TextureFromFile(path, false)), 
     height(_loadData.height), width(_loadData.width), 
     textureID(_loadData.textureID), spriteType(sType)
 {

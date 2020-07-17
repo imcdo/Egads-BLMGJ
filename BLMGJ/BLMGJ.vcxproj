@@ -141,11 +141,18 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;glew.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)/packages/glew.1.9.0.1\build\native\lib\v110\x64\Release\dynamic;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages/glew.1.9.0.1\build\native\lib\v110\x64\Release\dynamic;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d $(SolutionDir)packages\glew.redist.1.9.0.1\build\native\bin\v110\x64\Release\dynamic\glew.dll $(OutDir)</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>xcopy /y /d $(SolutionDir)packages\glew.redist.1.9.0.1\build\native\bin\v110\x64\Release\dynamic\glew.dll $(OutDir)</Command>
+    </PreLinkEvent>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

@@ -21,7 +21,7 @@ private:
 
 	
 	LoadSpriteData _loadData;
-	LoadSpriteData TextureFromFile(const char* path, const std::string& directory, bool gamma);
+	LoadSpriteData TextureFromFile(std::string filename, bool gamma);
 	int height;
 	int width;
 	unsigned int textureID;
