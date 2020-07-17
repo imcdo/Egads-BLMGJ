@@ -1,6 +1,7 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "monsterData.cpp"
 
 constexpr int SCREEN_WIDTH = 640;
 constexpr int SCREEN_HIGHT = 400;
@@ -39,7 +40,6 @@ public:
 
 	    //Sometimes glew just throws errors, so we'll clear them
 	    glGetError();
-
     }
 
     void loop() {
