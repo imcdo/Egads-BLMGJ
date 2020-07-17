@@ -1,4 +1,5 @@
 #include <iostream>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 constexpr int SCREEN_WIDTH = 640;
@@ -24,11 +25,24 @@ public:
             glfwTerminate();
             throw std::exception("window creation failure");
         }
+        
+        /* Make the window's context current */
+        glfwMakeContextCurrent(window);
+
+        //Initialize GLEW
+	    glewExperimental = GL_TRUE;
+	    GLenum glewError = glewInit();
+	    if (glewError != GLEW_OK) {
+		    std::cerr << "Error initializing GLEW! %s\n" << glewGetErrorString(glewError) << std::endl;
+		    exit(-1);
+	    }
+
+	    //Sometimes glew just throws errors, so we'll clear them
+	    glGetError();
+
     }
 
     void loop() {
-        /* Make the window's context current */
-        glfwMakeContextCurrent(window);
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window)) {
