@@ -1,13 +1,16 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
 
-
+constexpr int SCREEN_WIDTH = 640;
+constexpr int SCREEN_HIGHT = 400;
 
 class Game {
 private:
     GLFWwindow* window;
-
 public:
+   
+
+
     Game() = default;
     void init() {
         /* Initialize the library */
@@ -16,7 +19,7 @@ public:
 
 
         /* Create a windowed mode window and its OpenGL context */
-        window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+        window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HIGHT, "Hello World", NULL, NULL);
         if (!window) {
             glfwTerminate();
             throw std::exception("window creation failure");
@@ -48,8 +51,8 @@ public:
 
 
 int main(void) {
-    Game game;
     try {
+        Game game;
         game.init();
         game.loop();
         game.cleanup();
