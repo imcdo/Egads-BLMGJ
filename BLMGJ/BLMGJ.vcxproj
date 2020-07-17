@@ -174,18 +174,18 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\gameObject.cpp" />
     <ClCompile Include="src\sprite.cpp" />
-    <ClCompile Include="src\spriteRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="src\shaders\default.frag" />
     <None Include="src\shaders\default.vert" />
+    <None Include="src\shaders\red.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gameObject.h" />
     <ClInclude Include="src\shader.h" />
     <ClInclude Include="src\sprite.h" />
-    <ClInclude Include="src\spriteRenderer.h" />
+    <ClInclude Include="src\batchSpriteRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

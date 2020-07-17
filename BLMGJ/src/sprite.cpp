@@ -1,9 +1,10 @@
-#include "spriteRenderer.h"
+#include "sprite.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
+#include <iostream>
 
-LoadSpriteData Sprite::TextureFromFile(const char* path, const string& directory, bool gamma) {
-    string filename = string(path);
+LoadSpriteData Sprite::TextureFromFile(const char* path, const std::string& directory, bool gamma) {
+    std::string filename = std::string(path);
     filename = directory + '/' + filename;
 
     LoadSpriteData result;
@@ -45,9 +46,18 @@ LoadSpriteData Sprite::TextureFromFile(const char* path, const string& directory
     return result;
 }
 
-Sprite::Sprite(string path, SpriteType sType) : 
+Sprite::Sprite(std::string path, SpriteType sType) : 
     _loadData(TextureFromFile(path.c_str(), "", false)), 
     height(_loadData.height), width(_loadData.width), 
     textureID(_loadData.textureID), spriteType(sType)
 {
+}
+
+Sprite& Sprite::operator= (const Sprite& s) {
+    _loadData = s._loadData;
+    height = s.height;
+    width = s.width;
+    textureID = s.textureID;
+
+    return *this;
 }

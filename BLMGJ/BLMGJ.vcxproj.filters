@@ -21,9 +21,6 @@
     <ClCompile Include="src\gameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\spriteRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -32,6 +29,7 @@
     <None Include="packages.config" />
     <None Include="src\shaders\default.vert" />
     <None Include="src\shaders\default.frag" />
+    <None Include="src\shaders\red.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gameObject.h">
@@ -40,10 +38,10 @@
     <ClInclude Include="src\shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\spriteRenderer.h">
+    <ClInclude Include="src\sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\sprite.h">
+    <ClInclude Include="src\batchSpriteRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
