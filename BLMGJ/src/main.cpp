@@ -1,35 +1,62 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
 
-int main(void) {
+
+
+class Game {
+private:
     GLFWwindow* window;
 
-    /* Initialize the library */
-    if (!glfwInit())
-        return -1;
+public:
+    Game() = default;
+    void init() {
+        /* Initialize the library */
+        if (!glfwInit())
+            throw std::exception("window initialization failure");
 
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-    if (!window) {
+
+        /* Create a windowed mode window and its OpenGL context */
+        window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+        if (!window) {
+            glfwTerminate();
+            throw std::exception("window creation failure");
+        }
+    }
+
+    void loop() {
+        /* Make the window's context current */
+        glfwMakeContextCurrent(window);
+
+        /* Loop until the user closes the window */
+        while (!glfwWindowShouldClose(window)) {
+            /* Render here */
+            glClear(GL_COLOR_BUFFER_BIT);
+
+            /* Swap front and back buffers */
+            glfwSwapBuffers(window);
+
+            /* Poll for and process events */
+            glfwPollEvents();
+        }
+    }
+    
+    void cleanup() {
+        glfwDestroyWindow(window);
         glfwTerminate();
+    }
+};
+
+
+int main(void) {
+    Game game;
+    try {
+        game.init();
+        game.loop();
+        game.cleanup();
+        return 0;
+    }
+    catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
         return -1;
     }
-
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
-
-    /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window)) {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
-
-        /* Poll for and process events */
-        glfwPollEvents();
-    }
-
-    glfwTerminate();
-    return 0;
 }
