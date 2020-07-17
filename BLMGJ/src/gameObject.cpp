@@ -7,10 +7,17 @@ GameObject::GameObject(float x, float y, Sprite sprite, float scale, float depth
 	this->scale = scale;
 	this->depth = depth;
 	this->angle = angle;
+
+
 }
 
-void GameObject::draw() const {
-	
+void GameObject::draw(unsigned int VAO) const {
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, sprite.getTextureID());
+
+	glBindVertexArray(VAO);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glBindVertexArray(0);
 }
 
 void GameObject::warp(float x, float y) {

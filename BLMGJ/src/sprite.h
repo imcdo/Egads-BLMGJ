@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <GL/glew.h>
+
 typedef enum SpriteType {
 	Default,
 	Transparent
@@ -18,17 +20,21 @@ class Sprite {
 private:
 
 	
-	const LoadSpriteData _loadData;
+	LoadSpriteData _loadData;
 	LoadSpriteData TextureFromFile(const char* path, const std::string& directory, bool gamma);
-
+	int height;
+	int width;
+	unsigned int textureID;
 public:
 
 	const SpriteType spriteType;
-	const int height;
-	const int width;
-	const unsigned int textureID;
-
+	
+	int getHeight() const { return height; }
+	int getWidth() const { return width; }
+	int getTextureID() const { return textureID;  }
 
 	Sprite(std::string path, SpriteType spriteType = Default);
 	Sprite(const Sprite& s) = default;
+	Sprite& operator= (const Sprite& s);
+
 };
