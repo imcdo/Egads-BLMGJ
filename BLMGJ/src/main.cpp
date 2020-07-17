@@ -1,14 +1,10 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-<<<<<<< HEAD
-#include "monsterData.cpp"
-=======
 #include "gameObject.h";
 #include "sprite.h";
 #include "batchSpriteRenderer.h"
 #include "shader.h"
->>>>>>> bdb451b442c248240187cbadbb821e551b1c8810
 
 constexpr int SCREEN_WIDTH = 640;
 constexpr int SCREEN_HIGHT = 400;
