@@ -38,8 +38,8 @@ ostream& operator<<(ostream& strm, const MonsterData& m)
 	return strm << 
 		m.id << " -- " <<
 		m.name << 
-		"(" << m.species << ")" << 
-		"[" << m.health << "," 
+		 "(" << m.species << ")" << 
+		 "[" << m.health << "," 
 			 << m.damage << "," 
 			 << m.decay << "," 
 			 << m.bounce << "]\t"
