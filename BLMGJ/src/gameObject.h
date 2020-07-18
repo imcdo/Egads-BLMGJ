@@ -9,7 +9,7 @@ using namespace glm;
 
 class GameObject {
 
-private:
+protected:
 	vec2 pos;
 	float depth;
 	float angle;

@@ -6,6 +6,7 @@
 #include "batchSpriteRenderer.h"
 #include "shader.h"
 #include "settings.h"
+#include "battlefield.cpp";
 
 class Game {
 private:
@@ -78,6 +79,8 @@ public:
 
 int main(void) {
     try {
+		//Battlefield grid = Battlefield(0, 0, Sprite(""));
+
         Game game;
         game.init();
         game.loop();

@@ -5,6 +5,7 @@
 #include <nlohmann\json.hpp>
 #include "sprite.h"
 
+using namespace nlohmann;
 using namespace glm;
 
 // Element / type labels
@@ -56,7 +57,7 @@ public:
 	MonsterData();
 
 	// Serialization
-	MonsterData(nlohmann::json json);
+	MonsterData(json json);
 	nlohmann::json Serialize();
 };
 
