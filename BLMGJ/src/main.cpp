@@ -41,7 +41,6 @@ public:
 
 	    //Sometimes glew just throws errors, so we'll clear them
 	    glGetError();
-
     }
 
     void loop() {
