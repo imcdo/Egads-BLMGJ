@@ -9,6 +9,8 @@
 #include "game.h"
 #include "frameUpdater.h"
 #include "hand.h"
+#include "monsterData.h"
+#include "battlefield.h"
 // #include "monsterData.cpp";
 
 Hand* hand;
@@ -50,7 +52,7 @@ void Game::init() {
 }
 
 void Game::loop() {
-    Sprite s = Sprite("E:\\Storage\\Pictures\\wip.png");
+    Sprite s = Sprite("src\\sprites\\UwU.png");
 
 
     BatchSpriteRenderer sr = BatchSpriteRenderer();
@@ -58,8 +60,8 @@ void Game::loop() {
 
     GameObject test = GameObject(0, 0, s, { 5,5 });
     Shader* sh = sr.addShader("default", 
-        "E:\\Users\\Ian\\source\\repos\\BLMGJ\\BLMGJ\\src\\shaders\\default.vert",
-        "E:\\Users\\Ian\\source\\repos\\BLMGJ\\BLMGJ\\src\\shaders\\default.frag");
+        "src\\shaders\\default.vert",
+        "src\\shaders\\default.frag");
     sr.addGameObject("test", &test, sh);
 
     Hand h = Hand(Math::Rect({-200,0}, {400,200}));
@@ -124,8 +126,8 @@ void Game::cleanup() {
 
 int main(void) {
     try {
-		// Battlefield grid = Battlefield(0, 0, Sprite(""));
-		// Bestiary();
+		Battlefield grid = Battlefield(0, 0, Sprite(""));
+		//Bestiary();
 
         Game game;
         game.init();
