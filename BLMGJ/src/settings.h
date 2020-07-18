@@ -12,4 +12,6 @@ namespace settings {
 	constexpr const char* CARD_DEFAULT_PATH_FS = "src\\shaders\\cardBackDefault.frag";
 
 	constexpr const char* CARD_DEFAULT_PATH_BACKGROUND = "src\\sprites\\uwu.png";
+
+	constexpr const char* FONT_DEFAULT_PATH = "src\\fonts\\default.TTF";
 }

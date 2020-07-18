@@ -14,3 +14,4 @@ void Card::use() {
 	if (this->decay == 0)
 		data = nullptr;
 }
+

@@ -10,6 +10,7 @@ LoadSpriteData Sprite::TextureFromFile(std::string filename, bool gamma) {
     glGenTextures(1, &textureID);
 
     int width, height, nrComponents;
+    stbi__vertically_flip_on_load_global = true;
     unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
     if (data) {
         GLenum format;

@@ -1,112 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="src\batchSpriteRenderer.cpp" />
+    <ClCompile Include="src\battlefield.cpp" />
+    <ClCompile Include="src\card.cpp" />
+    <ClCompile Include="src\CardRenderer.cpp" />
+    <ClCompile Include="src\frameUpdater.cpp" />
+    <ClCompile Include="src\hand.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\gameObject.cpp" />
+    <ClCompile Include="src\monster.cpp" />
+    <ClCompile Include="src\monsterData.cpp" />
+    <ClCompile Include="src\player.cpp" />
+    <ClCompile Include="src\projectile.cpp" />
+    <ClCompile Include="src\sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\batchSpriteRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\frameUpdater.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\monsterData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\projectile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\monster.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\battlefield.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\card.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="src\battlefield.h" />
+    <ClInclude Include="src\card.h" />
+    <ClInclude Include="src\CardRenderer.h" />
+    <ClInclude Include="src\frameUpdater.h" />
+    <ClInclude Include="src\game.h" />
+    <ClInclude Include="src\gameObject.h" />
+    <ClInclude Include="src\monster.h" />
+    <ClInclude Include="src\monsterData.h" />
+    <ClInclude Include="src\player.h" />
+    <ClInclude Include="src\projectile.h" />
+    <ClInclude Include="src\settings.h" />
+    <ClInclude Include="src\shader.h" />
+    <ClInclude Include="src\sprite.h" />
+    <ClInclude Include="src\batchSpriteRenderer.h" />
+    <ClInclude Include="src\TextManager.h" />
+    <ClInclude Include="src\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="src\shaders\default.vert" />
+    <None Include="src\cardTextDefault.frag" />
+    <None Include="src\shaders\cardBackDefault.frag" />
+    <None Include="src\shaders\cardBackDefault.vert" />
     <None Include="src\shaders\default.frag" />
+    <None Include="src\shaders\default.vert" />
     <None Include="src\shaders\red.frag" />
-    <None Include="src\shaders\cardBackDefault.frag">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="src\shaders\cardBackDefault.vert">
-      <Filter>Source Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\gameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\batchSpriteRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\settings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Time.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\frameUpdater.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CardRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\projectile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\monsterData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\monster.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\card.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\battlefield.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\NewFile.txt" />

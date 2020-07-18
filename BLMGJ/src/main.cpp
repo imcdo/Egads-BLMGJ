@@ -8,8 +8,19 @@
 #include "settings.h"
 #include "game.h"
 #include "frameUpdater.h"
-#include "monsterData.cpp";
+#include "hand.h"
+#include "monsterData.h"
+#include "battlefield.h"
+// #include "monsterData.cpp";
 
+Hand* hand;
+Card* nextDraw;
+static void inputCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    if (key == GLFW_KEY_C && action == GLFW_PRESS) {
+        hand->drawCard(nextDraw);
+        nextDraw++;
+    }
+}
 
 
 void Game::init() {
@@ -52,10 +63,24 @@ void Game::loop() {
         "src\\shaders\\default.vert",
         "src\\shaders\\default.frag");
     sr.addGameObject("test", &test, sh);
-     
+
+    Hand h = Hand(Math::Rect({-200,0}, {400,200}));
+    hand = &h;
+    std::vector<Card> cards = { Card(-300,0,s, {3,6}),Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), };
+    size_t idx = 0;
+    nextDraw = &cards[2];
+
+    glfwSetKeyCallback(window, inputCallback);
+
+    h.drawCard(&cards[idx]);
+    for (const Card& c : cards) {
+        sr.addGameObject("card " + idx++, &c, sh);
+    }
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
+
 
         /* Render here */
         sr.draw();
@@ -79,9 +104,9 @@ void Game::loop() {
             test.move(2, 0);
 
         if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
-            test.rotate(-1);
-        if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
             test.rotate(1);
+        if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+            test.rotate(-1);
 
         if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
             test.scale({ 1.25f, 1.25f });
@@ -101,8 +126,8 @@ void Game::cleanup() {
 
 int main(void) {
     try {
-		//Battlefield grid = Battlefield(0, 0, Sprite(""));
-		Bestiary();
+		Battlefield grid = Battlefield(0, 0, Sprite(""));
+		//Bestiary();
 
         Game game;
         game.init();

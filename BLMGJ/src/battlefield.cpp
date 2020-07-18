@@ -24,6 +24,11 @@ void Battlefield::Populate(float density, int intensity)
 	// Randomly place enemies
 }
 
+void Battlefield::Update()
+{
+	cout << "BF tick" << endl;
+}
+
 Monster* Battlefield::AtLocation(vec2 location)
 {
 	// Round to nearest tile
@@ -69,7 +74,7 @@ bool Battlefield::OutOfBounds(vec2 position) // TODO: fi
 	return false;
 }
 
-void Battlefield::Attack(Projectile projectile, vec3 trajectory)
+void Battlefield::Attack()
 {
 	// while (bounces > 0)
 		// 1. Raycast from start position

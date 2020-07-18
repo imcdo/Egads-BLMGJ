@@ -3,16 +3,12 @@
 #include "settings.h"
 
 void BatchSpriteRenderer::init() {
-	// dummy data for now
-
 	std::vector<glm::vec2> verticies = {
 		{-0.5, -0.5},
 		{-0.5,  0.5},
 		{ 0.5, -0.5},
 		{ 0.5,  0.5}
 	};
-
-
 
 	std::vector<glm::vec2> tex = {
 		{0.0f, 0.0f},
@@ -47,15 +43,13 @@ void BatchSpriteRenderer::init() {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, VBOs[2]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(glm::uvec3) * idxs.size(), idxs.data(), GL_STATIC_DRAW);
 
-
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
-
 }
 
 Shader* BatchSpriteRenderer::addShader(std::string name, std::string pathVert, std::string pathFrag) {
 	shaderBank.emplace(std::make_pair(name, Shader(pathVert.c_str(), pathFrag.c_str())));
-	bigDumDum.insert({ &shaderBank[name], std::vector<GameObject *>() });
+	bigDumDum.insert({ &shaderBank[name], std::vector<const GameObject *>() });
 
 	// bind uniforms
 	shaderBank[name].use();
@@ -75,7 +69,7 @@ Shader* BatchSpriteRenderer::addShader(std::string name, std::string pathVert, s
 	return &shaderBank[name];
 }
 
-void BatchSpriteRenderer::addGameObject(std::string name, GameObject* gameObject, Shader* s) {
+void BatchSpriteRenderer::addGameObject(std::string name, const GameObject* gameObject, const Shader* s) {
 	gameObjects.insert({ name,gameObject });
 	if (bigDumDum.find(s) != bigDumDum.end())
 		bigDumDum[s].push_back(gameObject);
@@ -85,11 +79,13 @@ void BatchSpriteRenderer::addGameObject(std::string name, GameObject* gameObject
 
 void BatchSpriteRenderer::draw() const {
 	glBindVertexArray(VAO);
-	for (const pair<Shader*, vector<GameObject *>>& renderPass : bigDumDum) {
+	for (const pair<const Shader*, vector<const GameObject*>>& renderPass : bigDumDum) {
 		renderPass.first->use();
 
 		for (const GameObject* gameObject : renderPass.second) {
 			gameObject->draw(renderPass.first);
 		}
 	}
+	glBindVertexArray(0);
+
 }
