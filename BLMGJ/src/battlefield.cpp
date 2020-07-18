@@ -41,7 +41,7 @@ vec2 Battlefield::GetLocation(int row, int col)
 pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 {
 	bool hit = false;
-	vec2 step = normalize(direction) * 0.2f; // TODO: revisit this
+	vec2 step = normalize(direction) * 0.2f; // TODO: lol
 
 	while (!hit)
 	{
