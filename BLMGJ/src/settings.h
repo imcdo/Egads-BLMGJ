@@ -1,4 +1,6 @@
 #pragma once
 
-constexpr int SCREEN_WIDTH = 800;
-constexpr int SCREEN_HIGHT = 400;
+namespace settings {
+	constexpr float SCREEN_WIDTH = 800.0f;
+	constexpr float SCREEN_HEIGHT = 400.0f;
+}

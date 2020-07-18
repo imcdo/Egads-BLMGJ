@@ -5,82 +5,34 @@
 #include "gameObject.h"
 #include <string>
 #include <GL/glew.h>
+#include "settings.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <memory>
 
 using namespace std;
 
-class BatchSpriteRender {
+class BatchSpriteRenderer {
 private:
-	unordered_map<Shader*, vector<GameObject>> bigDumDum; // shaders to sprite batching
+	unordered_map<Shader*, vector<GameObject *>> bigDumDum; // shaders to sprite batching
 	unordered_map<string, Shader> shaderBank;
-	unordered_map<string, GameObject> gameObjects;
+	unordered_map<string, GameObject *> gameObjects;
 
 	unsigned int VAO;
+	unsigned int VBOs[2];
 public:
-	void init() {
-		unsigned int VBOs[2];
 
-		// dummy data for now
-		float verticies[] = {
-			0.0f, 1.0f,
-			1.0f, 0.0f,
-			0.0f, 0.0f,
+	glm::mat4 projection = glm::ortho(0.0f, settings::SCREEN_WIDTH, settings::SCREEN_HEIGHT, 0.0f, -1.0f, 1.0f);
+	//glm::mat4 model = glm::mat4(1.0f);
 
-			0.0f, 1.0f,
-			1.0f, 1.0f,
-			1.0f, 0.0f,
-		};
-
-		float tex[] = {
-			0.0f, 0.0f,
-			1.0f, 1.0f,
-			0.0f, 1.0f,
-
-			0.0f, 0.0f,
-			1.0f, 0.0f,
-			1.0f, 1.0f
-		};
-
-		glGenVertexArrays(1, &VAO);
-		glGenBuffers(2, &VBOs[0]);
-
-		glBindVertexArray(VAO);
-
-		glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(verticies), verticies, GL_STATIC_DRAW);
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-
-		glBindBuffer(GL_ARRAY_BUFFER, VBOs[1]);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(tex), tex, GL_STATIC_DRAW);
-
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
-
-	}
+	void init();
 
 
-	Shader* addShader(std::string name, std::string pathVert, std::string pathFrag) {
-		shaderBank.emplace(std::make_pair( name, Shader(pathVert.c_str(), pathFrag.c_str())));
-		bigDumDum.insert({ &shaderBank[name], std::vector<GameObject>() });
-		return &shaderBank[name];
-	}
+	Shader* addShader(std::string name, std::string pathVert, std::string pathFrag);
 
-	void addGameObject(std::string name, GameObject gameObject, Shader* s) {
-		gameObjects.insert({ name, gameObject });
-		if (bigDumDum.find(s) != bigDumDum.end())
-			bigDumDum[s].push_back(gameObject);
-		else
-			std::cout << "woops" << std::endl;
-	}
+	void addGameObject(std::string name, GameObject* gameObject, Shader* s);
 
-	void draw() const {
-		for (const pair<Shader*, vector<GameObject>>& renderPass : bigDumDum) {
-			renderPass.first->use();
-			for (const GameObject& gameObject : renderPass.second) {
-				gameObject.draw(VAO);
-			}
-		}
-	}
+	void draw() const;
+
+	friend GameObject;
 };
