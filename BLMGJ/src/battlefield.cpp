@@ -26,7 +26,7 @@ void Battlefield::Populate(float density, int intensity)
 
 void Battlefield::Update()
 {
-	cout << "BF tick" << endl;
+	//cout << "BF tick" << endl;
 }
 
 Monster* Battlefield::AtLocation(vec2 location)

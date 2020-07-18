@@ -9,9 +9,16 @@
 
 using namespace glm;
 
+vec2 lerp(vec2 x, vec2 y, float t);
+
 class Projectile: public GameObject, public FrameUpdater
 {
 private:
+	vec2 origin;
+	vec2 destination;
+	float distanceTraveled = 0;
+	float totalDistance = 0;
+
 	vec2 trajectory;
 	float speed = 10;
 
