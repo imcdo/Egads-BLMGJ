@@ -148,7 +148,7 @@
       </Command>
     </PostBuildEvent>
     <PreLinkEvent>
-      <Command>xcopy /y /d $(SolutionDir)packages\glew.redist.1.9.0.1\build\native\bin\v110\x64\Release\dynamic\glew.dll $(OutDir)</Command>
+      <Command>xcopy /y /d "$(SolutionDir)packages\glew.redist.1.9.0.1\build\native\bin\v110\x64\Release\dynamic\glew.dll" "$(OutDir)"</Command>
     </PreLinkEvent>
     <ProjectReference>
       <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
@@ -178,6 +178,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\batchSpriteRenderer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\gameObject.cpp" />
     <ClCompile Include="src\sprite.cpp" />
@@ -190,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gameObject.h" />
+    <ClInclude Include="src\settings.h" />
     <ClInclude Include="src\shader.h" />
     <ClInclude Include="src\sprite.h" />
     <ClInclude Include="src\batchSpriteRenderer.h" />

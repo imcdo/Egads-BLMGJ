@@ -23,7 +23,7 @@ public:
 
 
         /* Create a windowed mode window and its OpenGL context */
-        window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HIGHT, "Hello World", NULL, NULL);
+        window = glfwCreateWindow((int)settings::SCREEN_WIDTH, (int)settings::SCREEN_HEIGHT, "Hello World", NULL, NULL);
         if (!window) {
             glfwTerminate();
             throw std::exception("window creation failure");
@@ -48,17 +48,19 @@ public:
         Sprite s = Sprite("E:\\Storage\\Pictures\\wip.png");
 
 
-        BatchSpriteRender sr = BatchSpriteRender();
+        BatchSpriteRenderer sr = BatchSpriteRenderer();
         sr.init();
 
-        GameObject test = GameObject(0, 0, s);
+        GameObject test = GameObject(0, 0, s, { 400,400 });
         Shader* sh = sr.addShader("default", 
             "E:\\Users\\Ian\\source\\repos\\BLMGJ\\BLMGJ\\src\\shaders\\default.vert",
             "E:\\Users\\Ian\\source\\repos\\BLMGJ\\BLMGJ\\src\\shaders\\default.frag");
-        sr.addGameObject("test", test, sh);
+        sr.addGameObject("test", &test, sh);
      
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window)) {
+            glClear(GL_COLOR_BUFFER_BIT);
+
             /* Render here */
             sr.draw();
 
@@ -67,6 +69,9 @@ public:
 
             /* Poll for and process events */
             glfwPollEvents();
+             
+            test.scale({ .99f, .99f });
+            //test.rotate(.01f);
         }
     }
     
