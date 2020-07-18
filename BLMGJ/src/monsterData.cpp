@@ -19,12 +19,12 @@ MonsterData::MonsterData(Element* e) : type(e)
 
 MonsterData::MonsterData(nlohmann::json json)
 {
-	std::string stringID = json["id"];
+	std::string stringID = json["id"].get<std::string>();
 	id = stoi(stringID);
-	name = json["name"];
-	species = json["species"];
+	name = json["name"].get<std::string>();
+	species = json["species"].get<std::string>();
 	flavor = "NULL";			//FIX
-	sprite = json["sprite"];
+	sprite = json["sprite"].get<std::string>();
 
 	type = new Fire();			//FIX
 	health = json["hp"];

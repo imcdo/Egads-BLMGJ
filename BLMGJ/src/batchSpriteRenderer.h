@@ -22,7 +22,7 @@ private:
 	unsigned int VBOs[2];
 public:
 	
-	glm::mat4 projection = glm::ortho(0.0f, settings::SCREEN_WIDTH, 0.0f, settings::SCREEN_HEIGHT, -1.0f, 1.0f);
+	glm::mat4 projection = glm::ortho(0.0f, (float)settings::SCREEN_WIDTH, 0.0f, (float)settings::SCREEN_HEIGHT, -1.0f, 1.0f);
 	
 	//glm::mat4 model = glm::mat4(1.0f);
 
