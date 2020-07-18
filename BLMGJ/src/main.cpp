@@ -53,6 +53,7 @@ void Game::init() {
 
 void Game::loop() {
     Sprite s = Sprite("src\\sprites\\UwU.png");
+    Sprite ms = Sprite("src\\sprites\\mat.png");
 
 
     BatchSpriteRenderer sr = BatchSpriteRenderer();
@@ -62,11 +63,13 @@ void Game::loop() {
     Shader* sh = sr.addShader("default", 
         "src\\shaders\\default.vert",
         "src\\shaders\\default.frag");
-    sr.addGameObject("test", &test, sh);
-
-    Hand h = Hand(Math::Rect({-200,0}, {400,200}));
+    Hand h = Hand(Math::Rect({-300,-300}, {300,100}));
     hand = &h;
-    std::vector<Card> cards = { Card(-300,0,s, {3,6}),Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), };
+
+    GameObject mat = GameObject(0, -100, ms, { 100, 100 });
+    sr.addGameObject("mat", &mat, sh);
+
+    std::vector<Card> cards = { Card(-300,0,s, {1,1}),Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), };
     size_t idx = 0;
     nextDraw = &cards[2];
 
@@ -76,6 +79,7 @@ void Game::loop() {
     for (const Card& c : cards) {
         sr.addGameObject("card " + idx++, &c, sh);
     }
+    sr.addGameObject("test", &test, sh);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
