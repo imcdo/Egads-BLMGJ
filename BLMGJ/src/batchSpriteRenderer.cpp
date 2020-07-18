@@ -6,24 +6,24 @@ void BatchSpriteRenderer::init() {
 	// dummy data for now
 
 	std::vector<glm::vec2> verticies = {
-		{-0.5f, 0.5f},
-		{0.5f, -.5f},
-		{-.5f, -.5f},
-		{0.5f, 0.5f},
+		{-0.5, -0.5},
+		{-0.5,  0.5},
+		{ 0.5, -0.5},
+		{ 0.5,  0.5}
 	};
 
 
 
 	std::vector<glm::vec2> tex = {
+		{0.0f, 0.0f},
 		{0.0f, 1.0f},
 		{1.0f, 0.0f},
-		{0.0f, 0.0f},
 		{1.0f, 1.0f},
 	};
 
 	std::vector<glm::uvec3> idxs = {
 		{0, 1, 2},
-		{0, 3, 1}
+		{2, 1, 3}
 	};
 
 	// initialize buffers
