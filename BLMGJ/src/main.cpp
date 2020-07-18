@@ -70,11 +70,11 @@ void Game::loop() {
         // test.rotate(.01f);
 
         if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-            test.move(0, -2);
+            test.move(0, 2);
         if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
             test.move(-2, 0);
         if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-            test.move(0, 2);
+            test.move(0, -2);
         if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
             test.move(2, 0);
 
