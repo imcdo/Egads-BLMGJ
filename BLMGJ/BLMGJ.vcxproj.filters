@@ -45,4 +45,7 @@
   <ItemGroup>
     <Text Include="src\NewFile.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\sprites\mat.png" />
+  </ItemGroup>
 </Project>
