@@ -9,11 +9,7 @@ void BatchSpriteRenderer::init() {
 		{-0.5f, 0.5f},
 		{0.5f, -.5f},
 		{-.5f, -.5f},
-
-
-		{-0.5f, 0.5f},
 		{0.5f, 0.5f},
-		{0.5f, -0.5f}
 	};
 
 
@@ -22,15 +18,17 @@ void BatchSpriteRenderer::init() {
 		{0.0f, 1.0f},
 		{1.0f, 0.0f},
 		{0.0f, 0.0f},
-
-		{0.0f, 1.0f},
 		{1.0f, 1.0f},
-		{1.0f, 0.0f}
+	};
+
+	std::vector<glm::uvec3> idxs = {
+		{0, 1, 2},
+		{0, 3, 1}
 	};
 
 	// initialize buffers
 	glGenVertexArrays(1, &VAO);
-	glGenBuffers(2, &VBOs[0]);
+	glGenBuffers(3, &VBOs[0]);
 
 	glBindVertexArray(VAO);
 
@@ -45,6 +43,11 @@ void BatchSpriteRenderer::init() {
 
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, VBOs[2]);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(glm::uvec3) * idxs.size(), idxs.data(), GL_STATIC_DRAW);
+
+
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 

@@ -18,8 +18,8 @@ private:
 	unordered_map<string, Shader> shaderBank;
 	unordered_map<string, GameObject *> gameObjects;
 
-	unsigned int VAO;
-	unsigned int VBOs[2];
+	GLuint VAO;
+	GLuint VBOs[3];
 public:
 	
 	glm::mat4 projection = glm::ortho(0.0f, (float)settings::SCREEN_WIDTH, 0.0f, (float)settings::SCREEN_HEIGHT, -1.0f, 1.0f);
