@@ -46,6 +46,11 @@ void GameObject::move(float x, float y) {
 	pos.y += y;
 }
 
+vec2 GameObject::getPosition()
+{
+	return pos;
+}
+
 void GameObject::setScale(glm::vec2 sf) {
 	scaleFactor = sf;
 }
