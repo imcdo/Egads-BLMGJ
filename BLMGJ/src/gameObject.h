@@ -11,7 +11,7 @@ using namespace glm;
 
 class GameObject {
 
-private:
+protected:
 	vec2 pos;
 	float depth;
 	float angle;
@@ -26,6 +26,7 @@ public:
 	void draw(Shader* s) const;
 	void warp(float x, float y); // goto location
 	void move(float x, float y); // add to current location
+	vec2 getPosition();
 
 	void setScale(vec2 sf);
 	void setRotation(float angle);
