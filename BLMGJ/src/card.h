@@ -11,8 +11,10 @@ using namespace glm;
 
 class Card : public GameObject {
 private:
-	MonsterData data;
+	MonsterData* data;
+	int decay;
 
 public:
-	Card(float x, float y, Sprite sprite, float scale = 1.0f, float depth = 0.0f, float angle = 0.0f);
+	Card(float x, float y, Sprite sprite, vec2 scale = { 1,1 }, float depth = 0.0f, float angle = 0.0f, MonsterData* data = nullptr);
+	void use();
 };

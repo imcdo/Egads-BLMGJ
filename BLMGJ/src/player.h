@@ -12,7 +12,5 @@ private:
 public:
 	Player();
 	void initDeck();
-	void addCard(Card card);
-	void removeCard(Card card);
 	int getHealth();
 };
