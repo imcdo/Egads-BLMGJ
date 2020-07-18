@@ -84,9 +84,9 @@ void Game::loop() {
             test.rotate(1);
 
         if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-            test.scale({ 1.1f, 1.1f });
+            test.scale({ 1.25f, 1.25f });
         if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
-            test.scale({.9f, .9f});
+            test.scale({.8f, .8f});
 
         for (FrameUpdater* fu : FrameUpdater::_frameUpdaters) fu->Update();
     }
