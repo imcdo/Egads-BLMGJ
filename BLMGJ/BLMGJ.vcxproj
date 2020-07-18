@@ -102,7 +102,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)/packages/glew.1.9.0.1\build\native\lib\v110\Win32\Release\dynamic;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d $(SolutionDir)packages\glew.redist.1.9.0.1\build\native\bin\v110\Win32\Release\dynamic\glew.dll $(OutDir)</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -125,7 +126,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)/packages/glew.1.9.0.1\build\native\lib\v110\Win32\Release\dynamic;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d $(SolutionDir)packages\glew.redist.1.9.0.1\build\native\bin\v110\Win32\Release\dynamic\glew.dll $(OutDir)</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -144,8 +146,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)packages/glew.1.9.0.1\build\native\lib\v110\x64\Release\dynamic;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /y /d "$(SolutionDir)packages\glew.redist.1.9.0.1\build\native\bin\v110\$(IntDir)\dynamic\glew.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
     <PreLinkEvent>
       <Command>xcopy /y /d "$(SolutionDir)packages\glew.redist.1.9.0.1\build\native\bin\v110\x64\Release\dynamic\glew.dll" "$(OutDir)"</Command>
@@ -174,28 +175,41 @@
       <AdditionalLibraryDirectories>$(SolutionDir)/packages/glew.1.9.0.1\build\native\lib\v110\x64\Release\dynamic;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d $(SolutionDir)packages\glew.redist.1.9.0.1\build\native\bin\v110\x64\Release\dynamic\glew.dll $(OutDir)</Command>
+      <Command>xcopy /y /d "$(SolutionDir)packages\glew.redist.1.9.0.1\build\native\bin\v110\$(IntDir)\dynamic\glew.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\batchSpriteRenderer.cpp" />
+    <ClCompile Include="src\battlefield.cpp" />
+    <ClCompile Include="src\card.cpp" />
     <ClCompile Include="src\frameUpdater.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\gameObject.cpp" />
+    <ClCompile Include="src\monster.cpp" />
+    <ClCompile Include="src\monsterData.cpp" />
     <ClCompile Include="src\player.cpp" />
+    <ClCompile Include="src\projectile.cpp" />
     <ClCompile Include="src\sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="src\shaders\cardBackDefault.frag" />
+    <None Include="src\shaders\cardBackDefault.vert" />
     <None Include="src\shaders\default.frag" />
     <None Include="src\shaders\default.vert" />
     <None Include="src\shaders\red.frag" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\battlefield.h" />
+    <ClInclude Include="src\card.h" />
+    <ClInclude Include="src\CardRenderer.h" />
     <ClInclude Include="src\frameUpdater.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\gameObject.h" />
+    <ClInclude Include="src\monster.h" />
+    <ClInclude Include="src\monsterData.h" />
     <ClInclude Include="src\player.h" />
+    <ClInclude Include="src\projectile.h" />
     <ClInclude Include="src\settings.h" />
     <ClInclude Include="src\shader.h" />
     <ClInclude Include="src\sprite.h" />
