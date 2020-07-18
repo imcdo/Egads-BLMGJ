@@ -6,36 +6,20 @@
 
 using namespace nlohmann;
 using namespace glm;
+using namespace std;
 
 // Element / type labels
 class Element
 {
 public:
-	virtual float GetDamageMultiplierAgainst(Element otherElement) = 0;
+	virtual float GetDamageMultiplierAgainst(Element* otherElement) = 0;
 };
 
 class Fire : public Element
 {
 public:
 	Fire();
-	float GetDamageMultiplierAgainst(Element otherElement);
-};
-
-// Data objects for JSON-izing
-struct CardData {
-public:
-	// Appearance
-	std::string name = "ERROR"; // Unique ID
-	std::string flavor = "";
-
-	// Combat parameters
-	int durability = 1;
-	int damage = 1;
-	int bounces = 1;
-
-	Element* type;
-
-	CardData(Element*);
+	float GetDamageMultiplierAgainst(Element* otherElement);
 };
 
 struct MonsterData {
@@ -43,28 +27,30 @@ public:
 	// Unique ID
 	int id = -1;
 	std::string name = "ERROR";
+	std::string species = "";
+	std::string flavor = "";
 	std::string sprite = "";
 
-	// Combat parameters
+	// Combat values
+	Element* type;
 	int health = 1;
 	int damage = 1;
-	Element* type;
-
-	// Card form
-	CardData card;
+	int decay = 1;
+	int bounce = 1;
 
 	MonsterData(Element*);
-
-	// Serialization
 	MonsterData(json json);
-	nlohmann::json Serialize();
 };
+
+ostream& operator<<(ostream& strm, const MonsterData& a);
 
 class Bestiary
 {
+private:
 
-// will contain map / list of monsters
-const std::string JSON_FILE_NAME = "bestiary.json";
+	const std::string JSON_FILE_NAME = "bestiary.json";
+
+	vector<MonsterData> bestiary;
 
 public:
 	Bestiary();

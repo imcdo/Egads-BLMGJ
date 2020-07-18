@@ -2,70 +2,55 @@
 #include <iostream>
 #include <fstream>
 
+using namespace std;
 
 // Elements
 Fire::Fire()
 {}
 
 
-float Fire::GetDamageMultiplierAgainst(Element otherElement)
+float Fire::GetDamageMultiplierAgainst(Element* otherElement)
 {
 	return 0.05;
 }
-
-CardData::CardData(Element* e) : type(e)
-{}
 
 MonsterData::MonsterData(Element* e) : type(e)
 {}
 
 MonsterData::MonsterData(nlohmann::json json)
 {
+	std::string stringID = json["id"];
+	id = stoi(stringID);
 	name = json["name"];
-	health = json["health"];
-	damage = json["damage"];
-	//type = ??
+	species = json["species"];
+	flavor = "NULL";			//FIX
+	sprite = json["sprite"];
 
-	//card = CardData();
-	card.name = json["name"];
-	card.flavor = json["flavor"];
-	card.durability = json["durability"];
-	card.bounces = json["bounces"];
-	card.damage = json["damage"];
-	//card.type
+	type = new Fire();			//FIX
+	health = json["hp"];
+	damage = json["attack"];
+	decay = json["decay"];
+	bounce = json["bounce"];
 }
 
-
-// Probably wont even use this
-nlohmann::json MonsterData::Serialize()
+ostream& operator<<(ostream& strm, const MonsterData& m)
 {
-	nlohmann::json json = {
-	{"name", name},
-
-	{"health", health},
-	{"damage", damage},
-
-	{"element", "NULL"},
-
-	{"card",
-		{
-			{"name", card.name},
-			{"flavor", card.flavor},
-
-			{"durability", card.durability},
-			{"bounces", card.bounces},
-			{"damage", card.damage},
-
-			{"element", "NULL"},
-		}
-	} };
-
-	return json;
+	return strm << 
+		m.id << " -- " <<
+		m.name << 
+		"(" << m.species << ")" << 
+		"[" << m.health << "," 
+			 << m.damage << "," 
+			 << m.decay << "," 
+			 << m.bounce << "]\t"
+			 << m.sprite;
 }
 
 
 Bestiary::Bestiary()
 {
+	bestiary = vector<MonsterData>();
+
 	std::fstream bestiaryFile;
 	bestiaryFile.open(JSON_FILE_NAME);
 
@@ -77,6 +62,9 @@ Bestiary::Bestiary()
 
 	for (auto it = parsedBestiary.begin(); it != parsedBestiary.end(); ++it)
 	{
-		std::cout << "PARSED:" << (*it) << "\n\n" << std::endl;
+		bestiary.push_back(MonsterData((*it)));
+		std::cout << "PARSED -- " << bestiary.back() << std::endl;
 	}
+
+	std::cout << "READ [" << bestiary.size() << "] MONSTERS..." << std::endl;
 }

@@ -11,7 +11,7 @@ using namespace glm;
 
 class Card : public GameObject {
 private:
-	CardData data;
+	MonsterData data;
 
 public:
 	Card(float x, float y, Sprite sprite, float scale = 1.0f, float depth = 0.0f, float angle = 0.0f);

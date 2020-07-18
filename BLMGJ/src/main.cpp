@@ -8,7 +8,7 @@
 #include "settings.h"
 #include "game.h"
 #include "frameUpdater.h"
-#include "battlefield.cpp";
+#include "monsterData.cpp";
 
 
 
@@ -102,6 +102,7 @@ void Game::cleanup() {
 int main(void) {
     try {
 		//Battlefield grid = Battlefield(0, 0, Sprite(""));
+		Bestiary();
 
         Game game;
         game.init();
