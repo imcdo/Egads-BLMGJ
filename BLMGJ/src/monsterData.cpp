@@ -7,23 +7,17 @@
 Fire::Fire()
 {}
 
-float Element::GetDamageMultiplierAgainst(Element otherElement)
-{
-	return 1;
-}
 
 float Fire::GetDamageMultiplierAgainst(Element otherElement)
 {
 	return 0.05;
 }
 
-CardData::CardData()
+CardData::CardData(Element* e) : type(e)
 {}
 
-MonsterData::MonsterData()
-{
-
-}
+MonsterData::MonsterData(Element* e) : type(e)
+{}
 
 MonsterData::MonsterData(nlohmann::json json)
 {

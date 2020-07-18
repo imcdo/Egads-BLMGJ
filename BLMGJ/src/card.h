@@ -1,15 +1,15 @@
 #pragma once
-#define GLEW_STATIC
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include "sprite.h"
 #include "monsterData.h"
+#include "gameObject.h"
 
 using namespace glm;
 
 
 
-class Card : public gameObject {
+class Card : public GameObject {
 private:
 	CardData data;
 

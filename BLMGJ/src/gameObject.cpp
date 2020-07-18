@@ -15,15 +15,16 @@ GameObject::GameObject(float x, float y, Sprite sprite, glm::vec2 scale , float 
 
 void GameObject::draw(Shader* s) const {
 
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::scale(model, glm::vec3(scaleFactor, 1));
-	model = glm::rotate(model, glm::radians(angle), glm::vec3(0, 0, 1));
+	glm::mat4 transform = glm::mat4(1.0f);
+	glm::vec2 realSF= { sprite.getWidth() * scaleFactor.x / sprite.ppi, sprite.getHeight() * scaleFactor.y / sprite.ppi };
+	
+	transform = glm::scale(transform, glm::vec3(realSF, 1));
+	transform = glm::translate(transform, glm::vec3(pos / realSF, 0));
+	transform = glm::rotate(transform, glm::radians(angle), glm::vec3(0, 0, 1));
 
-	model = glm::translate(model, glm::vec3(pos, 0));
 
-
-	unsigned int modelID = glGetUniformLocation(s->id, "model");
-	glUniformMatrix4fv(modelID, 1, GL_FALSE, &model[0][0]);
+	unsigned int transformID = glGetUniformLocation(s->id, "transform");
+	glUniformMatrix4fv(transformID, 1, GL_FALSE, &transform[0][0]);
 
 	unsigned int depthID = glGetUniformLocation(s->id, "depth");
 	glUniform1f(depthID, depth);

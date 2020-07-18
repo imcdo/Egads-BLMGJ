@@ -43,10 +43,11 @@ LoadSpriteData Sprite::TextureFromFile(std::string filename, bool gamma) {
     return result;
 }
 
-Sprite::Sprite(std::string path, SpriteType sType) : 
+Sprite::Sprite(std::string path, SpriteType sType, unsigned int pixelsPerInch) :
     _loadData(TextureFromFile(path, false)), 
     height(_loadData.height), width(_loadData.width), 
-    textureID(_loadData.textureID), spriteType(sType)
+    textureID(_loadData.textureID), spriteType(sType),
+    ppi(pixelsPerInch)
 {
 }
 

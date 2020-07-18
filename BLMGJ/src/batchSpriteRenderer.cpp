@@ -1,4 +1,6 @@
+#include <glm/gtc/matrix_transform.hpp>
 #include "batchSpriteRenderer.h"
+#include "settings.h"
 
 void BatchSpriteRenderer::init() {
 	// dummy data for now
@@ -55,9 +57,16 @@ Shader* BatchSpriteRenderer::addShader(std::string name, std::string pathVert, s
 	// bind uniforms
 	shaderBank[name].use();
 
-	unsigned int projectionId = glGetUniformLocation(shaderBank[name].id, "projection");
+	GLuint projectionId = glGetUniformLocation(shaderBank[name].id, "projection");
 	glUniformMatrix4fv(projectionId, 1, GL_FALSE, &projection[0][0]);
 
+	glm::mat4 world = glm::mat4(1);
+	world = glm::translate(world, glm::vec3(settings::SCREEN_WIDTH / 2, settings::SCREEN_HEIGHT / 2, 0));
+
+	GLuint worldId = glGetUniformLocation(shaderBank[name].id, "world");
+	glUniformMatrix4fv(worldId, 1, GL_FALSE, &world[0][0]);
+
+	
 	
 	std::cout << "bound uniforms" << std::endl;
 	return &shaderBank[name];

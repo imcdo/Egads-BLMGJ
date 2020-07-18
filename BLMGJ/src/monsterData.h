@@ -1,5 +1,4 @@
 #pragma once
-#define GLEW_STATIC
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <nlohmann\json.hpp>
@@ -11,7 +10,7 @@ using namespace glm;
 class Element
 {
 public:
-	virtual float GetDamageMultiplierAgainst(Element otherElement);
+	virtual float GetDamageMultiplierAgainst(Element otherElement) = 0;
 };
 
 class Fire : public Element
@@ -33,9 +32,9 @@ public:
 	int damage = 1;
 	int bounces = 1;
 
-	Element type;
+	Element* type;
 
-	CardData();
+	CardData(Element*);
 };
 
 struct MonsterData {
@@ -48,12 +47,12 @@ public:
 	// Combat parameters
 	int health = 1;
 	int damage = 1;
-	Element type;
+	Element* type;
 
 	// Card form
 	CardData card;
 
-	MonsterData();
+	MonsterData(Element*);
 
 	// Serialization
 	MonsterData(nlohmann::json json);

@@ -179,8 +179,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\batchSpriteRenderer.cpp" />
+    <ClCompile Include="src\frameUpdater.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\gameObject.cpp" />
+    <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -190,11 +192,18 @@
     <None Include="src\shaders\red.frag" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\frameUpdater.h" />
+    <ClInclude Include="src\game.h" />
     <ClInclude Include="src\gameObject.h" />
+    <ClInclude Include="src\player.h" />
     <ClInclude Include="src\settings.h" />
     <ClInclude Include="src\shader.h" />
     <ClInclude Include="src\sprite.h" />
     <ClInclude Include="src\batchSpriteRenderer.h" />
+    <ClInclude Include="src\Time.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\NewFile.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
