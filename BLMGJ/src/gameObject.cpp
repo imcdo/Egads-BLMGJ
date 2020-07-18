@@ -5,18 +5,22 @@
 #include <iostream>
 
 
-GameObject::GameObject(float x, float y, Sprite sprite, glm::vec2 scale , float depth, float angle) : pos(), sprite(sprite) {
-	pos.x = x;
-	pos.y = y;
-	this->scaleFactor = scale;
-	this->depth = depth;
-	this->angle = angle;
+GameObject::GameObject(float x, float y, Sprite sprite, glm::vec2 scale, float depth, float angle) : 
+	pos(x,y), sprite(sprite), scaleFactor(scale), depth(depth), angle(angle)
+{}
+
+GameObject::GameObject(glm::vec2 pos, Sprite sprite, glm::vec2 scale, float depth, float angle) :
+	pos(pos), sprite(sprite), scaleFactor(scale), depth(depth), angle(angle) {
 }
 
-void GameObject::draw(Shader* s) const {
+glm::vec2 GameObject::getAdjScaleFactor() const {
+	return  { sprite.getWidth() * scaleFactor.x / sprite.ppi, sprite.getHeight() * scaleFactor.y / sprite.ppi };
+}
+
+void GameObject::draw(const Shader* s) const {
 
 	glm::mat4 transform = glm::mat4(1.0f);
-	glm::vec2 realSF= { sprite.getWidth() * scaleFactor.x / sprite.ppi, sprite.getHeight() * scaleFactor.y / sprite.ppi };
+	glm::vec2 realSF = getAdjScaleFactor();
 	
 	transform = glm::scale(transform, glm::vec3(realSF, 1));
 	transform = glm::translate(transform, glm::vec3(pos / realSF, 0));
@@ -34,17 +38,22 @@ void GameObject::draw(Shader* s) const {
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	// glDrawArrays(GL_TRIANGLES, 0, 6);
-	glBindVertexArray(0);
 }
 
 void GameObject::warp(float x, float y) {
-	pos.x = x;
-	pos.y = y;
+	warp({ x,y });
+}
+
+void GameObject::warp(glm::vec2 w) {
+	pos = w;
 }
 
 void GameObject::move(float x, float y) {
-	pos.x += x;
-	pos.y += y;
+	move({ x,y });
+}
+
+void GameObject::move(glm::vec2 trans) {
+	pos += trans;
 }
 
 vec2 GameObject::getPosition()
@@ -66,4 +75,8 @@ void GameObject::rotate(float angle) {
 
 void GameObject::scale(glm::vec2 sf) {
 	scaleFactor *= sf;
+}
+
+Math::Rect GameObject::getRect() const {
+	return { pos - getAdjScaleFactor() / 2.0f, pos + getAdjScaleFactor() / 2.0f };
 }

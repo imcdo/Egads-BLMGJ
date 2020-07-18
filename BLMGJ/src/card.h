@@ -14,5 +14,5 @@ private:
 	MonsterData data;
 
 public:
-	Card(float x, float y, Sprite sprite, float scale = 1.0f, float depth = 0.0f, float angle = 0.0f);
+	Card(float x, float y, Sprite sprite, glm::vec2 scale = { 1,1 }, float depth = 0.0f, float angle = 0.0f);
 };
