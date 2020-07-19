@@ -19,9 +19,9 @@ private:
 	void Update() override;
 	
 	vec2 dimensions;		// 2D array dimensions (y = rows)
-	vec2 offset;			// center the grid
-	vec2 attackOrigin;		// Where attacks come from
-	float spacing;			// buffer around tile sprites
+	vec2 offset = {-300, -100};			// center the grid
+	vec2 attackOrigin = {0, -500};		// Where attacks come from
+	float spacing = 50;			// buffer around tile sprites
 
 public:
 	Battlefield(float x, float y, Sprite sprite, vec2 scale = {1,1}, float depth = 0.0f, float angle = 0.0f,

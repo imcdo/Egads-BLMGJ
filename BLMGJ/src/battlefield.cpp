@@ -5,18 +5,13 @@ using namespace std;
 using namespace glm;
 
 Battlefield::Battlefield(float x, float y, Sprite sprite, glm::vec2 scale, float depth, float angle,
-	int sizeX, int sizeY, float spacing): GameObject(x, y, sprite, scale, depth, angle)
+	int sizeX, int sizeY, float spacing): GameObject(x, y, sprite, scale, depth, angle), spacing(spacing)
 {
 	// Allocate battlefield 
 	grid = vector<vector<Monster*>>();
 	grid.resize(sizeY, vector<Monster*>(sizeX, nullptr));
 
-	AtLocation(vec2(2, 2));
-	AtLocation(vec2(3, 3));
-
 	dimensions = vec2(sizeX, sizeY);
-	offset = vec2(0, 0);
-	attackOrigin = vec2(0, -10); // TODO: fix this
 }
 
 void Battlefield::Populate(float density, int intensity)
@@ -28,7 +23,7 @@ void Battlefield::Populate(float density, int intensity)
 			if((rand() / RAND_MAX) <= intensity);
 			{
 				MonsterData* data = GetBestiary()->getRandomMonster();
-				grid[r][c] = new Monster(c, r, data->sprite, { 1,1 }, 0.0f, 0.0f, data);
+				grid[r][c] = new Monster(c * spacing + offset.x, r * spacing + offset.y, { 1,1 }, 0.0f, 0.0f, data);
 			}
 		}
 	}

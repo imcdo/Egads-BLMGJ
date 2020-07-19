@@ -110,9 +110,10 @@ void Game::loop() {
         << mat.getRect().getMax().x << " "
         << mat.getRect().getMax().y << std::endl;
 
-    Battlefield grid = Battlefield(0, 0, s);
-    Bestiary bestiary = Bestiary();
-    Player player = Player(&bestiary, &grid, mat.getRect());
+	//Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 50, 50, 1);
+	Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 64, 64, 32);
+	grid.Populate(0.5f);
+    Player player = Player(GetBestiary(), &grid, mat.getRect());
     
     Hand h = Hand(mat.getRect());
     hand = &h;
@@ -131,7 +132,7 @@ void Game::loop() {
     size_t idx = 0;
     nextDraw = &cards[0];
 
-    MonsterData* testMonster = bestiary.getRandomMonster();
+    MonsterData* testMonster = GetBestiary()->getRandomMonster();
     Card* testCard = new Card(-350, 200, s, { 5,5 }, 0, 0, testMonster);
 
 
