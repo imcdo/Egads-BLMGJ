@@ -66,6 +66,10 @@ void BatchSpriteRenderer::init() {
 	Shader* sh = addShader("default",
 		"src\\shaders\\default.vert",
 		"src\\shaders\\default.frag");
+
+	Shader* back = addShader("background",
+		settings::BACKGROUND_GAME_VS,
+		settings::BACKGROUND_GAME_FS);
 }
 
 Shader* BatchSpriteRenderer::addShader(std::string name, std::string pathVert, std::string pathFrag) {
@@ -100,6 +104,10 @@ void BatchSpriteRenderer::addGameObject(std::string name, const GameObject* game
 
 void BatchSpriteRenderer::draw() const {
 	glBindVertexArray(VAO);
+	shaderBank.at("background").use();
+	glUniform1f(glGetUniformLocation(shaderBank.at("background").id, "time"), Time::getCurrentTime());
+	glUniform1f(glGetUniformLocation(shaderBank.at("background").id, "scale"), 2.0f);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	for (const pair<const Shader*, vector<const GameObject*>>& renderPass : bigDumDum) {
 		renderPass.first->use();
 		for (const GameObject* gameObject : renderPass.second) {
