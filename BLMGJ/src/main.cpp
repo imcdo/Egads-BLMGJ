@@ -1,8 +1,8 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "gameObject.h";
-#include "sprite.h";
+#include "gameObject.h"
+#include "sprite.h"
 #include "batchSpriteRenderer.h"
 #include "shader.h"
 #include "settings.h"
@@ -14,12 +14,48 @@
 #include "player.h"
 // #include "monsterData.cpp";
 
+float _currentMouseX;
+float _currentMouseY;
+float _lastMouseX;
+float _lastMouseY;
+
 Hand* hand;
 Card* nextDraw;
+
+
 static void inputCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (key == GLFW_KEY_C && action == GLFW_PRESS) {
         hand->drawCard(nextDraw);
         nextDraw++;
+    }
+    if (key == GLFW_KEY_V && action == GLFW_PRESS) {
+        nextDraw->warp(100, 200);
+    }
+}
+
+void mouseCursorCallback(GLFWwindow* window, double mouseX, double mouseY) {
+    _lastMouseX = _currentMouseX;
+    _lastMouseY = _currentMouseY;
+
+    _currentMouseX = mouseX;
+    _currentMouseY = mouseY;
+}
+
+void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
+{
+    std::cout << "callback" << std::endl;
+    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
+        std::cout << "mouse pressed at " << _currentMouseX << " " << _currentMouseY << std::endl;
+
+        for (Card* c : hand->cards) {
+            std::cout << "card at " << c->getRect().getCenter().x << " " << c->getRect().getCenter().y << std::endl;
+            
+            
+            if (c->getRect().Contains(glm::vec2(_currentMouseX - settings::SCREEN_WIDTH/2, settings::SCREEN_HEIGHT/2 -_currentMouseY))) {
+                std::cout << "card clicked " << std::endl;
+                c->move(0,100);
+            }
+        }
     }
 }
 
@@ -54,6 +90,7 @@ void Game::init() {
 
 void Game::loop() {
     Sprite s = Sprite("src\\sprites\\UwU.png");
+    Sprite ms = Sprite("src\\sprites\\mat.png");
 
     Battlefield grid = Battlefield(0, 0, s);
     Bestiary bestiary = Bestiary();
@@ -66,20 +103,40 @@ void Game::loop() {
     Shader* sh = sr.addShader("default", 
         "src\\shaders\\default.vert",
         "src\\shaders\\default.frag");
-    sr.addGameObject("test", &test, sh);
 
-    Hand h = Hand(Math::Rect({-200,0}, {400,200}));
+    GameObject mat = GameObject(0, -100, ms, { 100, 100 });
+    sr.addGameObject("mat", &mat, sh);
+    std::cout << mat.getRect().getMin().x << " "
+        << mat.getRect().getMin().y << " | "
+        << mat.getRect().getMax().x << " "
+        << mat.getRect().getMax().y << std::endl;
+    
+    Hand h = Hand(mat.getRect());
     hand = &h;
-    std::vector<Card> cards = { Card(-300,0,s, {3,6}),Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), Card(-300,0,s, {3,6}), };
+
+    std::vector<Card> cards = { Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
+            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
+            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
+            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+    };
     size_t idx = 0;
-    nextDraw = &cards[2];
+    nextDraw = &cards[0];
 
     glfwSetKeyCallback(window, inputCallback);
+    glfwSetCursorPosCallback(window, mouseCursorCallback);
+    glfwSetMouseButtonCallback(window, mouseButtonCallback);
 
-    h.drawCard(&cards[idx]);
+
     for (const Card& c : cards) {
         sr.addGameObject("card " + idx++, &c, sh);
     }
+    sr.addGameObject("test", &test, sh);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {

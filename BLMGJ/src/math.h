@@ -19,7 +19,7 @@ namespace Math{
 
 		float getHeight() const { return ur.y - bl.y; }
 
-		float getWidth() const { return ur.x - bl.y; }
+		float getWidth() const { return ur.x - bl.x; }
 
 		glm::vec2 getMax() const { return ur; }
 
@@ -37,6 +37,10 @@ namespace Math{
 		bool Contains(Rect other) {
 			return ur.x > other.ur.x && ur.y > other.ur.y 
 				&& bl.x < other.bl.x && bl.y < other.bl.y;
+		}
+		bool Contains(glm::vec2 point) {
+			return ur.x > point.x && ur.y > point.y
+				&& bl.x < point.x&& bl.y < point.y;
 		}
 
 		// Strict Overlap

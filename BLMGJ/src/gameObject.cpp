@@ -22,10 +22,9 @@ void GameObject::draw(const Shader* s) const {
 	glm::mat4 transform = glm::mat4(1.0f);
 	glm::vec2 realSF = getAdjScaleFactor();
 	
-	transform = glm::scale(transform, glm::vec3(realSF, 1));
-	transform = glm::translate(transform, glm::vec3(pos / realSF, 0));
+	transform = glm::translate(transform, glm::vec3(pos, 0));
 	transform = glm::rotate(transform, glm::radians(angle), glm::vec3(0, 0, 1));
-
+	transform = glm::scale(transform, glm::vec3(realSF, 1));
 
 	unsigned int transformID = glGetUniformLocation(s->id, "transform");
 	glUniformMatrix4fv(transformID, 1, GL_FALSE, &transform[0][0]);
