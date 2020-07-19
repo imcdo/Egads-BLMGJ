@@ -23,7 +23,7 @@ Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth,
 	destination = raycast.first;
 	nextTrajectory = raycast.second;
 
-	bounce = 10000;
+	bounce = 10;
 	cout << "Create projectile at " << origin.x << " " << origin.y
 		<< " | destination at " << destination.x << " " << destination.y
 		<< " | with trajectory " << trajectory.x << " " << trajectory.y << "\n";
@@ -34,6 +34,7 @@ Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth,
 
 void Projectile::Update()
 {
+
 	if (!active) // Only move when active
 		return;
 
@@ -55,20 +56,12 @@ void Projectile::Update()
 	// Bounce
 	if (distanceTraveled >= totalDistance)
 	{
-		// if (!field->OutOfBounds(pos) || field->AtLocation(pos) != nullptr)		// CASE: that tile is still solid
-		// {
-			origin = pos;
-			auto ray = field->Raycast(origin, nextTrajectory);
-			destination = ray.first;	// Destination from reflect angle raycast
-			nextTrajectory = ray.second;
-			bounce--;
-		// }
-		// else																	 // CASE: that tile is now vacant
-		// {
-		//	origin = pos;															// Current pos is new origin
-		//	std::pair<vec2, vec2> originTrajectory = field->Raycast(origin, destination);
-		//	destination = originTrajectory.first;									// Destination from new raycast
-		// }
+		origin = pos;
+		auto ray = field->Raycast(origin, nextTrajectory);
+		destination = ray.first;	// Destination from reflect angle raycast
+		nextTrajectory = ray.second;
+		bounce--;
+		
 
 		totalDistance = glm::length((destination - origin));					 // Recalculate distance
 		distanceTraveled = 0;			
