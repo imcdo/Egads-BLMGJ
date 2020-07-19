@@ -194,12 +194,14 @@ xcopy /y /d "$(SolutionDir)packages\freetype.redist.2.8.0.1\build\native\bin\$(P
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\projectile.cpp" />
     <ClCompile Include="src\sprite.cpp" />
+    <ClCompile Include="src\TextManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="src\cardTextDefault.frag" />
     <None Include="src\shaders\cardBackDefault.frag" />
     <None Include="src\shaders\cardBackDefault.vert" />
+    <None Include="src\shaders\cardTextDefault.frag" />
+    <None Include="src\shaders\cardTextDefault.vert" />
     <None Include="src\shaders\default.frag" />
     <None Include="src\shaders\default.vert" />
     <None Include="src\shaders\red.frag" />
@@ -213,6 +215,7 @@ xcopy /y /d "$(SolutionDir)packages\freetype.redist.2.8.0.1\build\native\bin\$(P
     <ClInclude Include="src\gameObject.h" />
     <ClInclude Include="src\monster.h" />
     <ClInclude Include="src\monsterData.h" />
+    <ClInclude Include="src\OffScreenRender.h" />
     <ClInclude Include="src\player.h" />
     <ClInclude Include="src\projectile.h" />
     <ClInclude Include="src\settings.h" />
