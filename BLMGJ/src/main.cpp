@@ -136,7 +136,7 @@ void Game::loop() {
 
 
     Projectile test = Projectile(0, 0, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
-
+	sr.addGameObject("proj ", &test, sh);
 
     test.active = true;
 
