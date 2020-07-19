@@ -17,9 +17,10 @@ private:
 	vector<vector<Monster*>> grid;							// Track positions of enemies
 
 	void Update() override;
-	
+
 	vec2 dimensions;		// 2D array dimensions (y = rows)
-	vec2 offset = {-550, -150};			// center the grid
+	vec2 offset = { -550, -150 };			// center the grid
+	vec2 ballOffset = {0, -16};
 	vec2 attackOrigin = {0, -500};		// Where attacks come from
 	float spacing = 50;			// buffer around tile sprites
 
