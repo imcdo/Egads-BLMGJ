@@ -122,39 +122,39 @@ void Game::loop() {
     player = &p;
 
     // need these in player
-    std::vector<Card> cards = { Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-    };
-    size_t idx = 0;
+    //std::vector<Card> cards = { Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
+    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
+    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
+    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
+    //};
+    //size_t idx = 0;
     //nextDraw = &cards[0];
 
-    MonsterData* testMonster = GetBestiary()->getRandomMonster();
-    Card* testCard = new Card(-350, 200, s, { 5,5 }, 0, 0, testMonster);
+    //MonsterData* testMonster = GetBestiary()->getRandomMonster();
+    //Card* testCard = new Card(-350, 200, "src\\sprites\\UwU.png", { 5,5 }, 0, 0, testMonster);
 
 
-    Projectile test = Projectile(0, 0, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
-	sr.addGameObject("proj ", &test, sh);
+    //Projectile test = Projectile(0, 0, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
+	//sr.addGameObject("proj ", &test, sh);
 
     // test.active = true;
 
     
 
-    glfwSetKeyCallback(window, inputCallback);
+    //glfwSetKeyCallback(window, inputCallback);
     glfwSetCursorPosCallback(window, mouseCursorCallback);
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
 
-    // need this in player?
-    for (const Card& c : cards) {
-        sr.addGameObject("card " + idx++, &c, sh);
-    }
+    // handled in Card now
+    //for (const Card& c : cards) {
+    //    sr.addGameObject("card " + idx++, &c, sh);
+    //}
 
 
     /* Loop until the user closes the window */

@@ -1,8 +1,9 @@
 #include "card.h"
+#include "cardRenderer.h"
 #include "batchSpriteRenderer.h"
 
-Card::Card(float x, float y, Sprite sprite, glm::vec2 scale, float depth, float angle, MonsterData* data) :
-	GameObject(x, y, sprite, scale, depth, angle), data(data) {
+Card::Card(float x, float y, std::string spritePath, glm::vec2 scale, float depth, float angle, MonsterData* data) :
+	GameObject(x, y, Sprite(CardRenderer::drawCard(data->name, data->flavor, spritePath, data->decay, data->rank /*color?*/)), scale, depth, angle), data(data) {
 	
 	if (data == nullptr)
 		decay = 0;

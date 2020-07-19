@@ -2,6 +2,7 @@
 #include "projectile.h"
 #include "settings.h"
 #include <algorithm>
+#include <string>
 
 // Need to add drawdeck and discard depending on how the positions are passed in
 Player::Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect, glm::vec2 drawDeckPos, glm::vec2 discardPos)
@@ -14,12 +15,15 @@ void Player::initDeck() {
 	deck = vector<Card>();
 	for (int i = 0; i < settings::DECK_SIZE; i++) {
 		//generate card
-		Card c(0, 0, Sprite("src\\sprites\\UwU.png"), { 1,1 }, 0.0f, 0.0f, bestiary->getRandomMonster());
+		MonsterData* randMon = bestiary->getRandomMonster();
+		std::string monsterPath = "src\\sprites\\monsters\\" + randMon->sprite;
+		Card c(0, 0, monsterPath, { 5,5 }, 0.0f, 0.0f, randMon);
 		deck.push_back(c);
-		deckPtrs.push_back(&c);
+		drawDeck.putTop(&c);
 	}
 
 	drawDeck.shuffle();
+	drawToHand();
 }
 
 int Player::getHealth() {
