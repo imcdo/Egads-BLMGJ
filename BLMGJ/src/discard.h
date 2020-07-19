@@ -2,12 +2,12 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include "card.h"
-#include <vector>
+#include <deque>
 
 class Discard {
 private:
 	glm::vec2 position;
-	std::vector<Card*> cards;
+	std::deque<Card*> cards;
 
 public:
 	Discard() = default;

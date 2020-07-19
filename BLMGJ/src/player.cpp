@@ -30,8 +30,13 @@ void Player::initDeck() {
 		//generate card
 		MonsterData* randMon = bestiary->getRandomMonster();
 		std::string monsterPath = "src\\sprites\\monsters\\" + randMon->sprite;
-		deck.emplace_back(0, 0, monsterPath, vec2(5,5), 0, 0, randMon);
-		drawDeck.putTop(&(deck.back()));
+
+		deck.emplace_back(0, 0, monsterPath, vec2(10, 10), 0, 0, randMon);
+	}
+
+	for (int i = 0; i < settings::DECK_SIZE; i++) {
+		deck[i].setId(i);
+		drawDeck.putTop(&deck[i]);
 	}
 
 	int idx = 0;
@@ -71,6 +76,7 @@ void Player::useCard(Card card) {
 	Projectile p(0, 0, Sprite("src\\sprites\\UwU.png"), { 1, 1 }, 0.0f, 0.0f, mData, { 0,1 }, battlefield, &card);
 	p.active = true;
 	card.decrementCardUse();
+	updateCard(card);
 }
 
 void Player::drawToHand() {
@@ -95,11 +101,23 @@ void Player::cardPlayInputHandler(Card* card) {
 
 void Player::resetCards() {
 	discard.clear();
-	for (Card c : deck) {
-		drawDeck.putTop(&c);
+	for (int i = 0; i < settings::DECK_SIZE; i++) {
+		drawDeck.putTop(&deck[i]);
 	}
 	//auto deckIter = deckPtrs.begin();
 	//drawDeck.putTop(deckIter);
 	drawDeck.shuffle();
 }
 
+void Player::updateCard(Card card) {
+	Sprite updatedSprite = card.generateUpdatedSprite();
+
+	std::stringstream ss;
+	ss << "player_deck_card" << card.getId();
+	std::string name = ss.str();
+
+	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
+	sr.remove(name);
+	card.setSprite(updatedSprite);
+	sr.addGameObject(name, &card, sr.getShader("default"));
+}

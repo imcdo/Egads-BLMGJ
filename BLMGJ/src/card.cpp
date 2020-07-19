@@ -31,7 +31,8 @@ void Card::addNewData(MonsterData* monData) {
 	decay = data->decay;
 }
 
-std::string Card::getName() const {
-	return data->name + +"_CardObject";
+Sprite Card::generateUpdatedSprite() {
+	std::string monsterPath = "src\\sprites\\monsters\\" + data->sprite;
+	return CardRenderer::drawCard(data->name, data->flavor, monsterPath, this->decay, data->rank, data->element->GetElementEnum());
 }
 

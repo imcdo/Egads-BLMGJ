@@ -129,7 +129,7 @@ void Game::loop() {
 	Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 35, 14, 32);
 	grid.Populate(0.5f);
     Bestiary bestiary = Bestiary();
-    Player p = Player(&bestiary, &grid, mat.getRect(), { -350, -settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() }, { 350,-settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() });
+    Player p = Player(&bestiary, &grid, mat.getRect(), { -360, -settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() / 2 }, { 360,-settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() / 2});
 
     player = &p;
 

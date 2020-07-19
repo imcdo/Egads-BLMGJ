@@ -16,7 +16,6 @@ private:
 	Hand hand;
 	Discard discard;
 	
-	std::vector<Card*> deckPtrs;
 
 	Bestiary* bestiary;
 	Battlefield* battlefield;
@@ -36,4 +35,6 @@ public:
 	void drawToHand();
 	void cardPlayInputHandler(Card* card);
 	void resetCards();
+
+	void updateCard(Card card);
 };

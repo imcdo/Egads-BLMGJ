@@ -15,7 +15,9 @@ class Card : public GameObject {
 private:
 	MonsterData* data;
 	int decay;
+	int id;
 public:
+
 	Card(float x, float y, std::string spritePath, vec2 scale = { 1,1 }, float depth = 0.0f, float angle = 0.0f, MonsterData* data = nullptr);
 	MonsterData* getMonsterData();
 	void decrementCardUse();
@@ -25,5 +27,8 @@ public:
 		glUniform1i(glGetUniformLocation(s->id, "rarity"), data ? data->rank : 0);
 		GameObject::draw(s);
 	}
-	std::string getName() const;
+
+	Sprite generateUpdatedSprite();
+	void setId(int id) { this->id = id; }
+	int getId() { return this->id;  }
 };
