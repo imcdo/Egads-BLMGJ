@@ -15,12 +15,14 @@ private:
 	DrawDeck drawDeck;
 	Hand hand;
 	Discard discard;
-	std::vector<Card> deck;
+	
 	std::vector<Card*> deckPtrs;
 
 	Bestiary* bestiary;
 	Battlefield* battlefield;
 public:
+	std::vector<Card> deck;
+
 	Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect, glm::vec2 drawDeckPos, glm::vec2 discardPos);
 	void initDeck();
 	int getHealth();

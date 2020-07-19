@@ -129,6 +129,10 @@ void Game::loop() {
     Bestiary bestiary = Bestiary();
     Player p = Player(&bestiary, &grid, mat.getRect(), { -350,0 }, { 350,0 });
 
+    for (const auto& card : p.deck) {
+        cout << card.getRect().getHeight() << endl;
+    }
+
     player = &p;
 
     // need these in player
@@ -167,10 +171,6 @@ void Game::loop() {
     //    sr.addGameObject("card " + idx++, &c, sh);
     //}
 
-
-    for (const Card& c : cards) {
-        sr.addGameObject("card " + idx++, &c, handShader);
-    }
     sr.addGameObject("shooter", &shooter, sh);
 
 

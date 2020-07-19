@@ -1,6 +1,7 @@
 #include "player.h"
 #include "projectile.h"
 #include "settings.h"
+#include "batchSpriteRenderer.h"
 #include <algorithm>
 #include <string>
 
@@ -17,9 +18,15 @@ void Player::initDeck() {
 		//generate card
 		MonsterData* randMon = bestiary->getRandomMonster();
 		std::string monsterPath = "src\\sprites\\monsters\\" + randMon->sprite;
-		Card c(0, 0, monsterPath, { 5,5 }, 0.0f, 0.0f, randMon);
-		deck.push_back(c);
-		drawDeck.putTop(&c);
+		deck.emplace_back(0, 0, monsterPath, vec2(5,5), 0, 0, randMon);
+		drawDeck.putTop(&(deck.back()));
+	}
+
+	int idx = 0;
+	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
+	for (Card c : deck) {
+		std::string name = "player_deck_card" + idx++;
+		sr.addGameObject(name, &c, sr.getShader("default"));
 	}
 
 	drawDeck.shuffle();

@@ -25,4 +25,5 @@ public:
 		glUniform1i(glGetUniformLocation(s->id, "rarity"), data ? data->rank : 0);
 		GameObject::draw(s);
 	}
+	std::string getName() const;
 };
