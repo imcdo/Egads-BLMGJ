@@ -18,13 +18,13 @@ size_t Hand::drawCard(Card* card) {
 	}
 
 	// no spacing needed for card
-	float cardSpacing = (maxWidth - cardWidthSum) / (cards.size()+1);
+	float cardSpacing = (maxWidth - cardWidthSum) / (cards.size() +1);
 
 	// place cards in new location
 	float newX = playSpace.getXMin();
 	float newY = playSpace.getYMin() + playSpace.getHeight() / 2;
 	for (Card* c : cards) {
-		float halfCWidth = c->getRect().getWidth() / 2;
+		float halfCWidth = c->getRect().getWidth() / 2.0f;
 		newX += cardSpacing + halfCWidth;
 		c->warp({newX, newY});
 		newX += halfCWidth;
