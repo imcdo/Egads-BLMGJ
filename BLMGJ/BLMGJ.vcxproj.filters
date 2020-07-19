@@ -15,8 +15,7 @@
     <ClCompile Include="src\projectile.cpp" />
     <ClCompile Include="src\sprite.cpp" />
     <ClCompile Include="src\TextManager.cpp" />
-    <ClCompile Include="src\cursorMoveUpdater.cpp" />
-    <ClCompile Include="src\math.cpp" />
+    <ClCompile Include="src\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\battlefield.h" />
@@ -36,8 +35,6 @@
     <ClInclude Include="src\batchSpriteRenderer.h" />
     <ClInclude Include="src\TextManager.h" />
     <ClInclude Include="src\Time.h" />
-    <ClInclude Include="src\CursorMoveUpdater.h" />
-    <ClInclude Include="src\shooter.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\sprites\mat.png" />

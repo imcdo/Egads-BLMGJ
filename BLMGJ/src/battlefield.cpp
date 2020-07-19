@@ -5,23 +5,28 @@ using namespace std;
 using namespace glm;
 
 Battlefield::Battlefield(float x, float y, Sprite sprite, glm::vec2 scale, float depth, float angle,
-	int sizeX, int sizeY, float spacing): GameObject(x, y, sprite, scale, depth, angle)
+	int sizeX, int sizeY, float spacing): GameObject(x, y, sprite, scale, depth, angle), spacing(spacing)
 {
 	// Allocate battlefield 
 	grid = vector<vector<Monster*>>();
 	grid.resize(sizeY, vector<Monster*>(sizeX, nullptr));
 
-	AtLocation(vec2(2, 2));
-	AtLocation(vec2(3, 3));
-
 	dimensions = vec2(sizeX, sizeY);
-	offset = vec2(0, 0);
-	attackOrigin = vec2(0, -10); // TODO: fix this
 }
 
 void Battlefield::Populate(float density, int intensity)
 {
-	// Randomly place enemies
+	for (int r = 0; r < grid.size(); r++)
+	{
+		for (int c = 0; c < grid[0].size(); c++)
+		{
+			if(((double)rand() / (RAND_MAX)) <= density)
+			{
+				MonsterData* data = GetBestiary()->getRandomMonster();
+				grid[r][c] = new Monster(c * spacing + offset.x, r * spacing + offset.y, { 1,1 }, 0.0f, 0.0f, data);
+			}
+		}
+	}
 }
 
 void Battlefield::Update()
@@ -32,7 +37,8 @@ void Battlefield::Update()
 Monster* Battlefield::AtLocation(vec2 location)
 {
 	// Round to nearest tile
-	return grid[(int)(location.y + 0.5)][(int)(location.x + 0.5)];
+	//return grid[(int)(location.y + 0.5)][(int)(location.x + 0.5)];
+	return nullptr;
 }
 
 vec2 Battlefield::GetLocation(int row, int col)
@@ -50,6 +56,8 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 
 	while (!hit)
 	{
+		//cout << "STEPPING " << step.x << " " << step.y << " | now at " << origin.x << " " << origin.y << endl;
+
 		origin += step;
 		if (OutOfBounds(origin))
 			break;
@@ -57,7 +65,7 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 			break;
 	}
 
-	vec2 normal = origin - AtLocation(origin)->getPosition();
+	vec2 normal = origin - GetLocation((int)origin.x, (int)origin.y);
 
 	return make_pair(
 		origin, 

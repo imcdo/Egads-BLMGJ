@@ -107,6 +107,8 @@ void Game::loop() {
         "src\\shaders\\default.vert",
         "src\\shaders\\default.frag");*/
     Shader* sh = sr.getShader("default");
+    sr.addShader("cardStuff", "src\\shaders\\default.vert", "src\\shaders\\cardInHandShader.frag");
+    Shader* handShader = sr.getShader("cardStuff");
 
 
     GameObject mat = GameObject(0, -settings::SCREEN_HEIGHT / 2 + 100, ms, { 100, 100 });
@@ -117,9 +119,10 @@ void Game::loop() {
         << mat.getRect().getMax().x << " "
         << mat.getRect().getMax().y << std::endl;
 
-    Battlefield grid = Battlefield(0, 0, s);
-    Bestiary bestiary = Bestiary();
-    Player player = Player(&bestiary, &grid, mat.getRect());
+	//Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 50, 50, 1);
+	Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 35, 14, 32);
+	grid.Populate(0.5f);
+    Player player = Player(GetBestiary(), &grid, mat.getRect());
     
     Hand h = Hand(mat.getRect());
     hand = &h;
@@ -138,12 +141,12 @@ void Game::loop() {
     size_t idx = 0;
     nextDraw = &cards[0];
 
-    MonsterData* testMonster = bestiary.getRandomMonster();
+    MonsterData* testMonster = GetBestiary()->getRandomMonster();
     Card* testCard = new Card(-350, 200, s, { 5,5 }, 0, 0, testMonster);
 
 
     Projectile test = Projectile(0, 0, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
-
+	sr.addGameObject("proj ", &test, sh);
 
     // test.active = true;
 
@@ -155,7 +158,7 @@ void Game::loop() {
 
 
     for (const Card& c : cards) {
-        sr.addGameObject("card " + idx++, &c, sh);
+        sr.addGameObject("card " + idx++, &c, handShader);
     }
     sr.addGameObject("shooter", &shooter, sh);
 

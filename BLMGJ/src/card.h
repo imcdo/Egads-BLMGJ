@@ -4,6 +4,7 @@
 #include "sprite.h"
 #include "monsterData.h"
 #include "gameObject.h"
+#include "Time.h"
 
 using namespace glm;
 
@@ -18,5 +19,9 @@ public:
 	MonsterData* getMonsterData();
 	void decrementCardUse();
 	void addNewData(MonsterData* monData);
-
+	void draw(const Shader* s) const override {
+		glUniform1f(glGetUniformLocation(s->id, "time"), Time::getCurrentTime());
+		glUniform1i(glGetUniformLocation(s->id, "rarity"), data ? data->rank : 0);
+		GameObject::draw(s);
+	}
 };

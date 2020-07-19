@@ -18,7 +18,7 @@ private:
 
 public:
 
-	Monster(float x, float y, Sprite sprite, glm::vec2 scale = { 1,1 }, float depth = 0.0f, float angle = 0.0f,
+	Monster(float x, float y, glm::vec2 scale = { 1,1 }, float depth = 0.0f, float angle = 0.0f,
 		MonsterData * data = nullptr);
 	void Attack(int baseDamage, Element* damageType);
 };
