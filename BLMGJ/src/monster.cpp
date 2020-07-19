@@ -16,3 +16,11 @@ void Monster::Attack(int baseDamage, Element* damageType)
 	// check for die
 	//cout << "DID " << baseDamage * damageType->GetDamageMultiplierAgainst(data->element) << " DAMAGE!" << endl;
 }
+
+Monster::~Monster()
+{
+	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
+	//sr.re(data->name + "_MonsterObject", this, sr.getShader("default"));
+}
+
+void

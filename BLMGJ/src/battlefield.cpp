@@ -36,8 +36,16 @@ void Battlefield::Update()
 
 Monster* Battlefield::AtLocation(vec2 location)
 {
-	// Round to nearest tile
-	//return grid[(int)(location.y + 0.5)][(int)(location.x + 0.5)];
+	location = (location + offset) / spacing;
+	if (OutOfBounds(location))
+	{
+		return nullptr;
+	}
+	else
+	{
+		// Round to nearest tile
+		return grid[(int)(location.y + 0.5)][(int)(location.x + 0.5)];
+	}
 	return nullptr;
 }
 
@@ -51,9 +59,10 @@ vec2 Battlefield::GetLocation(int row, int col)
 
 pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 {
-	bool hit = false;
+	origin = (origin + offset) / spacing;
 	vec2 step = normalize(direction) * 0.2f; // TODO: lol
 
+	bool hit = false;
 	while (!hit)
 	{
 		//cout << "STEPPING " << step.x << " " << step.y << " | now at " << origin.x << " " << origin.y << endl;
@@ -68,7 +77,7 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 	vec2 normal = origin - GetLocation((int)origin.x, (int)origin.y);
 
 	return make_pair(
-		origin, 
+		(origin * spacing) - offset, 
 		reflect(direction, normal));
 }
 
