@@ -10,17 +10,16 @@ Monster::Monster(float x, float y, glm::vec2 scale, float depth, float angle, Mo
 	sr.addGameObject(data->name + "_MonsterObject", this, sr.getShader("default"));
 }
 
-void Monster::Attack(int baseDamage, Element* damageType)
+bool Monster::Attack(int baseDamage, Element* damageType)
 {
 	currentHealth -= baseDamage * damageType->GetDamageMultiplierAgainst(data->element);
-	// check for die
-	//cout << "DID " << baseDamage * damageType->GetDamageMultiplierAgainst(data->element) << " DAMAGE!" << endl;
+	if (currentHealth <= 0)
+		return true;
+	return false;
 }
 
 Monster::~Monster()
 {
 	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
-	//sr.re(data->name + "_MonsterObject", this, sr.getShader("default"));
+	sr.remove(data->name + "_MonsterObject");
 }
-
-void

@@ -20,7 +20,7 @@ private:
 	float distanceTraveled = 0;
 	float totalDistance = 1;
 
-	float speed = 10;
+	float speed = 1000;
 
 	int bounce;
 	int damage;

@@ -18,6 +18,7 @@ Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth,
 	card(card)
 {
 	origin = pos;
+	bounce = 10000;
 		// bestiary.getRandomMonster();
 }
 
@@ -40,14 +41,14 @@ void Projectile::Update()
 	// Bounce
 	if (distanceTraveled >= totalDistance)
 	{
-		cout << "POS: " << pos.x << " " << pos.y << endl;
-		if (field->OutOfBounds(pos) || field->AtLocation(pos) != nullptr)		// CASE: that tile is still solid
+		if (!field->OutOfBounds(pos) || field->AtLocation(pos) != nullptr)		// CASE: that tile is still solid
 		{
 			origin = pos;
 			std::pair<vec2, vec2> originTrajectory = field->Raycast(origin, destination);													// Current pos is new origin
 
 			destination = field->Raycast(origin, originTrajectory.second).first;	// Destination from reflect angle raycast
 			bounce--;
+			cout << "BOUNCE!" << endl;
 		}
 		else																	 // CASE: that tile is now vacant
 		{
@@ -61,11 +62,9 @@ void Projectile::Update()
 	}
 
 	// Damage
-	Monster* overlapping = field->AtLocation(pos);
-	if (overlapping != nullptr)
-	{
-		//overlapping->Damage();
-	}
+	cout << "CHECKING: " << pos.x << " " << pos.y << endl;
+	cout << field->OutOfBounds(pos) << " | " << (field->AtLocation(pos)) << endl;
+	//field->Attack(pos, damage, element);
 
 	// Destroy
 	if (bounce <= 0)
