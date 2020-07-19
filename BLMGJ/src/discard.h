@@ -6,11 +6,12 @@
 
 class Discard {
 private:
-
-public:
+	glm::vec2 position;
 	std::vector<Card*> cards;
 
-	Discard();
+public:
+	Discard() = default;
+	Discard(glm::vec2 pos);
 	void addCard(Card* card); //Player gets card from hand
 	void clear(); //Player should check when deck+hand are empty
 };
