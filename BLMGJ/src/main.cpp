@@ -15,6 +15,7 @@
 #include "projectile.h"
 #include "shooter.h"
 #include "inputUpdater.h"
+#include <time.h>
 
 float _currentMouseX;
 float _currentMouseY;
@@ -188,6 +189,7 @@ void Game::cleanup() {
 
 
 int main(void) {
+    srand(time(0));
     try {
         Game game;
         game.init();
