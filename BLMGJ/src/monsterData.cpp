@@ -143,6 +143,15 @@ MonsterData::MonsterData(nlohmann::json json) :
 	decay(json["decay"].get<int>()),
 	bounce(json["bounce"].get<int>())
 {
+	if (json["size"].get<string>().compare("boss") == 0)
+	{
+		size = 1;
+	}
+	else
+	{
+		size = 0;
+	}
+
 	string typeString = json["element"].get<string>();
 	if (NormalString.compare(typeString) == 0)
 	{
@@ -231,7 +240,13 @@ Bestiary::Bestiary()
 }
 
 MonsterData* Bestiary::getRandomMonster() {
-	int randomIdx = rand() % bestiary.size();
+
+	int randomIdx;
+	do
+	{
+		randomIdx = rand() % bestiary.size();
+	} while (bestiary[randomIdx].size > 0); // exclude boss monsters for now
+
 	return &(bestiary[randomIdx]);
 }
 

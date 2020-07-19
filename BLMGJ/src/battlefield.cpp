@@ -18,9 +18,9 @@ void Battlefield::Populate(float density, int intensity)
 {
 	for (int r = 0; r < grid.size(); r++)
 	{
-		for (int c = 0; c < grid.size(); c++)
+		for (int c = 0; c < grid[0].size(); c++)
 		{
-			if((rand() / RAND_MAX) <= intensity);
+			if(((double)rand() / (RAND_MAX)) <= density)
 			{
 				MonsterData* data = GetBestiary()->getRandomMonster();
 				grid[r][c] = new Monster(c * spacing + offset.x, r * spacing + offset.y, { 1,1 }, 0.0f, 0.0f, data);
