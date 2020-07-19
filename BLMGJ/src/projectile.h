@@ -17,10 +17,13 @@ class Projectile: public GameObject, public FrameUpdater
 private:
 	vec2 origin;
 	vec2 destination;
+
+
+	vec2 nextTrajectory;
+
 	float distanceTraveled = 0;
 	float totalDistance = 1;
-
-	float speed = 10;
+	float speed = 1;
 
 	int bounce;
 	int damage;

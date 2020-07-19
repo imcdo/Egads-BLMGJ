@@ -131,6 +131,13 @@ void Game::loop() {
     Bestiary bestiary = Bestiary();
     Player p = Player(&bestiary, &grid, mat.getRect(), { -360, -settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() / 2 }, { 360,-settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() / 2});
 
+    MonsterData* testMonster = GetBestiary()->getRandomMonster();
+    Card* testCard = new Card(-350, 200, "src\\sprites\\UwU.png", { 5,5 }, 0, 0, testMonster);
+
+
+    Projectile test = Projectile(0, -100, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
+
+    test.active = true;
     player = &p;
 
     
@@ -140,6 +147,7 @@ void Game::loop() {
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
 
 
+    sr.addGameObject("proj ", &test, sh);
     sr.addGameObject("shooter", &shooter, sh);
 
 

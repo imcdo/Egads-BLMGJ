@@ -41,7 +41,7 @@ void Player::initDeck() {
 
 	int idx = 0;
 	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
-	for (const Card& c : deck) {
+	for (Card& c : deck) {
 		std::stringstream ss;
 		ss << "player_deck_card" << idx++;
 		std::string name = ss.str();

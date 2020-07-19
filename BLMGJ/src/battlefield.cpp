@@ -16,14 +16,20 @@ Battlefield::Battlefield(float x, float y, Sprite sprite, glm::vec2 scale, float
 
 void Battlefield::Populate(float density, int intensity)
 {
-	for (int r = 0; r < grid.size(); r++)
+	for (int r = 2; r < grid.size(); r++)
 	{
 		for (int c = 0; c < grid[0].size(); c++)
 		{
 			if(((double)rand() / (RAND_MAX)) <= density)
+			//if(true)
 			{
 				MonsterData* data = GetBestiary()->getRandomMonster();
-				grid[r][c] = new Monster(c * spacing + offset.x, r * spacing + offset.y, { 1,1 }, 0.0f, 0.0f, data);
+				vec2 origin = ToWorldSpace(r, c);
+				grid[r][c] = new Monster(origin.x, origin.y, { 1,1 }, 0.0f, 0.0f, data);
+			}
+			else
+			{
+				grid[r][c] = nullptr;
 			}
 		}
 	}
@@ -36,58 +42,117 @@ void Battlefield::Update()
 
 Monster* Battlefield::AtLocation(vec2 location)
 {
-	// Round to nearest tile
-	//return grid[(int)(location.y + 0.5)][(int)(location.x + 0.5)];
-	return nullptr;
+	if (OutOfBounds(location))
+	{
+		return nullptr;
+	}
+	else
+	{
+		ivec2 gridLocation = ToGridSpace(location);
+		return grid[gridLocation.x][gridLocation.y];
+	}
 }
 
-vec2 Battlefield::GetLocation(int row, int col)
+void Battlefield::ClearLocation(vec2 location)
 {
-	return offset + vec2(
-		row * spacing,
-		(col + ((row % 2) == 0 ? 0 : 0.5f)) * spacing
-		);
+	if (OutOfBounds(location))
+	{
+		return;
+	}
+	else
+	{
+		ivec2 gridLocation = ToGridSpace(location);
+		grid[gridLocation.x][gridLocation.y] = nullptr;
+	}
+}
+
+ivec2 Battlefield::ToGridSpace(vec2 location)
+{
+	location = (location - offset) / spacing;
+	return ivec2((int)location.y, (int)location.x);
+}
+
+vec2 Battlefield::ToWorldSpace(int row, int col)
+{
+	return (vec2(col, row) * spacing) + offset;
 }
 
 pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 {
-	bool hit = false;
+	
 	vec2 step = normalize(direction) * 0.2f; // TODO: lol
+	vec2 dest = origin;
 
+	bool hit = false;
+
+	vec2 normal = { 0,1 };
 	while (!hit)
 	{
 		//cout << "STEPPING " << step.x << " " << step.y << " | now at " << origin.x << " " << origin.y << endl;
-
-		origin += step;
-		if (OutOfBounds(origin))
+		bool prevOutOfBounds = OutOfBounds(dest);
+		dest += step;
+		if (OutOfBounds(dest) && !prevOutOfBounds) {
+			cout << "raycast out of bounds " << endl;
+			ivec2 position = ToGridSpace(position);
+			normal = { 0,0 };
+			if (position.x < 0)
+				normal += vec2(1, 0);
+			if (position.x > 0)
+				normal += vec2(-1, 0);
+			if (position.y < 0)
+				normal += vec2(0, 1);
+			if (position.y < 0)
+				normal += vec2(0, -1);
 			break;
-		if (AtLocation(origin) != nullptr)
+		}
+		Monster* monster = AtLocation(dest);
+		if (monster != nullptr) {
+			cout << "raycast hit" << endl;
+			normal = normalize(dest - monster->getPosition());
 			break;
+		}
 	}
 
-	vec2 normal = origin - GetLocation((int)origin.x, (int)origin.y);
+	// vec2 normal = ToWorldSpace((int)dest.x, (int)dest.y);
+	vec2 ref = normalize(reflect(-direction, normal));
 
+	/*cout << "RAYCAST: from  " << origin.x << " " << origin.y << " | goin in dir "
+		<< direction.x << " " << direction.y << " | to "
+		<< dest.x << " " << dest.y << " | next in dir " << ref.x << " " << ref.y << endl;*/
 	return make_pair(
-		origin, 
-		reflect(direction, normal));
+		dest,
+		ref);
 }
 
-bool Battlefield::OutOfBounds(vec2 position) // TODO: fi
+bool Battlefield::OutOfBounds(ivec2 position)
 {
+	position = ToGridSpace(position);
+
+	// cout << "GRID: " << position.x << " " << position.y << endl;
+	// cout << "DIMEN: " << dimensions.x << " " << dimensions.y << endl;
+
 	if (position.x < 0 || position.y < 0
-		|| position.x > dimensions.x || position.y > dimensions.y)
+		|| position.y >= dimensions.x || position.x >= dimensions.y)
 	{
 		return true;
 	}
 	return false;
 }
 
-void Battlefield::Attack()
+void Battlefield::Attack(vec2 position, float baseDamage, Element* type)
 {
-	// while (bounces > 0)
-		// 1. Raycast from start position
-		// 2. Move
-		// 3. Damage at impact location
+	if (OutOfBounds(position))
+		return;
+
+	Monster* monster = AtLocation(position);
+	if(monster != nullptr)
+		if (monster->Attack(baseDamage, type))	// If the monster died
+		{
+			delete(monster);
+			ClearLocation(position);
+
+			cout << "MONSTER KILLED" << endl;
+		}
 }
 
 void Battlefield::Defend()
