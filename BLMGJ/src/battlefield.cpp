@@ -28,6 +28,7 @@ void Battlefield::Populate(float density, int intensity)
 				MonsterData* data = GetBestiary()->getRandomMonster();
 				vec2 origin = ToWorldSpace(r, c);
 				grid[r][c] = new Monster(origin.x, origin.y, { 1,1 }, 0.0f, 0.0f, data);
+				monsters.insert(grid[r][c]);
 			}
 			else
 			{
@@ -37,10 +38,6 @@ void Battlefield::Populate(float density, int intensity)
 	}
 }
 
-void Battlefield::Update()
-{
-	//cout << "BF tick" << endl;
-}
 
 Monster* Battlefield::AtLocation(vec2 location)
 {
@@ -109,12 +106,8 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 				normal += vec2(0, 1);
 			else if (position.y >= dimensions.x)
 				normal += vec2(0, -1);
-			cout << "herer" << endl;
 
 			//dest = clamp(dest, ToWorldSpace(0, 0), ToWorldSpace(grid.size(), grid[0].size()));
-			cout << to_string(direction) << endl;
-			cout << to_string(normal) << endl;
-			cout << to_string(normalize(reflect(-direction, normal))) << endl;
 			return { dest + normal * 10.0f , normalize(reflect(-direction, normal)) };
 		}
 
@@ -180,9 +173,17 @@ void Battlefield::Attack(vec2 position, float baseDamage, Element* type)
 	if(monster != nullptr)
 		if (monster->Attack(baseDamage, type))	// If the monster died
 		{
+			monsters.erase(monster);
 			delete(monster);
 			ClearLocation(position);
+
+
+			
 		}
+}
+
+bool Battlefield::hasWon() {
+	return monsters.size() == 0;
 }
 
 void Battlefield::Defend()
@@ -191,8 +192,23 @@ void Battlefield::Defend()
 }
 
 void Battlefield::DestroyProjectile(Projectile* p) {
+	if (projectiles.find(p) == projectiles.end()) {
+		cerr << "untracked projectile in battlefield " << endl;
+		delete p;
+		return;
+	}
+	projectiles.erase(p);
 	delete p;
 }
 
 
+void Battlefield::AddProjectile(Projectile* p) {
+	projectiles.insert(p);
+}
 
+void Battlefield::ClearBattleField() {
+	for (Projectile* p : projectiles) {
+		delete p;
+	}
+	projectiles.clear();
+}

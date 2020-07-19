@@ -61,15 +61,20 @@ void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
             for (Card* c : player->getHand().cards) {
 
 
-                if (c->getRect().Contains(glm::vec2(_currentMouseX, _currentMouseY))) {
+                if (c->getMonsterData() != nullptr && c->getRect().Contains(glm::vec2(_currentMouseX, _currentMouseY))) {
                     player->cardPlayInputHandler(c);
                     shootMode = true;
 
                     break;
                 }
+                else if (c->getRect().Contains(glm::vec2(_currentMouseX, _currentMouseY))) {
+                    cout << "err: card no monster data" << endl;
+                    player->cardPlayInputHandler(c);
+                }
             }
         }
         else { 
+
             vec2 dir = glm::normalize(glm::vec2(_currentMouseX, _currentMouseY) - player->loaded->getPosition());
             player->shootLoadedProjectile(dir);
             shootMode = false;
@@ -176,7 +181,14 @@ void Game::loop() {
         /* Poll for and process events */
         glfwPollEvents();
              
-        for (FrameUpdater* fu : FrameUpdater::_frameUpdaters) fu->Update();
+        for (FrameUpdater* fu : FrameUpdater::_frameUpdaters) {
+            fu->Update();
+        }
+        if (grid.hasWon()) {
+            grid.ClearBattleField();
+            grid.Populate();
+        }
+        cout << endl;
 
     }
 
