@@ -61,6 +61,7 @@ public:
 	// Unique ID
 	int id = -1;
 	int rank = -1;
+	int size = 0;
 	string name = "ERROR";
 	string species = "";
 	string flavor = "";

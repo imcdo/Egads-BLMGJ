@@ -113,7 +113,7 @@ void Game::loop() {
         << mat.getRect().getMax().y << std::endl;
 
 	//Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 50, 50, 1);
-	Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 64, 64, 32);
+	Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 35, 14, 32);
 	grid.Populate(0.5f);
     Player player = Player(GetBestiary(), &grid, mat.getRect());
     
