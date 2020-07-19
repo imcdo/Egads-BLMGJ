@@ -4,6 +4,7 @@
 #include "battlefield.h"
 #include "card.h"
 #include "hand.h"
+#include "discard.h"
 #include <vector>
 
 class Player {
@@ -11,6 +12,7 @@ class Player {
 private:
 	int health;
 	Hand hand;
+	Discard discard;
 	std::vector<Card> deck;
 
 	Bestiary* bestiary;
@@ -20,5 +22,6 @@ public:
 	void initDeck();
 	int getHealth();
 	Hand getHand();
+	Discard getDiscard();
 	void useCard(Card card);
 };
