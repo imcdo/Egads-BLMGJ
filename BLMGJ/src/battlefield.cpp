@@ -103,14 +103,18 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 			normal = { 0,0 };
 			if (position.x < 0)
 				normal += vec2(1, 0);
-			if (position.x > dimensions.y)
+			else if (position.x >= dimensions.y)
 				normal += vec2(-1, 0);
 			if (position.y < 0)
 				normal += vec2(0, 1);
-			if (position.y > dimensions.x)
+			else if (position.y >= dimensions.x)
 				normal += vec2(0, -1);
+			cout << "herer" << endl;
 
 			//dest = clamp(dest, ToWorldSpace(0, 0), ToWorldSpace(grid.size(), grid[0].size()));
+			cout << to_string(direction) << endl;
+			cout << to_string(normal) << endl;
+			cout << to_string(normalize(reflect(-direction, normal))) << endl;
 			return { dest + normal * 10.0f , normalize(reflect(-direction, normal)) };
 		}
 
@@ -121,11 +125,11 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 			vec2 closest = clamp(dest, ToWorldSpace(0,0), ToWorldSpace(grid.size(), grid[0].size()));
 			if (position.x < 0)
 				normal += vec2(1, 0);
-			if (position.x > dimensions.y)
+			else if (position.x >= dimensions.y)
 				normal += vec2(-1, 0);
-			if (position.y < 0)
+			if (position.y < 0) 
 				normal += vec2(0, 1);
-			if (position.y > dimensions.x)
+			else if (position.y >= dimensions.x)
 				normal += vec2(0, -1);
 
 			closest += normal;
