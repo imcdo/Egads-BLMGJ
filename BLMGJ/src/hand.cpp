@@ -52,7 +52,6 @@ Card* Hand::playCard(size_t idx) {
 }
 
 Card* Hand::playCardHelper(std::vector<Card*>::iterator it) {
-	std::cout << "playing card" << std::endl;
 
 	Card* c = *it;
 	cards.erase(it);

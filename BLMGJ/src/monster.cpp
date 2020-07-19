@@ -14,8 +14,6 @@ Monster::Monster(float x, float y, glm::vec2 scale, float depth, float angle, Mo
 	name = ss.str();
 	
 	sr.addGameObject(name, this, sr.getShader("default"));
-
-	currentHealth = 1;
 }
 
 bool Monster::Attack(int baseDamage, Element* damageType)

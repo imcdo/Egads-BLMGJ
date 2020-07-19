@@ -133,7 +133,6 @@ void BatchSpriteRenderer::remove(std::string name) {
 		}
 		if (idx != pair.second.size()) {
 			pair.second.erase(pair.second.begin() + idx);
-			cout << "erasing" << endl;
 		}
 	}
 

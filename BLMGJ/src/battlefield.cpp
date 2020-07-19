@@ -111,7 +111,6 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 				normal += vec2(0, -1);
 
 			//dest = clamp(dest, ToWorldSpace(0, 0), ToWorldSpace(grid.size(), grid[0].size()));
-			cout << "EARLY CASE BOUNCE" << endl;
 			return { dest + normal * 10.0f , normalize(reflect(-direction, normal)) };
 		}
 
@@ -130,7 +129,6 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 				normal += vec2(0, -1);
 
 			closest += normal;
-			cout << "EARLY CASE 2 BOUNCE" << endl;
 			// cout << "origin " << glm::to_string(origin) << " closest " << to_string(closest) << " normal " << to_string(normal) << endl;
 			return { closest + normal * 10.0f, normalize(reflect(-direction, normal)) };
 		}
@@ -149,7 +147,6 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 	/*cout << "RAYCAST: from  " << origin.x << " " << origin.y << " | goin in dir "
 		<< direction.x << " " << direction.y << " | to "
 		<< dest.x << " " << dest.y << " | next in dir " << ref.x << " " << ref.y << endl;*/
-	cout << "RAY BOUNCE" << endl;
 	return make_pair(
 		dest,
 		ref);
@@ -181,8 +178,6 @@ void Battlefield::Attack(vec2 position, float baseDamage, Element* type)
 		{
 			delete(monster);
 			ClearLocation(position);
-
-			cout << "MONSTER KILLED" << endl;
 		}
 }
 
@@ -192,7 +187,6 @@ void Battlefield::Defend()
 }
 
 void Battlefield::DestroyProjectile(Projectile* p) {
-	cout << "destroying projectile " << p << endl;
 	delete p;
 }
 
