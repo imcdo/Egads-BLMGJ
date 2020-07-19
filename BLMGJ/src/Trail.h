@@ -8,7 +8,7 @@ public:
 	glm::vec2 trajectory;
 	Trail(float x, float y, Sprite sprite, vec2 scale, float depth, float angle) :
 		GameObject(x, y, sprite, scale, depth, angle) {
-		GameObject::scale(glm::vec2(3.0, 1.0));
+		GameObject::scale(glm::vec2(4.0, 1.0));
 	};
 	void update(glm::vec2 traj, glm::vec2 pos) {
 		trajectory = traj;
