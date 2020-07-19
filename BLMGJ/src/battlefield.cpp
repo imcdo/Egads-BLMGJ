@@ -70,13 +70,13 @@ void Battlefield::ClearLocation(vec2 location)
 
 ivec2 Battlefield::ToGridSpace(vec2 location)
 {
-	location = (location - offset) / spacing;
+	location = (location - offset - ballOffset) / spacing;
 	return ivec2((int)location.y, (int)location.x);
 }
 
 vec2 Battlefield::ToWorldSpace(int row, int col)
 {
-	return (vec2(col, row) * spacing) + offset;
+	return (vec2(col, row) * spacing) + offset + ballOffset;
 }
 
 pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
@@ -88,7 +88,7 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 
 	bool hit = false;
 
-	vec2 normal = { 0,1 };
+	vec2 normal = { 0,0 };
 
 	int count = 0;
 
