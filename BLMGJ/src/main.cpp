@@ -27,7 +27,7 @@ float _lastMouseY;
 //Card* nextDraw;
 
 Player* player;
-
+bool Game::shootMode = false;
 //don't need dis
 /*
 void Game::inputCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -56,14 +56,22 @@ void Game::mouseCursorCallback(GLFWwindow* window, double mouseX, double mouseY)
 void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
     if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
+        if (!shootMode) {
+            for (Card* c : player->getHand().cards) {
 
-        for (Card* c : player->getHand().cards) {
-            
-            
-            if (c->getRect().Contains(glm::vec2(_currentMouseX , _currentMouseY))) {
-                player->cardPlayInputHandler(c);
-                break;
+
+                if (c->getRect().Contains(glm::vec2(_currentMouseX, _currentMouseY))) {
+                    player->cardPlayInputHandler(c);
+                    shootMode = true;
+
+                    break;
+                }
             }
+        }
+        else { 
+            vec2 dir = glm::normalize(glm::vec2(_currentMouseX, _currentMouseY) - player->loaded->getPosition());
+            player->shootLoadedProjectile(dir);
+            shootMode = false;
         }
     }
 }
@@ -135,9 +143,9 @@ void Game::loop() {
     Card* testCard = new Card(-350, 200, "src\\sprites\\UwU.png", { 5,5 }, 0, 0, testMonster);
 
 
-    Projectile test = Projectile(0, -100, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
+  //   Projectile test = Projectile(0, -100, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
 
-    test.active = true;
+   //  test.active = true;
     player = &p;
 
     
@@ -147,7 +155,7 @@ void Game::loop() {
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
 
 
-    sr.addGameObject("proj ", &test, sh);
+    // sr.addGameObject("proj ", &test, sh);
     sr.addGameObject("shooter", &shooter, sh);
 
 

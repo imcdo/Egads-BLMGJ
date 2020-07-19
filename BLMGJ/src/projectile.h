@@ -18,7 +18,7 @@ private:
 	vec2 origin;
 	vec2 destination;
 
-
+	string name;
 	vec2 nextTrajectory;
 
 	float distanceTraveled = 0;
@@ -31,10 +31,14 @@ private:
 
 	Battlefield *field = nullptr;
 
-public:
 	Card* card = nullptr;
 	bool active = false;
+public:
 	Projectile(float x, float y, Sprite sprite, vec2 scale = { 1,1 }, float depth = 0.0f, float angle = 0.0f,
-		const MonsterData* data = nullptr, vec2 trajectory = { 0,1 }, Battlefield* field = nullptr, Card* card = nullptr);
+		const MonsterData* data = nullptr, Battlefield* field = nullptr, Card* card = nullptr);
 	void Update() override;
+
+	void activate(vec2 dir);
+
+	~Projectile();
 };

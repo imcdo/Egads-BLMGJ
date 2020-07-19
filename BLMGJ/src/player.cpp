@@ -72,11 +72,24 @@ Discard Player::getDiscard() {
 }
 
 void Player::useCard(Card& card) {
+
+	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
 	MonsterData* mData = card.getMonsterData();
-	Projectile p(0, 0, Sprite("src\\sprites\\UwU.png"), { 1, 1 }, 0.0f, 0.0f, mData, { 0,1 }, battlefield, &card);
-	p.active = true;
+	loaded = new Projectile(0.0f, -settings::SCREEN_HEIGHT / 2 + sr.getGameObject("mat")->getRect().getHeight(), 
+		Sprite("src\\sprites\\ball.png"), vec2( 100, 100 ), 0.0f, 0.0f, mData, battlefield, &card);
 	card.decrementCardUse();
 	//updateCard(card);
+}
+
+void Player::shootLoadedProjectile(vec2 dir) {
+	if (loaded == nullptr) {
+		cout << "empty projectile" << endl;
+		return;
+	}
+
+	loaded->activate(dir);
+
+	loaded = nullptr;
 }
 
 void Player::drawToHand() {

@@ -1,6 +1,6 @@
 #include "projectile.h"
 #include "Time.h"
-
+#include "batchSpriteRenderer.h"
 using namespace std;
 
 vec2 lerp(vec2 x, vec2 y, float t) {
@@ -8,28 +8,41 @@ vec2 lerp(vec2 x, vec2 y, float t) {
 }
 
 Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth, float angle,
-	const MonsterData * data, vec2 trajectory, Battlefield * field, Card * card) :
+	const MonsterData * data, Battlefield * field, Card * card) :
 	GameObject(x, y, sprite, scale, depth, angle),
+	name(name),
 	bounce(data->bounce),
 	damage(data->damage),
 	element(data->element),
 	field(field),
 	card(card)
 {
+	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
+	std::stringstream ss;
+	ss << "projectile_" << this;
+	name = ss.str();
 
+	sr.addGameObject(name, this, sr.getShader("default"));
 	origin = pos;
-	auto raycast = field->Raycast(origin, glm::normalize(trajectory));
+
+	
+
+	bounce = 10;
+	
+
+		// bestiary.getRandomMonster();
+}
+
+void Projectile::activate(vec2 dir) {
+	active = true;
+	auto raycast = field->Raycast(origin, glm::normalize(dir));
 
 	destination = raycast.first;
 	nextTrajectory = raycast.second;
-
-	bounce = 10;
 	cout << "Create projectile at " << origin.x << " " << origin.y
 		<< " | destination at " << destination.x << " " << destination.y
-		<< " | with trajectory " << trajectory.x << " " << trajectory.y << "\n";
+		<< " | with trajectory " << dir.x << " " << dir.y << "\n";
 	totalDistance = glm::length((destination - origin));					 // Recalculate distance
-
-		// bestiary.getRandomMonster();
 }
 
 void Projectile::Update()
@@ -80,6 +93,11 @@ void Projectile::Update()
 	if (bounce <= 0)
 	{
 		// Destroy this projectile
+		// delete this;
 	}
 }
 
+
+Projectile::~Projectile() {
+	BatchSpriteRenderer::getInstance()->remove(name);
+}

@@ -7,7 +7,7 @@
 #include "hand.h"
 #include "discard.h"
 #include <vector>
-
+#include "projectile.h"
 class Player {
 
 private:
@@ -19,8 +19,10 @@ private:
 
 	Bestiary* bestiary;
 	Battlefield* battlefield;
+
 public:
 	std::vector<Card> deck;
+	Projectile* loaded;
 
 	Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect, glm::vec2 drawDeckPos, glm::vec2 discardPos);
 	~Player();
@@ -37,4 +39,6 @@ public:
 	void resetCards();
 
 	void updateCard(Card& card);
+
+	void shootLoadedProjectile(vec2 dir);
 };
