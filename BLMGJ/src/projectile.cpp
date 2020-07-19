@@ -25,7 +25,8 @@ Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth,
 	sr.addGameObject(name, this, sr.getShader("default"));
 	origin = pos;
 
-	cout << "bounces " << bounce << endl;
+	bounce = 30;
+	speed = 10;
 }
 
 void Projectile::activate(vec2 dir) {

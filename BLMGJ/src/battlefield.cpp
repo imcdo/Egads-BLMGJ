@@ -81,7 +81,6 @@ vec2 Battlefield::ToWorldSpace(int row, int col)
 
 pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 {
-	cout << "raycast start " << endl;
 
 	vec2 step = normalize(direction) * 0.2f; // TODO: lol
 	vec2 dest = origin;
@@ -104,17 +103,16 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 			normal = { 0,0 };
 			if (position.x < 0)
 				normal += vec2(1, 0);
-			if (position.x > dimensions.x)
+			if (position.x > dimensions.y)
 				normal += vec2(-1, 0);
 			if (position.y < 0)
 				normal += vec2(0, 1);
-			if (position.y > dimensions.y)
+			if (position.y > dimensions.x)
 				normal += vec2(0, -1);
-			cout << "raycast out of bounds " << endl;
 
-			dest = clamp(dest, ToWorldSpace(0, 0), ToWorldSpace(grid.size(), grid[0].size()));
-
-			break;
+			//dest = clamp(dest, ToWorldSpace(0, 0), ToWorldSpace(grid.size(), grid[0].size()));
+			cout << "EARLY CASE BOUNCE" << endl;
+			return { dest + normal * 10.0f , normalize(reflect(-direction, normal)) };
 		}
 
 		else if (OutOfBounds(dest)) {
@@ -124,17 +122,17 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 			vec2 closest = clamp(dest, ToWorldSpace(0,0), ToWorldSpace(grid.size(), grid[0].size()));
 			if (position.x < 0)
 				normal += vec2(1, 0);
-			if (position.x > dimensions.x)
+			if (position.x > dimensions.y)
 				normal += vec2(-1, 0);
 			if (position.y < 0)
 				normal += vec2(0, 1);
-			if (position.y > dimensions.y)
+			if (position.y > dimensions.x)
 				normal += vec2(0, -1);
 
 			closest += normal;
+			cout << "EARLY CASE 2 BOUNCE" << endl;
 			// cout << "origin " << glm::to_string(origin) << " closest " << to_string(closest) << " normal " << to_string(normal) << endl;
-			cout << "THIS CASE" << endl;
-			return { closest + normal , normalize(reflect(-direction, normal)) };
+			return { closest + normal * 10.0f, normalize(reflect(-direction, normal)) };
 		}
 
 
@@ -151,6 +149,7 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 	/*cout << "RAYCAST: from  " << origin.x << " " << origin.y << " | goin in dir "
 		<< direction.x << " " << direction.y << " | to "
 		<< dest.x << " " << dest.y << " | next in dir " << ref.x << " " << ref.y << endl;*/
+	cout << "RAY BOUNCE" << endl;
 	return make_pair(
 		dest,
 		ref);
