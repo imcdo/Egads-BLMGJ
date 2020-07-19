@@ -13,7 +13,7 @@
 #include "battlefield.h"
 #include "player.h"
 #include "projectile.h"
-// #include "monsterData.cpp";
+
 
 float _currentMouseX;
 float _currentMouseY;
@@ -24,7 +24,7 @@ Hand* hand;
 Card* nextDraw;
 
 
-static void inputCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+ void Game::inputCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (key == GLFW_KEY_C && action == GLFW_PRESS) {
         hand->drawCard(nextDraw);
         nextDraw++;
@@ -34,7 +34,7 @@ static void inputCallback(GLFWwindow* window, int key, int scancode, int action,
     }
 }
 
-void mouseCursorCallback(GLFWwindow* window, double mouseX, double mouseY) {
+void Game::mouseCursorCallback(GLFWwindow* window, double mouseX, double mouseY) {
     _lastMouseX = _currentMouseX;
     _lastMouseY = _currentMouseY;
 
@@ -42,19 +42,18 @@ void mouseCursorCallback(GLFWwindow* window, double mouseX, double mouseY) {
     _currentMouseY = mouseY;
 }
 
-void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
+void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
-    std::cout << "callback" << std::endl;
-    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
-        std::cout << "mouse pressed at " << _currentMouseX << " " << _currentMouseY << std::endl;
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
 
         for (Card* c : hand->cards) {
-            std::cout << "card at " << c->getRect().getCenter().x << " " << c->getRect().getCenter().y << std::endl;
             
             
             if (c->getRect().Contains(glm::vec2(_currentMouseX - settings::SCREEN_WIDTH/2, settings::SCREEN_HEIGHT/2 -_currentMouseY))) {
-                std::cout << "card clicked " << std::endl;
-                c->move(0,100);
+                hand->playCard(c);
+                c->move(0,150);
+                c->rotate(90);
+                break;
             }
         }
     }
@@ -138,7 +137,7 @@ void Game::loop() {
     Projectile test = Projectile(0, 0, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
 
 
-    test.active = true;
+    // test.active = true;
 
     
 
