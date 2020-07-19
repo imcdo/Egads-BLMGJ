@@ -32,7 +32,7 @@ public:
 	void warp(glm::vec2); // goto location
 	void move(float x, float y); // add to current location
 	void move(glm::vec2); // add to current location
-	vec2 getPosition();
+	vec2 getPosition() const;
 
 	void setScale(vec2 sf);
 	void setRotation(float angle);

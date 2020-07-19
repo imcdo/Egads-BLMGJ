@@ -24,6 +24,7 @@ public:
 	std::vector<Card> deck;
 
 	Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect, glm::vec2 drawDeckPos, glm::vec2 discardPos);
+	~Player();
 	void initDeck();
 	int getHealth();
 	DrawDeck getDrawDeck();

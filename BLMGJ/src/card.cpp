@@ -2,7 +2,7 @@
 #include "cardRenderer.h"
 
 Card::Card(float x, float y, std::string spritePath, glm::vec2 scale, float depth, float angle, MonsterData* data) :
-	GameObject(x, y, Sprite(CardRenderer::drawCard(data->name, data->flavor, spritePath, data->decay, data->rank, data->element->GetElementEnum())), scale, depth, angle), data(data) {
+	GameObject(x, y, CardRenderer::drawCard(data->name, data->flavor, spritePath, data->decay, data->rank, data->element->GetElementEnum()), scale, depth, angle), data(data) {
 	
 	if (data == nullptr)
 		decay = 0;

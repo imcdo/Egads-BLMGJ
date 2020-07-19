@@ -129,37 +129,9 @@ void Game::loop() {
 	Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 35, 14, 32);
 	grid.Populate(0.5f);
     Bestiary bestiary = Bestiary();
-    Player p = Player(&bestiary, &grid, mat.getRect(), { -350,0 }, { 350,0 });
-
-    for (const auto& card : p.deck) {
-        cout << card.getRect().getHeight() << endl;
-    }
+    Player p = Player(&bestiary, &grid, mat.getRect(), { -350, -settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() }, { 350,-settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() });
 
     player = &p;
-
-    // need these in player
-    //std::vector<Card> cards = { Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
-    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
-    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
-    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-    //        Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-    //};
-    //size_t idx = 0;
-    //nextDraw = &cards[0];
-
-    //MonsterData* testMonster = GetBestiary()->getRandomMonster();
-    //Card* testCard = new Card(-350, 200, "src\\sprites\\UwU.png", { 5,5 }, 0, 0, testMonster);
-
-
-    //Projectile test = Projectile(0, 0, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
-	//sr.addGameObject("proj ", &test, sh);
-
-    // test.active = true;
 
     
 
@@ -167,11 +139,6 @@ void Game::loop() {
     glfwSetCursorPosCallback(window, mouseCursorCallback);
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
 
-
-    // handled in Card now
-    //for (const Card& c : cards) {
-    //    sr.addGameObject("card " + idx++, &c, sh);
-    //}
 
     sr.addGameObject("shooter", &shooter, sh);
 

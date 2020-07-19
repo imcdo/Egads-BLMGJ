@@ -4,12 +4,24 @@
 #include "batchSpriteRenderer.h"
 #include <algorithm>
 #include <string>
+#include <sstream>
 
 // Need to add drawdeck and discard depending on how the positions are passed in
 Player::Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect, glm::vec2 drawDeckPos, glm::vec2 discardPos)
 	: health(settings::PLAYER_HEALTH), bestiary(bestiary), battlefield(field), 
 	  drawDeck(DrawDeck(drawDeckPos)), hand(Hand(rect)), discard(Discard(discardPos)) {
 	initDeck();
+}
+
+Player::~Player() {
+	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
+
+	int idx = 0;
+	for (Card c : deck) {
+		std::string name = "player_deck_card" + idx++;
+		sr.remove(name);
+	}
+
 }
 
 void Player::initDeck() {
@@ -24,8 +36,13 @@ void Player::initDeck() {
 
 	int idx = 0;
 	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
-	for (Card c : deck) {
-		std::string name = "player_deck_card" + idx++;
+	for (const Card& c : deck) {
+		std::stringstream ss;
+		ss << "player_deck_card" << idx++;
+		std::string name = ss.str();
+
+		std::cout << "Writing: " << name << " at " << &c << endl;
+
 		sr.addGameObject(name, &c, sr.getShader("default"));
 	}
 
@@ -85,3 +102,4 @@ void Player::resetCards() {
 	//drawDeck.putTop(deckIter);
 	drawDeck.shuffle();
 }
+

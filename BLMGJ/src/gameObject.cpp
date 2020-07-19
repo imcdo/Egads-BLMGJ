@@ -55,8 +55,7 @@ void GameObject::move(glm::vec2 trans) {
 	pos += trans;
 }
 
-vec2 GameObject::getPosition()
-{
+vec2 GameObject::getPosition() const {
 	return pos;
 }
 
