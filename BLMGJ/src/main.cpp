@@ -98,9 +98,10 @@ void Game::loop() {
     BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
     //sr->init();
     
-    Shader* sh = sr.addShader("default", 
+    /*Shader* sh = sr.addShader("default", 
         "src\\shaders\\default.vert",
-        "src\\shaders\\default.frag");
+        "src\\shaders\\default.frag");*/
+    Shader* sh = sr.getShader("default");
 
     GameObject mat = GameObject(0, -100, ms, { 100, 100 });
     sr.addGameObject("mat", &mat, sh);

@@ -24,7 +24,8 @@ private:
 	static BatchSpriteRenderer* instance;
 
 public:
-	
+	BatchSpriteRenderer();
+
 	glm::mat4 projection = glm::ortho(0.0f, (float)settings::SCREEN_WIDTH, 0.0f, (float)settings::SCREEN_HEIGHT, -1.0f, 1.0f);
 	
 	//glm::mat4 model = glm::mat4(1.0f);
@@ -35,9 +36,10 @@ public:
 
 
 	Shader* addShader(std::string name, std::string pathVert, std::string pathFrag);
+	Shader* getShader(std::string name);
 
 	void addGameObject(std::string name, const GameObject* gameObject, const Shader* s);
-
+	const GameObject* getGameObject(std::string name);
 	void draw() const;
 
 
