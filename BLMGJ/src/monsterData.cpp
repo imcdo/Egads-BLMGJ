@@ -217,7 +217,7 @@ Bestiary::Bestiary()
 	for (auto it = parsedBestiary.begin(); it != parsedBestiary.end(); ++it)
 	{
 		bestiary.push_back(MonsterData((*it)));
-		std::cout << "PARSED -- " << bestiary.back() << std::endl;
+		//std::cout << "PARSED -- " << bestiary.back() << std::endl;
 	}
 
 	std::cout << "READ [" << bestiary.size() << "] MONSTERS..." << std::endl;

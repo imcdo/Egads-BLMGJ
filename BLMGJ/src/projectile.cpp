@@ -1,6 +1,8 @@
 #include "projectile.h"
 #include "Time.h"
 
+using namespace std;
+
 vec2 lerp(vec2 x, vec2 y, float t) {
 	return x * (1.0f - t) + y * t;
 }
@@ -8,14 +10,14 @@ vec2 lerp(vec2 x, vec2 y, float t) {
 Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth, float angle,
 	const MonsterData * data, vec2 trajectory, Battlefield * field, Card * card) : 
 	GameObject(x, y, sprite, scale, depth, angle),
-	trajectory(trajectory),
+	destination(trajectory),
 	bounce(data->bounce),
 	damage(data->damage),
 	element(data->element),
 	field(field),
 	card(card)
 {
-	
+	origin = pos;
 		// bestiary.getRandomMonster();
 }
 
@@ -30,22 +32,27 @@ void Projectile::Update()
 		distanceTraveled = totalDistance;
 
 	// Move
+	vec2 lerps = lerp(origin, destination, distanceTraveled / totalDistance);
 	this->warp(lerp(origin, destination, distanceTraveled/totalDistance));
+	if (!active) // Only move when active
+		return;
 
 	// Bounce
 	if (distanceTraveled >= totalDistance)
 	{
+		cout << "POS: " << pos.x << " " << pos.y << endl;
 		if (field->OutOfBounds(pos) || field->AtLocation(pos) != nullptr)		// CASE: that tile is still solid
 		{
-			std::pair<vec2, vec2> originTrajectory = field->Raycast(origin, destination - origin);
-			origin = pos;															// Current pos is new origin
+			origin = pos;
+			std::pair<vec2, vec2> originTrajectory = field->Raycast(origin, destination);													// Current pos is new origin
+
 			destination = field->Raycast(origin, originTrajectory.second).first;	// Destination from reflect angle raycast
 			bounce--;
 		}
 		else																	 // CASE: that tile is now vacant
 		{
 			origin = pos;															// Current pos is new origin
-			std::pair<vec2, vec2> originTrajectory = field->Raycast(origin, destination - origin);
+			std::pair<vec2, vec2> originTrajectory = field->Raycast(origin, destination);
 			destination = originTrajectory.first;									// Destination from new raycast
 		}
 

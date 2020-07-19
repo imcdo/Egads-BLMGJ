@@ -80,7 +80,6 @@ public:
 ostream& operator<<(ostream& strm, const MonsterData& a);
 ostream& operator<<(ostream& strm, const Element* e);
 
-
 class Bestiary
 {
 private:
@@ -93,3 +92,14 @@ public:
 	Bestiary();
 	MonsterData* getRandomMonster();
 };
+
+static Bestiary* staticBestiary;
+static Bestiary* GetBestiary()
+{
+	if (staticBestiary == nullptr)
+	{
+		staticBestiary = new Bestiary();
+	}
+
+	return staticBestiary;
+}

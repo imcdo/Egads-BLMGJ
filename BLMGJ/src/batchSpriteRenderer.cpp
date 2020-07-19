@@ -35,6 +35,9 @@ void BatchSpriteRenderer::init() {
 		{2, 1, 3}
 	};
 
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	// initialize buffers
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(3, &VBOs[0]);

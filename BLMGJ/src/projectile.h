@@ -18,9 +18,8 @@ private:
 	vec2 origin;
 	vec2 destination;
 	float distanceTraveled = 0;
-	float totalDistance = 0;
+	float totalDistance = 1;
 
-	vec2 trajectory;
 	float speed = 10;
 
 	int bounce;
