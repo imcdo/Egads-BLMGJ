@@ -14,9 +14,11 @@ using namespace std;
 
 class BatchSpriteRenderer {
 private:
-	unordered_map<const Shader*, vector<const GameObject *>> bigDumDum; // shaders to sprite batching
+	unordered_map<const Shader*, vector<GameObject *>> bigDumDum; // shaders to sprite batching
 	unordered_map<string, Shader> shaderBank;
-	unordered_map<string, const GameObject*> gameObjects;
+	unordered_map<string, GameObject*> stringToGameObject;
+	// unordered_map<const GameObject*, string> gameObjectToString;
+
 
 	GLuint VAO;
 	GLuint VBOs[3];
@@ -38,7 +40,7 @@ public:
 	Shader* addShader(std::string name, std::string pathVert, std::string pathFrag);
 	Shader* getShader(std::string name);
 
-	void addGameObject(std::string name, const GameObject* gameObject, const Shader* s);
+	void addGameObject(std::string name, GameObject* gameObject, const Shader* s);
 	const GameObject* getGameObject(std::string name);
 	void draw() const;
 

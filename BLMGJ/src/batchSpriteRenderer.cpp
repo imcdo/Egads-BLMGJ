@@ -12,7 +12,7 @@ Shader* BatchSpriteRenderer::getShader(std::string name) {
 }
 
 const GameObject* BatchSpriteRenderer::getGameObject(std::string name) {
-	return gameObjects[name];
+	return stringToGameObject[name];
 }
 
 
@@ -74,7 +74,7 @@ void BatchSpriteRenderer::init() {
 
 Shader* BatchSpriteRenderer::addShader(std::string name, std::string pathVert, std::string pathFrag) {
 	shaderBank.emplace(std::make_pair(name, Shader(pathVert.c_str(), pathFrag.c_str())));
-	bigDumDum.insert({ &shaderBank[name], std::vector<const GameObject *>() });
+	bigDumDum.insert({ &shaderBank[name], std::vector<GameObject *>() });
 
 	// bind uniforms
 	shaderBank[name].use();
@@ -94,8 +94,8 @@ Shader* BatchSpriteRenderer::addShader(std::string name, std::string pathVert, s
 	return &shaderBank[name];
 }
 
-void BatchSpriteRenderer::addGameObject(std::string name, const GameObject* gameObject, const Shader* s) {
-	gameObjects.insert({ name,gameObject });
+void BatchSpriteRenderer::addGameObject(std::string name, GameObject* gameObject, const Shader* s) {
+	stringToGameObject.insert({ name,gameObject });
 	if (bigDumDum.find(s) != bigDumDum.end())
 		bigDumDum[s].push_back(gameObject);
 	else
@@ -108,7 +108,7 @@ void BatchSpriteRenderer::draw() const {
 	glUniform1f(glGetUniformLocation(shaderBank.at("background").id, "time"), Time::getCurrentTime());
 	glUniform1f(glGetUniformLocation(shaderBank.at("background").id, "scale"), 2.0f);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-	for (const pair<const Shader*, vector<const GameObject*>>& renderPass : bigDumDum) {
+	for (const pair<const Shader*, vector<GameObject*>>& renderPass : bigDumDum) {
 		renderPass.first->use();
 		for (const GameObject* gameObject : renderPass.second) {
 			gameObject->draw(renderPass.first);
@@ -119,9 +119,25 @@ void BatchSpriteRenderer::draw() const {
 }
 
 void BatchSpriteRenderer::remove(std::string name) {
-	if (gameObjects.find(name) != gameObjects.end()) {
-		gameObjects.erase(name);
+	GameObject* go = nullptr;
+	if (stringToGameObject.find(name) != stringToGameObject.end()) {
+		go = stringToGameObject[name];
+		stringToGameObject.erase(name);
 	}
+
+	for (auto& pair : bigDumDum) {
+		auto idx = 0;
+		for (GameObject* ptr : pair.second) {
+			if (ptr == go) break;
+			++idx;
+		}
+		if (idx != pair.second.size()) {
+			pair.second.erase(pair.second.begin() + idx);
+			cout << "erasing" << endl;
+		}
+	}
+
+
 }
 
 BatchSpriteRenderer* BatchSpriteRenderer::instance = new BatchSpriteRenderer();

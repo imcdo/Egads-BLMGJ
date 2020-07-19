@@ -15,6 +15,7 @@ private:
 	MonsterData* data;
 
 	int currentHealth;
+	string name;
 
 public:
 

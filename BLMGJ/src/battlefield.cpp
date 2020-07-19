@@ -16,12 +16,12 @@ Battlefield::Battlefield(float x, float y, Sprite sprite, glm::vec2 scale, float
 
 void Battlefield::Populate(float density, int intensity)
 {
-	for (int r = 0; r < grid.size(); r++)
+	for (int r = 2; r < grid.size(); r++)
 	{
 		for (int c = 0; c < grid[0].size(); c++)
 		{
-			//if(((double)rand() / (RAND_MAX)) <= density)
-			if(true)
+			if(((double)rand() / (RAND_MAX)) <= density)
+			//if(true)
 			{
 				MonsterData* data = GetBestiary()->getRandomMonster();
 				vec2 origin = ToWorldSpace(r, c);
@@ -49,7 +49,6 @@ Monster* Battlefield::AtLocation(vec2 location)
 	else
 	{
 		ivec2 gridLocation = ToGridSpace(location);
-		cout << "GGGGGGG" << gridLocation.x << " " << gridLocation.y << endl;
 		return grid[gridLocation.x][gridLocation.y];
 	}
 }
@@ -80,33 +79,57 @@ vec2 Battlefield::ToWorldSpace(int row, int col)
 
 pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 {
+	
 	vec2 step = normalize(direction) * 0.2f; // TODO: lol
+	vec2 dest = origin;
 
 	bool hit = false;
+
+	vec2 normal = { 0,1 };
 	while (!hit)
 	{
 		//cout << "STEPPING " << step.x << " " << step.y << " | now at " << origin.x << " " << origin.y << endl;
-
-		origin += step;
-		if (OutOfBounds(origin))
+		bool prevOutOfBounds = OutOfBounds(dest);
+		dest += step;
+		if (OutOfBounds(dest) && !prevOutOfBounds) {
+			cout << "raycast out of bounds " << endl;
+			ivec2 position = ToGridSpace(position);
+			normal = { 0,0 };
+			if (position.x < 0)
+				normal += vec2(1, 0);
+			if (position.x > 0)
+				normal += vec2(-1, 0);
+			if (position.y < 0)
+				normal += vec2(0, 1);
+			if (position.y < 0)
+				normal += vec2(0, -1);
 			break;
-		if (AtLocation(origin) != nullptr)
+		}
+		Monster* monster = AtLocation(dest);
+		if (monster != nullptr) {
+			cout << "raycast hit" << endl;
+			normal = normalize(dest - monster->getPosition());
 			break;
+		}
 	}
 
-	vec2 normal = ToWorldSpace((int)origin.x, (int)origin.y);
+	// vec2 normal = ToWorldSpace((int)dest.x, (int)dest.y);
+	vec2 ref = normalize(reflect(-direction, normal));
 
+	/*cout << "RAYCAST: from  " << origin.x << " " << origin.y << " | goin in dir "
+		<< direction.x << " " << direction.y << " | to "
+		<< dest.x << " " << dest.y << " | next in dir " << ref.x << " " << ref.y << endl;*/
 	return make_pair(
-		(origin * spacing) - offset, 
-		reflect(direction, normal));
+		dest,
+		ref);
 }
 
 bool Battlefield::OutOfBounds(ivec2 position)
 {
 	position = ToGridSpace(position);
 
-	cout << "GRID: " << position.x << " " << position.y << endl;
-	cout << "DIMEN: " << dimensions.x << " " << dimensions.y << endl;
+	// cout << "GRID: " << position.x << " " << position.y << endl;
+	// cout << "DIMEN: " << dimensions.x << " " << dimensions.y << endl;
 
 	if (position.x < 0 || position.y < 0
 		|| position.y >= dimensions.x || position.x >= dimensions.y)
