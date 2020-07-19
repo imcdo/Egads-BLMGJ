@@ -1,10 +1,5 @@
 #include "drawDeck.h"
 
-template<class Its>
-DrawDeck::DrawDeck(glm::vec2 pos, Its iter) :position(pos) deque(iter.size()) {
-	std::copy(iter.begin(), iter.end(), deque.begin());
-}
-
 template<class It>
 DrawDeck::DrawDeck(glm::vec2 pos, It iter) : position(pos) {
 	for (Card* c : iter) {

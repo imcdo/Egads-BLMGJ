@@ -86,14 +86,17 @@ void Game::init() {
 
 	//Sometimes glew just throws errors, so we'll clear them
 	glGetError();
+
+    BatchSpriteRenderer* sr = BatchSpriteRenderer::getInstance();
+    sr->init();
 }
 
 void Game::loop() {
     Sprite s = Sprite("src\\sprites\\UwU.png");
     Sprite ms = Sprite("src\\sprites\\mat.png");
 
-    BatchSpriteRenderer sr = BatchSpriteRenderer();
-    sr.init();
+    BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
+    //sr->init();
     
     Shader* sh = sr.addShader("default", 
         "src\\shaders\\default.vert",

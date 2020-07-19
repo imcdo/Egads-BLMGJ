@@ -89,3 +89,5 @@ void BatchSpriteRenderer::draw() const {
 	glBindVertexArray(0);
 
 }
+
+BatchSpriteRenderer* BatchSpriteRenderer::instance = new BatchSpriteRenderer();
