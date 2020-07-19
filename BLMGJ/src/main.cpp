@@ -11,6 +11,7 @@
 #include "hand.h"
 #include "monsterData.h"
 #include "battlefield.h"
+#include "player.h"
 // #include "monsterData.cpp";
 
 Hand* hand;
@@ -54,6 +55,9 @@ void Game::init() {
 void Game::loop() {
     Sprite s = Sprite("src\\sprites\\UwU.png");
 
+    Battlefield grid = Battlefield(0, 0, s);
+    Bestiary bestiary = Bestiary();
+    Player player = Player(&bestiary, &grid);
 
     BatchSpriteRenderer sr = BatchSpriteRenderer();
     sr.init();
@@ -126,9 +130,6 @@ void Game::cleanup() {
 
 int main(void) {
     try {
-		Battlefield grid = Battlefield(0, 0, Sprite(""));
-		//Bestiary();
-
         Game game;
         game.init();
         game.loop();

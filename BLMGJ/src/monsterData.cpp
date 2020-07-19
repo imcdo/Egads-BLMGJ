@@ -1,6 +1,7 @@
 #include "monsterData.h"
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -227,6 +228,11 @@ Bestiary::Bestiary()
 	//	<< bestiary[testBeast].element << ") gets a " 
 	//	<< bestiary[testBeast].element->GetDamageMultiplierAgainst(GetAbyssal()) 
 	//	<< " multiplier against abyssal!" << endl;
+}
+
+MonsterData* Bestiary::getRandomMonster() {
+	int randomIdx = rand() % bestiary.size();
+	return &(bestiary[randomIdx]);
 }
 
 

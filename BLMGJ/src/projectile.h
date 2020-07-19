@@ -6,6 +6,7 @@
 #include "monster.h"
 #include "FrameUpdater.h"
 #include "battlefield.h"
+#include "card.h"
 
 using namespace glm;
 
@@ -20,10 +21,11 @@ private:
 	Element* element = nullptr;
 
 	Battlefield *field = nullptr;
+	Card* card = nullptr;
 
 public:
 	bool active = false;
 	Projectile(float x, float y, Sprite sprite, vec2 scale = { 1,1 }, float depth = 0.0f, float angle = 0.0f,
-		const MonsterData * data = nullptr, vec2 trajectory = { 0,1 }, Battlefield * field = nullptr);
+		const MonsterData* data = nullptr, vec2 trajectory = { 0,1 }, Battlefield* field = nullptr, Card* card = nullptr);
 	void Update() override;
 };

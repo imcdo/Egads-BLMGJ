@@ -91,4 +91,5 @@ private:
 
 public:
 	Bestiary();
+	MonsterData* getRandomMonster();
 };

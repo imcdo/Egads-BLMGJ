@@ -2,13 +2,14 @@
 #include "Time.h"
 
 Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth, float angle,
-	const MonsterData * data, vec2 trajectory, Battlefield * field) : 
+	const MonsterData * data, vec2 trajectory, Battlefield * field, Card * card) : 
 	GameObject(x, y, sprite, scale, depth, angle),
 	trajectory(trajectory),
 	bounce(data->bounce),
 	damage(data->damage),
 	element(data->element),
-	field(field)
+	field(field),
+	card(card)
 {
 	
 }
