@@ -7,6 +7,8 @@
 #include "gameObject.h"
 #include "FrameUpdater.h"
 
+class Projectile;
+
 using namespace glm;
 using namespace std;
 
@@ -37,4 +39,6 @@ public:
 	void ClearLocation(vec2 location);
 	pair<vec2, vec2> Raycast(vec2 origin, vec2 direction);	// For trajectory calculation
 	bool OutOfBounds(ivec2 position);						// For trajectory calculation
+
+	void DestroyProjectile(Projectile*);
 };

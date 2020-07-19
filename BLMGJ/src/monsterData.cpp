@@ -14,7 +14,7 @@ static string NatureString = "Nature";
 static string AbyssalString = "Abyssal";
 
 static Normal* NormalType = nullptr;
-static Normal* GetNormal()
+Normal* Normal::GetNormal()
 {
 	if (NormalType == nullptr)
 	{
@@ -24,7 +24,7 @@ static Normal* GetNormal()
 }
 
 static Flame* FlameType = nullptr;
-static Flame* GetFlame()
+Flame* Flame::GetFlame()
 {
 	if (FlameType == nullptr)
 	{
@@ -34,7 +34,7 @@ static Flame* GetFlame()
 }
 
 static Water* WaterType = nullptr;
-static Water* GetWater()
+Water* Water::GetWater()
 {
 	if (WaterType == nullptr)
 	{
@@ -44,7 +44,7 @@ static Water* GetWater()
 }
 
 static Nature* NatureType = nullptr;
-static Nature* GetNature()
+Nature* Nature::GetNature()
 {
 	if (NatureType == nullptr)
 	{
@@ -54,7 +54,7 @@ static Nature* GetNature()
 }
 
 static Abyssal* AbyssalType = nullptr;
-static Abyssal* GetAbyssal()
+Abyssal* Abyssal::GetAbyssal()
 {
 	if (AbyssalType == nullptr)
 	{
@@ -82,9 +82,9 @@ Water::Water()
 
 float Water::GetDamageMultiplierAgainst(static Element* otherElement)
 {
-	if (otherElement == GetFlame())
+	if (otherElement == Flame::GetFlame())
 		return SUPER_EFFECTIVE;
-	else if (otherElement == GetNature())
+	else if (otherElement == Nature::GetNature())
 		return RESISTANT;
 	else
 		return NEUTRAL;
@@ -101,9 +101,9 @@ Nature::Nature()
 
 float Nature::GetDamageMultiplierAgainst(static Element* otherElement)
 {
-	if (otherElement == GetWater())
+	if (otherElement == Water::GetWater())
 		return SUPER_EFFECTIVE;
-	else if (otherElement == GetFlame())
+	else if (otherElement == Flame::GetFlame())
 		return RESISTANT;
 	else
 		return NEUTRAL;
@@ -120,9 +120,9 @@ Flame::Flame()
 
 float Flame::GetDamageMultiplierAgainst(static Element* otherElement)
 {
-	if (otherElement == GetNature())
+	if (otherElement == Nature::GetNature())
 		return SUPER_EFFECTIVE;
-	else if (otherElement == GetWater())
+	else if (otherElement == Water::GetWater())
 		return RESISTANT;
 	else
 		return NEUTRAL;
@@ -141,7 +141,7 @@ float Abyssal::GetDamageMultiplierAgainst(static Element* otherElement)
 {
 	if (otherElement == GetAbyssal())
 		return SUPER_EFFECTIVE;
-	else if (otherElement == GetNormal())
+	else if (otherElement == Normal::GetNormal())
 		return RESISTANT;
 	else
 		return NEUTRAL;
@@ -180,28 +180,28 @@ MonsterData::MonsterData(nlohmann::json json) :
 	string typeString = json["element"].get<string>();
 	if (NormalString.compare(typeString) == 0)
 	{
-		element = GetNormal();
+		element = Normal::GetNormal();
 	}
 	else if (FlameString.compare(typeString) == 0)
 	{
-		element = GetFlame();
+		element = Flame::GetFlame();
 	}
 	else if (WaterString.compare(typeString) == 0)
 	{
-		element = GetWater();
+		element = Water::GetWater();
 	}
 	else if (NatureString.compare(typeString) == 0)
 	{
-		element = GetNature();
+		element = Nature::GetNature();
 	}
 	else if (AbyssalString.compare(typeString) == 0)
 	{
-		element = GetAbyssal();
+		element = Abyssal::GetAbyssal();
 	}
 	else
 	{
 		cout << "ERROR :: Couldn't read element. Setting to NORMAL. " << NatureString.compare(typeString) << endl;
-		element = GetNormal();
+		element = Normal::GetNormal();
 	}
 }
 
@@ -221,15 +221,15 @@ ostream& operator<<(ostream& strm, const MonsterData& m)
 ostream& operator<<(ostream& strm, const Element* e)
 {
 	string ret = "";
-	if (e == GetFlame())
+	if (e == Flame::GetFlame())
 		return strm << FlameString;
-	else if (e == GetWater())
+	else if (e == Water::GetWater())
 		return strm << WaterString;
-	else if (e == GetNature())
+	else if (e == Nature::GetNature())
 		return strm << NatureString;
-	else if (e == GetNormal())
+	else if (e == Normal::GetNormal())
 		return strm << NormalString;
-	else if (e == GetAbyssal())
+	else if (e == Abyssal::GetAbyssal())
 		return strm << AbyssalString;
 	else
 		return strm << "<ERROR NO ELEMENT>";
