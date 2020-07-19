@@ -132,7 +132,7 @@ void Game::loop() {
     Player p = Player(&bestiary, &grid, mat.getRect(), { -350, -settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() }, { 350,-settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() });
 
     MonsterData* testMonster = GetBestiary()->getRandomMonster();
-    Card* testCard = new Card(-350, 200, s, { 5,5 }, 0, 0, testMonster);
+    Card* testCard = new Card(-350, 200, "src\\sprites\\UwU.png", { 5,5 }, 0, 0, testMonster);
 
 
     Projectile test = Projectile(0, -400, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
