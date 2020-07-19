@@ -2,8 +2,8 @@
 #include <glm/glm.hpp>
 
 namespace settings {
-	constexpr int SCREEN_WIDTH = 800;
-	constexpr int SCREEN_HEIGHT = 400;
+	constexpr int SCREEN_WIDTH = 1280;
+	constexpr int SCREEN_HEIGHT = 720;
 
 	constexpr int PLAYER_HEALTH = 50;
 
