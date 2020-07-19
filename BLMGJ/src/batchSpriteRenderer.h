@@ -2,13 +2,13 @@
 #include <vector>
 #include "Shader.h"
 #include <unordered_map>
-#include "gameObject.h"
 #include <string>
 #include <GL/glew.h>
-#include "settings.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <memory>
+#include "gameObject.h"
+#include "settings.h"
 
 using namespace std;
 
@@ -20,11 +20,16 @@ private:
 
 	GLuint VAO;
 	GLuint VBOs[3];
+
+	static BatchSpriteRenderer* instance;
+
 public:
 	
 	glm::mat4 projection = glm::ortho(0.0f, (float)settings::SCREEN_WIDTH, 0.0f, (float)settings::SCREEN_HEIGHT, -1.0f, 1.0f);
 	
 	//glm::mat4 model = glm::mat4(1.0f);
+
+	static BatchSpriteRenderer* getInstance() { return instance;  }
 
 	void init();
 
@@ -35,5 +40,7 @@ public:
 
 	void draw() const;
 
+
 	friend GameObject;
 };
+

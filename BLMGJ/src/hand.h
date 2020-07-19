@@ -8,15 +8,16 @@ class Hand {
 private:
 	Math::Rect playSpace;
 
-	void playCardHelper(std::vector<Card*>::iterator it);
+	Card* playCardHelper(std::vector<Card*>::iterator it);
+	void spaceCards();
 public:
 	Hand(Math::Rect);
 	std::vector<Card*> cards;
 
 	// returns the index in hand
 	size_t drawCard(Card*);
-	void playCard(Card*);
-	void playCard(size_t);
-
+	Card* playCard(Card*);
+	Card* playCard(size_t);
+	
 
 };

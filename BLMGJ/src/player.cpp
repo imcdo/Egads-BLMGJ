@@ -3,7 +3,9 @@
 #include "settings.h"
 #include <algorithm>
 
-Player::Player(Bestiary* bestiary, Battlefield* field) : health(settings::PLAYER_HEALTH), bestiary(bestiary), battlefield(field) {
+// Need to add drawdeck and discard depending on how the positions are passed in
+Player::Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect) 
+	: health(settings::PLAYER_HEALTH), bestiary(bestiary), battlefield(field), hand(Hand(rect)) {
 	initDeck();
 }
 
@@ -19,6 +21,18 @@ void Player::initDeck() {
 
 int Player::getHealth() {
 	return health;
+}
+
+DrawDeck Player::getDrawDeck() {
+	return drawDeck;
+}
+
+Hand Player::getHand() {
+	return hand;
+}
+
+Discard Player::getDiscard() {
+	return discard;
 }
 
 void Player::useCard(Card card) {
