@@ -15,6 +15,9 @@ namespace settings {
 	constexpr const char* TEXT_DEFAULT_FS = "src\\shaders\\cardTextDefault.frag";
 	constexpr const char* TEXT_DEFAULT_VS = "src\\shaders\\cardTextDefault.vert";
 
+	constexpr const char* BACKGROUND_GAME_FS = "src\\shaders\\fancy.frag";
+	constexpr const char* BACKGROUND_GAME_VS = "src\\shaders\\fancy.vert";
+
 	constexpr const char* FONT_DEFAULT_PATH = "src\\fonts\\default.TTF";
 
 	constexpr glm::vec3 colors[] = { glm::vec3(1.0,1.0,1.0),
