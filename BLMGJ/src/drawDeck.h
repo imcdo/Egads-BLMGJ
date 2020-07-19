@@ -1,5 +1,5 @@
 #pragma once
-#include<deque>
+#include <deque>
 #include <algorithm>
 #include <glm/glm.hpp>
 #include "card.h"
@@ -28,4 +28,6 @@ public:
 	void putTop(Card*);
 
 	void shuffle();
+
+	int getDeckSize();
 };

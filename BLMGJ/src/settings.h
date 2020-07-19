@@ -6,6 +6,8 @@ namespace settings {
 	constexpr int SCREEN_HEIGHT = 720;
 
 	constexpr int PLAYER_HEALTH = 50;
+	constexpr int HAND_SIZE = 4;
+	constexpr int DECK_SIZE = 20;
 
 	constexpr int CARD_WIDTH = 900;
 	constexpr int CARD_HEIGHT = 1400;

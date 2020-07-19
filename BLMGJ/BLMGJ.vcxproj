@@ -186,6 +186,8 @@ xcopy /y /d "$(SolutionDir)packages\freetype.redist.2.8.0.1\build\native\bin\$(P
     <ClCompile Include="src\battlefield.cpp" />
     <ClCompile Include="src\card.cpp" />
     <ClCompile Include="src\CardRenderer.cpp" />
+    <ClCompile Include="src\discard.cpp" />
+    <ClCompile Include="src\drawDeck.cpp" />
     <ClCompile Include="src\cursorMoveUpdater.cpp" />
     <ClCompile Include="src\frameUpdater.cpp" />
     <ClCompile Include="src\hand.cpp" />
@@ -215,10 +217,14 @@ xcopy /y /d "$(SolutionDir)packages\freetype.redist.2.8.0.1\build\native\bin\$(P
     <ClInclude Include="src\battlefield.h" />
     <ClInclude Include="src\card.h" />
     <ClInclude Include="src\CardRenderer.h" />
+    <ClInclude Include="src\discard.h" />
+    <ClInclude Include="src\drawDeck.h" />
     <ClInclude Include="src\CursorMoveUpdater.h" />
     <ClInclude Include="src\frameUpdater.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\gameObject.h" />
+    <ClInclude Include="src\hand.h" />
+    <ClInclude Include="src\math.h" />
     <ClInclude Include="src\monster.h" />
     <ClInclude Include="src\monsterData.h" />
     <ClInclude Include="src\OffScreenRender.h" />

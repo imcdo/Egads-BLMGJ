@@ -71,6 +71,11 @@ float Normal::GetDamageMultiplierAgainst(static Element* otherElement)
 	return NEUTRAL;
 }
 
+settings::ELEMENTS Normal::GetElementEnum()
+{
+	return settings::NORMAL;
+}
+
 Water::Water()
 {
 }
@@ -83,6 +88,11 @@ float Water::GetDamageMultiplierAgainst(static Element* otherElement)
 		return RESISTANT;
 	else
 		return NEUTRAL;
+}
+
+settings::ELEMENTS Water::GetElementEnum()
+{
+	return settings::WATER;
 }
 
 Nature::Nature()
@@ -99,6 +109,11 @@ float Nature::GetDamageMultiplierAgainst(static Element* otherElement)
 		return NEUTRAL;
 }
 
+settings::ELEMENTS Nature::GetElementEnum()
+{
+	return settings::NATURE;
+}
+
 Flame::Flame()
 {
 }
@@ -113,6 +128,11 @@ float Flame::GetDamageMultiplierAgainst(static Element* otherElement)
 		return NEUTRAL;
 }
 
+settings::ELEMENTS Flame::GetElementEnum()
+{
+	return settings::FLAME;
+}
+
 Abyssal::Abyssal()
 {
 }
@@ -125,6 +145,11 @@ float Abyssal::GetDamageMultiplierAgainst(static Element* otherElement)
 		return RESISTANT;
 	else
 		return NEUTRAL;
+}
+
+settings::ELEMENTS Abyssal::GetElementEnum()
+{
+	return settings::ABYSSAL;
 }
 
 // Monster card tracking and JSON interface
