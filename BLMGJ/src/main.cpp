@@ -130,7 +130,7 @@ void Game::cleanup() {
 
 int main(void) {
     try {
-		Battlefield grid = Battlefield(0, 0, Sprite(""));
+		//Battlefield grid = Battlefield(0, 0, Sprite(""));
 		//Bestiary();
 
         Game game;
