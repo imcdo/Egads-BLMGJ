@@ -31,4 +31,6 @@ public:
 	void putTop(Card*);
 
 	void shuffle();
+
+	int getDeckSize();
 };

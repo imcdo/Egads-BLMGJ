@@ -50,3 +50,7 @@ void DrawDeck::putTop(Card* card) {
 void DrawDeck::shuffle() {
 	std::random_shuffle(deck.begin(), deck.end());
 }
+
+int DrawDeck::getDeckSize() {
+	return deck.size();
+}

@@ -11,12 +11,14 @@ Player::Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect)
 
 void Player::initDeck() {
 	deck = vector<Card>();
-	for (int i = 0; i < 20; i++) {
+	for (int i = 0; i < settings::DECK_SIZE; i++) {
 		//generate card
 		Card c(0, 0, Sprite("src\\sprites\\UwU.png"), { 1,1 }, 0.0f, 0.0f, bestiary->getRandomMonster());
 		deck.push_back(c);
+		deckPtrs.push_back(&c);
 	}
-	std::random_shuffle(deck.begin(), deck.end());
+
+	drawDeck.shuffle();
 }
 
 int Player::getHealth() {
@@ -40,4 +42,31 @@ void Player::useCard(Card card) {
 	Projectile p(0, 0, Sprite("src\\sprites\\UwU.png"), { 1, 1 }, 0.0f, 0.0f, mData, { 0,1 }, battlefield, &card);
 	p.active = true;
 	card.decrementCardUse();
+}
+
+void Player::drawToHand() {
+	for (int i = 0; i < settings::HAND_SIZE; i++) {
+		Card* c = drawDeck.drawCard();
+		hand.drawCard(c);
+	}
+}
+
+
+void Player::cardPlayInputHandler(Card* card) {
+	hand.playCard(card);
+	useCard(*card);
+	discard.addCard(card);
+
+	if (hand.cards.size() == 0 && drawDeck.getDeckSize() == 0)
+		resetCards();
+
+	if (hand.cards.size() == 0)
+		drawToHand();
+}
+
+void Player::resetCards() {
+	discard.clear();
+	auto deckIter = deckPtrs.begin();
+	drawDeck.putTop(deckIter);
+	drawDeck.shuffle();
 }
