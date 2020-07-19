@@ -76,7 +76,7 @@ void Player::useCard(Card& card) {
 	Projectile p(0, 0, Sprite("src\\sprites\\UwU.png"), { 1, 1 }, 0.0f, 0.0f, mData, { 0,1 }, battlefield, &card);
 	p.active = true;
 	card.decrementCardUse();
-	updateCard(card);
+	//updateCard(card);
 }
 
 void Player::drawToHand() {
@@ -109,6 +109,7 @@ void Player::resetCards() {
 	drawDeck.shuffle();
 }
 
+// Issue with rendering cards after update... maybe an issue with renderFromCache?
 void Player::updateCard(Card& card) {
 	Sprite updatedSprite = card.generateUpdatedSprite();
 
