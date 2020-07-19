@@ -27,7 +27,7 @@ public:
 
 	GameObject(float x, float y, Sprite sprite, glm::vec2 scale = { 1,1 }, float depth = 0.0f, float angle = 0.0f);
 	GameObject(glm::vec2, Sprite sprite, glm::vec2 scale = {1,1}, float depth = 0.0f, float angle = 0.0f);
-	void draw(const Shader* s) const;
+	virtual void draw(const Shader* s) const;
 	void warp(float x, float y); // goto location
 	void warp(glm::vec2); // goto location
 	void move(float x, float y); // add to current location

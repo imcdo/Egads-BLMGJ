@@ -195,6 +195,7 @@ xcopy /y /d "$(SolutionDir)packages\freetype.redist.2.8.0.1\build\native\bin\$(P
     <ClCompile Include="src\projectile.cpp" />
     <ClCompile Include="src\sprite.cpp" />
     <ClCompile Include="src\TextManager.cpp" />
+    <ClCompile Include="src\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
