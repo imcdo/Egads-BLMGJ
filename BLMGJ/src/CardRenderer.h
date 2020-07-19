@@ -11,14 +11,9 @@
 
 class CardRenderer : public OffScreenRender {
 public:
-	static Sprite drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, settings::COLOR color = settings::COLOR_WHITE) {
-		return drawCard(name, description, spriteName, durability, rarity, settings::colors[color]);
-	}
-	static Sprite drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, glm::vec3 color);
+	static Sprite drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, settings::ELEMENTS element = settings::NORMAL);
 private:
 	Shader shader;
-	Shader cardBackShader;
-	Sprite defaultCardBack;
 	std::map<std::string, GLuint> cache;
 
 

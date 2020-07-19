@@ -15,8 +15,6 @@ namespace settings {
 	constexpr const char* TEXT_DEFAULT_FS = "src\\shaders\\cardTextDefault.frag";
 	constexpr const char* TEXT_DEFAULT_VS = "src\\shaders\\cardTextDefault.vert";
 
-	constexpr const char* CARD_DEFAULT_PATH_BACKGROUND = "src\\sprites\\uwu.png";
-
 	constexpr const char* FONT_DEFAULT_PATH = "src\\fonts\\default.TTF";
 
 	constexpr glm::vec3 colors[] = { glm::vec3(1.0,1.0,1.0),
@@ -30,4 +28,12 @@ namespace settings {
 										"src\\sprites\\Rarity_03.png",
 										"src\\sprites\\Rarity_04.png",
 										"src\\sprites\\Rarity_05.png" };
+
+	enum ELEMENTS { NORMAL, NATURE, WATER, FLAME, ABYSSAL };
+
+	constexpr const char* const CARD_DEFAULT_PATH_BACKGROUND[] = { "src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png" };
 }
