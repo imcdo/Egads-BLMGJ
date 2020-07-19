@@ -1,6 +1,6 @@
 #include "CardRenderer.h"
 #include "TextManager.h"
-Sprite CardRenderer::drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, glm::vec3 color) {
+Sprite CardRenderer::drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, settings::ELEMENTS element) {
 	CardRenderer& instance = getInstance();
 	if (instance.cache.find(name) != instance.cache.end()) {
 		return instance.renderFromCache(name, durability);
@@ -9,6 +9,7 @@ Sprite CardRenderer::drawCard(std::string name, std::string description, std::st
 	Sprite icon(spriteName);
 	if (rarity < 1) throw std::exception("Come on, I thought we agreed to only accept positive rarity?");
 	Sprite border(settings::CARD_DEFAULT_PATH_BORDER[rarity-1]);
+	Sprite background(settings::CARD_DEFAULT_PATH_BACKGROUND[element]);
 
 	TextManager::loadFont("thin", "src\\fonts\\thinner.ttf");
 	glm::ivec2 texSize(settings::CARD_WIDTH, settings::CARD_HEIGHT);
@@ -24,9 +25,7 @@ Sprite CardRenderer::drawCard(std::string name, std::string description, std::st
 
 	glActiveTexture(GL_TEXTURE0);
 
-	instance.cardBackShader.use();
-	glUniform3fv(glGetUniformLocation(instance.cardBackShader.id, "colorTint"), 1, &color.x);
-	glBindTexture(GL_TEXTURE_2D, instance.defaultCardBack.getTextureID());
+	glBindTexture(GL_TEXTURE_2D, background.getTextureID());
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
 	instance.shader.use();
@@ -55,7 +54,7 @@ Sprite CardRenderer::drawCard(std::string name, std::string description, std::st
 	return Sprite(instance.deferredTexture, settings::CARD_HEIGHT, settings::CARD_WIDTH);
 }
 
-CardRenderer::CardRenderer(const char* vs, const char* fs) : OffScreenRender(), shader(vs, fs), defaultCardBack(settings::CARD_DEFAULT_PATH_BACKGROUND), cardBackShader(settings::CARD_DEFAULT_PATH_VS, settings::CARD_DEFAULT_PATH_FS_BACK) {
+CardRenderer::CardRenderer(const char* vs, const char* fs) : OffScreenRender(), shader(vs, fs) {
 }
 
 Sprite CardRenderer::renderFromCache(std::string name, int durability) {

@@ -17,8 +17,6 @@ namespace settings {
 	constexpr const char* TEXT_DEFAULT_FS = "src\\shaders\\cardTextDefault.frag";
 	constexpr const char* TEXT_DEFAULT_VS = "src\\shaders\\cardTextDefault.vert";
 
-	constexpr const char* CARD_DEFAULT_PATH_BACKGROUND = "src\\sprites\\uwu.png";
-
 	constexpr const char* FONT_DEFAULT_PATH = "src\\fonts\\default.TTF";
 
 	constexpr glm::vec3 colors[] = { glm::vec3(1.0,1.0,1.0),
@@ -27,9 +25,17 @@ namespace settings {
 										glm::vec3(0.0,0.0,1.0) };
 	enum COLOR { COLOR_WHITE, COLOR_RED, COLOR_GREEN, COLOR_BLUE };
 
-	constexpr const char* const CARD_DEFAULT_PATH_BORDER[] = { "src\\sprites\\BORDERBORDER.png", 
-										"src\\sprites\\BORDERBORDER.png",
-										"src\\sprites\\BORDERBORDER.png",
-										"src\\sprites\\BORDERBORDER.png",
-										"src\\sprites\\BORDERBORDER.png" };
+	constexpr const char* const CARD_DEFAULT_PATH_BORDER[] = { "src\\sprites\\Rarity_01.png", 
+										"src\\sprites\\Rarity_02.png",
+										"src\\sprites\\Rarity_03.png",
+										"src\\sprites\\Rarity_04.png",
+										"src\\sprites\\Rarity_05.png" };
+
+	enum ELEMENTS { NORMAL, NATURE, WATER, FLAME, ABYSSAL };
+
+	constexpr const char* const CARD_DEFAULT_PATH_BACKGROUND[] = { "src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png" };
 }

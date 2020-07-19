@@ -13,7 +13,7 @@
 #include "battlefield.h"
 #include "player.h"
 #include "projectile.h"
-
+#include "shooter.h"
 
 float _currentMouseX;
 float _currentMouseY;
@@ -44,8 +44,11 @@ void Game::mouseCursorCallback(GLFWwindow* window, double mouseX, double mouseY)
     _lastMouseX = _currentMouseX;
     _lastMouseY = _currentMouseY;
 
-    _currentMouseX = mouseX;
-    _currentMouseY = mouseY;
+    _currentMouseX = mouseX - settings::SCREEN_WIDTH / 2;
+    _currentMouseY = settings::SCREEN_HEIGHT / 2 - mouseY;
+
+    for (CursorMoveUpdater* cmu : CursorMoveUpdater::_cursorMoveUpdaters) cmu->CursorMove(_currentMouseX, _currentMouseY);
+
 }
 
 void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
@@ -55,7 +58,7 @@ void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
         for (Card* c : player->getHand().cards) {
             
             
-            if (c->getRect().Contains(glm::vec2(_currentMouseX - settings::SCREEN_WIDTH/2, settings::SCREEN_HEIGHT/2 -_currentMouseY))) {
+            if (c->getRect().Contains(glm::vec2(_currentMouseX , _currentMouseY))) {
                 player->cardPlayInputHandler(c);
                 break;
             }
@@ -99,6 +102,8 @@ void Game::loop() {
     Sprite s = Sprite("src\\sprites\\UwU.png");
     Sprite ms = Sprite("src\\sprites\\mat.png");
 
+    Sprite shooterSprite = Sprite("src\\sprites\\shooter.png", Default, 2);
+
     BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
     //sr->init();
     
@@ -106,15 +111,20 @@ void Game::loop() {
         "src\\shaders\\default.vert",
         "src\\shaders\\default.frag");*/
     Shader* sh = sr.getShader("default");
+    sr.addShader("cardStuff", "src\\shaders\\default.vert", "src\\shaders\\cardInHandShader.frag");
+    Shader* handShader = sr.getShader("cardStuff");
+
 
     GameObject mat = GameObject(0, -settings::SCREEN_HEIGHT / 2 + 100, ms, { 100, 100 });
+    Shooter shooter = Shooter(0, -settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight(), shooterSprite, { 2,2 });
     sr.addGameObject("mat", &mat, sh);
     std::cout << mat.getRect().getMin().x << " "
         << mat.getRect().getMin().y << " | "
         << mat.getRect().getMax().x << " "
         << mat.getRect().getMax().y << std::endl;
 
-    Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 64, 64, 32);
+	//Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 50, 50, 1);
+	Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 35, 14, 32);
 	grid.Populate(0.5f);
     Bestiary bestiary = Bestiary();
     Player p = Player(&bestiary, &grid, mat.getRect(), { -350,0 }, { 350,0 });
@@ -151,10 +161,18 @@ void Game::loop() {
     glfwSetCursorPosCallback(window, mouseCursorCallback);
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
 
+
     // handled in Card now
     //for (const Card& c : cards) {
     //    sr.addGameObject("card " + idx++, &c, sh);
     //}
+
+
+    for (const Card& c : cards) {
+        sr.addGameObject("card " + idx++, &c, handShader);
+    }
+    sr.addGameObject("shooter", &shooter, sh);
+
 
 
     /* Loop until the user closes the window */
@@ -172,6 +190,7 @@ void Game::loop() {
         glfwPollEvents();
              
         for (FrameUpdater* fu : FrameUpdater::_frameUpdaters) fu->Update();
+
     }
 
 }
