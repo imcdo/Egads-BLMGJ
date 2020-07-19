@@ -50,7 +50,8 @@ GLuint TextManager::renderText(std::string text, float size, glm::ivec2 textureS
 void TextManager::loadFont(std::string name, std::string path) {
 	TextManager& tm = getInstance();
 	if (tm.fonts.find(name) != tm.fonts.end()) {
-		std::cout << "We already have this font loaded" << std::endl;
+		//std::cout << "We already have this font loaded" << std::endl;
+		return;
 	}
 	FT_Face newFont;
 	if (FT_New_Face(tm.freeType, path.c_str(), 0, &newFont)) {

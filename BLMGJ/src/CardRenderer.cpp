@@ -13,7 +13,7 @@ Sprite CardRenderer::drawCard(std::string name, std::string description, std::st
 
 	TextManager::loadFont("thin", "src\\fonts\\thinner.ttf");
 	glm::ivec2 texSize(settings::CARD_WIDTH, settings::CARD_HEIGHT);
-	GLuint nameTex = TextManager::renderText(name, 0.002f, texSize, glm::vec2(-0.9, 0.05), glm::vec2(0.9, 0.05));
+	GLuint nameTex = TextManager::renderText(name, 0.003f, texSize, glm::vec2(-0.8, -0.5), glm::vec2(0.8, -0.5));
 	GLuint descTex = TextManager::renderText(description, 0.0015f, texSize, glm::vec2(-0.9, -0.1), glm::vec2(0.9, -0.1), "thin");
 	GLuint durabilityText = TextManager::renderText(std::to_string(durability), 0.002f, texSize, glm::vec2(-0.1, -0.8), glm::vec2(0.9, -0.8));
 
@@ -35,7 +35,7 @@ Sprite CardRenderer::drawCard(std::string name, std::string description, std::st
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindTexture(GL_TEXTURE_2D, descTex);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
-	glViewport(settings::CARD_WIDTH / 4, settings::CARD_HEIGHT / 3 * 2, settings::CARD_WIDTH / 2, settings::CARD_WIDTH / 2);
+	glViewport(settings::CARD_WIDTH / 4, settings::CARD_HEIGHT / 5 * 2, settings::CARD_WIDTH / 2, settings::CARD_WIDTH / 2);
 	glBindTexture(GL_TEXTURE_2D, icon.getTextureID());
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glViewport(0, 0, settings::CARD_WIDTH, settings::CARD_HEIGHT);

@@ -36,9 +36,9 @@ namespace settings {
 
 	enum ELEMENTS { NORMAL, NATURE, WATER, FLAME, ABYSSAL };
 
-	constexpr const char* const CARD_DEFAULT_PATH_BACKGROUND[] = { "src\\sprites\\uwu.png",
-										"src\\sprites\\uwu.png",
-										"src\\sprites\\uwu.png",
-										"src\\sprites\\uwu.png",
-										"src\\sprites\\uwu.png" };
+	constexpr const char* const CARD_DEFAULT_PATH_BACKGROUND[] = { "src\\sprites\\NormalCard.png",
+										"src\\sprites\\NatureCard.png",
+										"src\\sprites\\WaterCard.png",
+										"src\\sprites\\FireCard.png",
+										"src\\sprites\\AbyssalCard.png" };
 }

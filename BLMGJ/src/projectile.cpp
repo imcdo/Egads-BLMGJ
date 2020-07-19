@@ -15,12 +15,15 @@ Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth,
 	damage(data->damage),
 	element(data->element),
 	field(field),
-	card(card)
+	card(card),
+	trail(x, y, sprite, scale, depth, angle)
 {
 	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
 	std::stringstream ss;
 	ss << "projectile_" << this;
 	name = ss.str();
+
+	sr.addGameObject("trail", &trail, sr.getShader("trail"));
 
 	sr.addGameObject(name, this, sr.getShader("default"));
 	origin = pos;
@@ -81,6 +84,8 @@ void Projectile::Update()
 
 	}
 
+	trail.update(destination-pos, pos);
+
 	// Damage
 	// cout << "CHECKING: " << pos.x << " " << pos.y << endl;
 	// cout << field->OutOfBounds(pos) << " | " << (field->AtLocation(pos)) << endl;
@@ -97,5 +102,6 @@ void Projectile::Update()
 
 
 Projectile::~Projectile()  {
+	BatchSpriteRenderer::getInstance()->remove("trail");
 	BatchSpriteRenderer::getInstance()->remove(name);
 }
