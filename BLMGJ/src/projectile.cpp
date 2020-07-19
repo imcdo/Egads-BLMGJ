@@ -8,24 +8,26 @@ vec2 lerp(vec2 x, vec2 y, float t) {
 }
 
 Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth, float angle,
-	const MonsterData * data, Battlefield * field, Card * card) :
+	const MonsterData* data, Battlefield* field, Card* card) :
 	GameObject(x, y, sprite, scale, depth, angle),
 	name(name),
 	bounce(data->bounce),
 	damage(data->damage),
 	element(data->element),
 	field(field),
-	card(card)
+	card(card),
+	trail(x, y, sprite, scale, depth, angle)
 {
 	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
 	std::stringstream ss;
 	ss << "projectile_" << this;
 	name = ss.str();
 
+	sr.addGameObject(name, &trail, sr.getShader("trail"));
+
 	sr.addGameObject(name, this, sr.getShader("default"));
 	origin = pos;
 
-	
 
 	bounce = 10;
 	
@@ -84,6 +86,8 @@ void Projectile::Update()
 		field->Attack(pos, damage, element);
 
 	}
+
+	trail.update(destination-pos, pos);
 
 	// Damage
 	// cout << "CHECKING: " << pos.x << " " << pos.y << endl;

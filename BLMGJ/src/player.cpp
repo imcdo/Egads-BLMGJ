@@ -48,7 +48,7 @@ void Player::initDeck() {
 
 		std::cout << "Writing: " << name << " at " << &c << endl;
 
-		sr.addGameObject(name, &c, sr.getShader("default"));
+		sr.addGameObject(name, &c, sr.getShader("cardStuff"));
 	}
 
 	drawDeck.shuffle();

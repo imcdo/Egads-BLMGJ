@@ -7,6 +7,7 @@
 #include "FrameUpdater.h"
 #include "battlefield.h"
 #include "card.h"
+#include "Trail.h"
 
 using namespace glm;
 
@@ -20,6 +21,8 @@ private:
 
 	string name;
 	vec2 nextTrajectory;
+
+	Trail trail;
 
 	float distanceTraveled = 0;
 	float totalDistance = 1;

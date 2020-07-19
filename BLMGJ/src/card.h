@@ -24,7 +24,7 @@ public:
 	void addNewData(MonsterData* monData);
 	void draw(const Shader* s) const override {
 		glUniform1f(glGetUniformLocation(s->id, "time"), Time::getCurrentTime());
-		glUniform1i(glGetUniformLocation(s->id, "rarity"), data ? data->rank : 0);
+		glUniform1i(glGetUniformLocation(s->id, "rarity"), 10);// data ? data->rank : 0);
 		GameObject::draw(s);
 	}
 

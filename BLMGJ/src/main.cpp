@@ -123,6 +123,7 @@ void Game::loop() {
     Shader* sh = sr.getShader("default");
     sr.addShader("cardStuff", "src\\shaders\\default.vert", "src\\shaders\\cardInHandShader.frag");
     Shader* handShader = sr.getShader("cardStuff");
+    sr.addShader("trail", "src\\shaders\\default.vert", "src\\shaders\\trail.frag");
 
 
     GameObject mat = GameObject(0, -settings::SCREEN_HEIGHT / 2 + 100, ms, { 100, 100 });
