@@ -14,8 +14,13 @@
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\projectile.cpp" />
     <ClCompile Include="src\sprite.cpp" />
+    <ClCompile Include="src\discard.cpp" />
+    <ClCompile Include="src\drawDeck.cpp" />
     <ClCompile Include="src\TextManager.cpp" />
     <ClCompile Include="src\Time.cpp" />
+    <ClCompile Include="src\cursorMoveUpdater.cpp" />
+    <ClCompile Include="src\math.cpp" />
+    <ClCompile Include="src\inputUpdater.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\battlefield.h" />
@@ -35,6 +40,53 @@
     <ClInclude Include="src\batchSpriteRenderer.h" />
     <ClInclude Include="src\TextManager.h" />
     <ClInclude Include="src\Time.h" />
+    <ClInclude Include="src\discard.h" />
+    <ClInclude Include="src\drawDeck.h" />
+    <ClInclude Include="src\hand.h" />
+    <ClInclude Include="src\math.h" />
+
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\batchSpriteRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\frameUpdater.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\monsterData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\projectile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\monster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\battlefield.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\card.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CardRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="src\CursorMoveUpdater.h" />
+    <ClInclude Include="src\shooter.h" />
+    <ClInclude Include="src\inputUpdater.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\sprites\mat.png" />
@@ -50,6 +102,60 @@
     <None Include="src\shaders\red.frag" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\gameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\batchSpriteRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\frameUpdater.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CardRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\projectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\monsterData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\monster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\card.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\battlefield.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TextManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OffScreenRender.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\sprites\mat.png" />
     <Text Include="src\NewFile.txt" />
   </ItemGroup>
 </Project>

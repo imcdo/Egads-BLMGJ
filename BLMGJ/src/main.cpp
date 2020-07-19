@@ -13,18 +13,24 @@
 #include "battlefield.h"
 #include "player.h"
 #include "projectile.h"
-
+#include "shooter.h"
+#include "inputUpdater.h"
 
 float _currentMouseX;
 float _currentMouseY;
 float _lastMouseX;
 float _lastMouseY;
+ 
 
-Hand* hand;
-Card* nextDraw;
+// should be in player
+//Hand* hand;
+//Card* nextDraw;
 
+Player* player;
 
- void Game::inputCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+//don't need dis
+/*
+void Game::inputCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (key == GLFW_KEY_C && action == GLFW_PRESS) {
         hand->drawCard(nextDraw);
         nextDraw++;
@@ -32,27 +38,30 @@ Card* nextDraw;
     if (key == GLFW_KEY_V && action == GLFW_PRESS) {
         nextDraw->warp(100, 200);
     }
+    for (InputUpdater* iu : InputUpdater::_inputUpdaters) iu->MouseInput(key, action);
 }
+*/
 
 void Game::mouseCursorCallback(GLFWwindow* window, double mouseX, double mouseY) {
     _lastMouseX = _currentMouseX;
     _lastMouseY = _currentMouseY;
 
-    _currentMouseX = mouseX;
-    _currentMouseY = mouseY;
+    _currentMouseX = mouseX - settings::SCREEN_WIDTH / 2;
+    _currentMouseY = settings::SCREEN_HEIGHT / 2 - mouseY;
+
+    for (CursorMoveUpdater* cmu : CursorMoveUpdater::_cursorMoveUpdaters) cmu->CursorMove(_currentMouseX, _currentMouseY);
+
 }
 
 void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
     if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
 
-        for (Card* c : hand->cards) {
+        for (Card* c : player->getHand().cards) {
             
             
-            if (c->getRect().Contains(glm::vec2(_currentMouseX - settings::SCREEN_WIDTH/2, settings::SCREEN_HEIGHT/2 -_currentMouseY))) {
-                hand->playCard(c);
-                c->move(0,150);
-                c->rotate(90);
+            if (c->getRect().Contains(glm::vec2(_currentMouseX , _currentMouseY))) {
+                player->cardPlayInputHandler(c);
                 break;
             }
         }
@@ -95,6 +104,8 @@ void Game::loop() {
     Sprite s = Sprite("src\\sprites\\UwU.png");
     Sprite ms = Sprite("src\\sprites\\mat.png");
 
+    Sprite shooterSprite = Sprite("src\\sprites\\shooter.png", Default, 2);
+
     BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
     //sr->init();
     
@@ -105,7 +116,9 @@ void Game::loop() {
     sr.addShader("cardStuff", "src\\shaders\\default.vert", "src\\shaders\\cardInHandShader.frag");
     Shader* handShader = sr.getShader("cardStuff");
 
+
     GameObject mat = GameObject(0, -settings::SCREEN_HEIGHT / 2 + 100, ms, { 100, 100 });
+    Shooter shooter = Shooter(0, -settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight(), shooterSprite, { 2,2 });
     sr.addGameObject("mat", &mat, sh);
     std::cout << mat.getRect().getMin().x << " "
         << mat.getRect().getMin().y << " | "
@@ -115,24 +128,8 @@ void Game::loop() {
 	//Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 50, 50, 1);
 	Battlefield grid = Battlefield(0, 0, s, { 1,1 }, 0, 0, 35, 14, 32);
 	grid.Populate(0.5f);
-    Player player = Player(GetBestiary(), &grid, mat.getRect());
-    
-    Hand h = Hand(mat.getRect());
-    hand = &h;
-
-    std::vector<Card> cards = { Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-            Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
-    };
-    size_t idx = 0;
-    nextDraw = &cards[0];
+    Bestiary bestiary = Bestiary();
+    Player p = Player(&bestiary, &grid, mat.getRect(), { -350, -settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() }, { 350,-settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight() });
 
     MonsterData* testMonster = GetBestiary()->getRandomMonster();
     Card* testCard = new Card(-350, 200, s, { 5,5 }, 0, 0, testMonster);
@@ -142,17 +139,17 @@ void Game::loop() {
 	sr.addGameObject("proj ", &test, sh);
 
     test.active = true;
+    player = &p;
 
     
 
-    glfwSetKeyCallback(window, inputCallback);
+    //glfwSetKeyCallback(window, inputCallback);
     glfwSetCursorPosCallback(window, mouseCursorCallback);
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
 
 
-    for (const Card& c : cards) {
-        sr.addGameObject("card " + idx++, &c, handShader);
-    }
+    sr.addGameObject("shooter", &shooter, sh);
+
 
 
     /* Loop until the user closes the window */
@@ -170,6 +167,7 @@ void Game::loop() {
         glfwPollEvents();
              
         for (FrameUpdater* fu : FrameUpdater::_frameUpdaters) fu->Update();
+
     }
 
 }

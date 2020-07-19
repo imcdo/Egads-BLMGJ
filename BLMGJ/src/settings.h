@@ -6,6 +6,8 @@ namespace settings {
 	constexpr int SCREEN_HEIGHT = 720;
 
 	constexpr int PLAYER_HEALTH = 50;
+	constexpr int HAND_SIZE = 4;
+	constexpr int DECK_SIZE = 20;
 
 	constexpr int CARD_WIDTH = 900;
 	constexpr int CARD_HEIGHT = 1400;
@@ -15,7 +17,8 @@ namespace settings {
 	constexpr const char* TEXT_DEFAULT_FS = "src\\shaders\\cardTextDefault.frag";
 	constexpr const char* TEXT_DEFAULT_VS = "src\\shaders\\cardTextDefault.vert";
 
-	constexpr const char* CARD_DEFAULT_PATH_BACKGROUND = "src\\sprites\\uwu.png";
+	constexpr const char* BACKGROUND_GAME_FS = "src\\shaders\\fancy.frag";
+	constexpr const char* BACKGROUND_GAME_VS = "src\\shaders\\fancy.vert";
 
 	constexpr const char* FONT_DEFAULT_PATH = "src\\fonts\\default.TTF";
 
@@ -30,4 +33,12 @@ namespace settings {
 										"src\\sprites\\Rarity_03.png",
 										"src\\sprites\\Rarity_04.png",
 										"src\\sprites\\Rarity_05.png" };
+
+	enum ELEMENTS { NORMAL, NATURE, WATER, FLAME, ABYSSAL };
+
+	constexpr const char* const CARD_DEFAULT_PATH_BACKGROUND[] = { "src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png",
+										"src\\sprites\\uwu.png" };
 }
