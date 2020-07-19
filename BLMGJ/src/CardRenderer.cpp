@@ -1,6 +1,6 @@
 #include "CardRenderer.h"
 #include "TextManager.h"
-GLuint CardRenderer::drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, glm::vec3 color) {
+Sprite CardRenderer::drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, glm::vec3 color) {
 	CardRenderer& instance = getInstance();
 	if (instance.cache.find(name) != instance.cache.end()) {
 		return instance.renderFromCache(name, durability);
@@ -52,13 +52,13 @@ GLuint CardRenderer::drawCard(std::string name, std::string description, std::st
 	glBindVertexArray(0);
 
 	instance.revertFrameBuffer();
-	return instance.deferredTexture;
+	return Sprite(instance.deferredTexture, settings::CARD_HEIGHT, settings::CARD_WIDTH);
 }
 
 CardRenderer::CardRenderer(const char* vs, const char* fs) : OffScreenRender(), shader(vs, fs), defaultCardBack(settings::CARD_DEFAULT_PATH_BACKGROUND), cardBackShader(settings::CARD_DEFAULT_PATH_VS, settings::CARD_DEFAULT_PATH_FS_BACK) {
 }
 
-GLuint CardRenderer::renderFromCache(std::string name, int durability) {
+Sprite CardRenderer::renderFromCache(std::string name, int durability) {
 	// Faster render, no need to do the text
 	glm::ivec2 texSize(settings::CARD_WIDTH, settings::CARD_HEIGHT);
 	GLuint durabilityText = TextManager::renderText(std::to_string(durability), 0.002f, texSize, glm::vec2(-0.1, -0.8), glm::vec2(0.9, -0.8));
@@ -73,5 +73,5 @@ GLuint CardRenderer::renderFromCache(std::string name, int durability) {
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
 	revertFrameBuffer();
-	return deferredTexture;
+	return Sprite(deferredTexture, settings::CARD_HEIGHT, settings::CARD_WIDTH);
 }

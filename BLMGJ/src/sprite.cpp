@@ -52,6 +52,14 @@ Sprite::Sprite(std::string path, SpriteType sType, unsigned int pixelsPerInch) :
 {
 }
 
+Sprite::Sprite(unsigned int textureID, int height, int width, SpriteType spriteType, int ppi) : spriteType(spriteType) {
+    this->textureID = textureID;
+    this->width = width;
+    this->height = height;
+    this->ppi = ppi;
+    this->_loadData = { height, width, textureID };
+}
+
 Sprite& Sprite::operator= (const Sprite& s) {
     _loadData = s._loadData;
     height = s.height;

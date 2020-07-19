@@ -11,10 +11,10 @@
 
 class CardRenderer : public OffScreenRender {
 public:
-	static unsigned int drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, settings::COLOR color = settings::COLOR_WHITE) {
+	static Sprite drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, settings::COLOR color = settings::COLOR_WHITE) {
 		return drawCard(name, description, spriteName, durability, rarity, settings::colors[color]);
 	}
-	static unsigned int drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, glm::vec3 color);
+	static Sprite drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, glm::vec3 color);
 private:
 	Shader shader;
 	Shader cardBackShader;
@@ -28,5 +28,5 @@ private:
 	}
 
 	CardRenderer(const char* vs, const char* fs);
-	GLuint renderFromCache(std::string name, int durability);
+	Sprite renderFromCache(std::string name, int durability);
 };
