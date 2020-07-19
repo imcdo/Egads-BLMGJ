@@ -102,6 +102,8 @@ void Game::loop() {
         "src\\shaders\\default.vert",
         "src\\shaders\\default.frag");*/
     Shader* sh = sr.getShader("default");
+    sr.addShader("cardStuff", "src\\shaders\\default.vert", "src\\shaders\\cardInHandShader.frag");
+    Shader* handShader = sr.getShader("cardStuff");
 
     GameObject mat = GameObject(0, -settings::SCREEN_HEIGHT / 2 + 100, ms, { 100, 100 });
     sr.addGameObject("mat", &mat, sh);
@@ -149,7 +151,7 @@ void Game::loop() {
 
 
     for (const Card& c : cards) {
-        sr.addGameObject("card " + idx++, &c, sh);
+        sr.addGameObject("card " + idx++, &c, handShader);
     }
 
 

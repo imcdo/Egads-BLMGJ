@@ -1,6 +1,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "batchSpriteRenderer.h"
 #include "settings.h"
+#include "Time.h"
 
 BatchSpriteRenderer::BatchSpriteRenderer() {
 	
@@ -101,7 +102,6 @@ void BatchSpriteRenderer::draw() const {
 	glBindVertexArray(VAO);
 	for (const pair<const Shader*, vector<const GameObject*>>& renderPass : bigDumDum) {
 		renderPass.first->use();
-
 		for (const GameObject* gameObject : renderPass.second) {
 			gameObject->draw(renderPass.first);
 		}

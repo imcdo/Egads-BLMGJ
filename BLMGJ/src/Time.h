@@ -37,5 +37,3 @@ public:
 	}
 
 };
-
-Time* Time::instance = new Time();
