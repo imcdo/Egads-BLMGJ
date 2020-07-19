@@ -103,7 +103,7 @@ void Game::loop() {
         "src\\shaders\\default.frag");*/
     Shader* sh = sr.getShader("default");
 
-    GameObject mat = GameObject(0, -100, ms, { 100, 100 });
+    GameObject mat = GameObject(0, -settings::SCREEN_HEIGHT / 2 + 100, ms, { 100, 100 });
     sr.addGameObject("mat", &mat, sh);
     std::cout << mat.getRect().getMin().x << " "
         << mat.getRect().getMin().y << " | "
