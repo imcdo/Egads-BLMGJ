@@ -110,4 +110,10 @@ void BatchSpriteRenderer::draw() const {
 
 }
 
+void BatchSpriteRenderer::remove(std::string name) {
+	if (gameObjects.find(name) != gameObjects.end()) {
+		gameObjects.erase(name);
+	}
+}
+
 BatchSpriteRenderer* BatchSpriteRenderer::instance = new BatchSpriteRenderer();

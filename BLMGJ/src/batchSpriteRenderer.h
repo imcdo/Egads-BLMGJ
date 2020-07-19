@@ -42,6 +42,7 @@ public:
 	const GameObject* getGameObject(std::string name);
 	void draw() const;
 
+	void remove(std::string name);
 
 	friend GameObject;
 };

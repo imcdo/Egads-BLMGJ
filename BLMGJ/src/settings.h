@@ -25,9 +25,9 @@ namespace settings {
 										glm::vec3(0.0,0.0,1.0) };
 	enum COLOR { COLOR_WHITE, COLOR_RED, COLOR_GREEN, COLOR_BLUE };
 
-	constexpr const char* const CARD_DEFAULT_PATH_BORDER[] = { "src\\sprites\\BORDERBORDER.png", 
-										"src\\sprites\\BORDERBORDER.png",
-										"src\\sprites\\BORDERBORDER.png",
-										"src\\sprites\\BORDERBORDER.png",
-										"src\\sprites\\BORDERBORDER.png" };
+	constexpr const char* const CARD_DEFAULT_PATH_BORDER[] = { "src\\sprites\\Rarity_01.png", 
+										"src\\sprites\\Rarity_02.png",
+										"src\\sprites\\Rarity_03.png",
+										"src\\sprites\\Rarity_04.png",
+										"src\\sprites\\Rarity_05.png" };
 }
