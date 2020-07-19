@@ -13,7 +13,7 @@
 #include "battlefield.h"
 #include "player.h"
 #include "projectile.h"
-
+#include "shooter.h"
 
 float _currentMouseX;
 float _currentMouseY;
@@ -38,8 +38,11 @@ void Game::mouseCursorCallback(GLFWwindow* window, double mouseX, double mouseY)
     _lastMouseX = _currentMouseX;
     _lastMouseY = _currentMouseY;
 
-    _currentMouseX = mouseX;
-    _currentMouseY = mouseY;
+    _currentMouseX = mouseX - settings::SCREEN_WIDTH / 2;
+    _currentMouseY = settings::SCREEN_HEIGHT / 2 - mouseY;
+
+    for (CursorMoveUpdater* cmu : CursorMoveUpdater::_cursorMoveUpdaters) cmu->CursorMove(_currentMouseX, _currentMouseY);
+
 }
 
 void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
@@ -49,7 +52,7 @@ void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
         for (Card* c : hand->cards) {
             
             
-            if (c->getRect().Contains(glm::vec2(_currentMouseX - settings::SCREEN_WIDTH/2, settings::SCREEN_HEIGHT/2 -_currentMouseY))) {
+            if (c->getRect().Contains(glm::vec2(_currentMouseX , _currentMouseY))) {
                 hand->playCard(c);
                 c->move(0,150);
                 c->rotate(90);
@@ -95,6 +98,8 @@ void Game::loop() {
     Sprite s = Sprite("src\\sprites\\UwU.png");
     Sprite ms = Sprite("src\\sprites\\mat.png");
 
+    Sprite shooterSprite = Sprite("src\\sprites\\shooter.png", Default, 2);
+
     BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
     //sr->init();
     
@@ -103,7 +108,9 @@ void Game::loop() {
         "src\\shaders\\default.frag");*/
     Shader* sh = sr.getShader("default");
 
+
     GameObject mat = GameObject(0, -settings::SCREEN_HEIGHT / 2 + 100, ms, { 100, 100 });
+    Shooter shooter = Shooter(0, -settings::SCREEN_HEIGHT / 2 + mat.getRect().getHeight(), shooterSprite, { 2,2 });
     sr.addGameObject("mat", &mat, sh);
     std::cout << mat.getRect().getMin().x << " "
         << mat.getRect().getMin().y << " | "
@@ -150,6 +157,7 @@ void Game::loop() {
     for (const Card& c : cards) {
         sr.addGameObject("card " + idx++, &c, sh);
     }
+    sr.addGameObject("shooter", &shooter, sh);
 
 
     /* Loop until the user closes the window */
@@ -167,6 +175,7 @@ void Game::loop() {
         glfwPollEvents();
              
         for (FrameUpdater* fu : FrameUpdater::_frameUpdaters) fu->Update();
+
     }
 
 }

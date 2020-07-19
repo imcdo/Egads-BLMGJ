@@ -185,10 +185,12 @@ xcopy /y /d "$(SolutionDir)packages\freetype.redist.2.8.0.1\build\native\bin\$(P
     <ClCompile Include="src\battlefield.cpp" />
     <ClCompile Include="src\card.cpp" />
     <ClCompile Include="src\CardRenderer.cpp" />
+    <ClCompile Include="src\cursorMoveUpdater.cpp" />
     <ClCompile Include="src\frameUpdater.cpp" />
     <ClCompile Include="src\hand.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\gameObject.cpp" />
+    <ClCompile Include="src\math.cpp" />
     <ClCompile Include="src\monster.cpp" />
     <ClCompile Include="src\monsterData.cpp" />
     <ClCompile Include="src\player.cpp" />
@@ -210,6 +212,7 @@ xcopy /y /d "$(SolutionDir)packages\freetype.redist.2.8.0.1\build\native\bin\$(P
     <ClInclude Include="src\battlefield.h" />
     <ClInclude Include="src\card.h" />
     <ClInclude Include="src\CardRenderer.h" />
+    <ClInclude Include="src\CursorMoveUpdater.h" />
     <ClInclude Include="src\frameUpdater.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\gameObject.h" />
@@ -220,6 +223,7 @@ xcopy /y /d "$(SolutionDir)packages\freetype.redist.2.8.0.1\build\native\bin\$(P
     <ClInclude Include="src\projectile.h" />
     <ClInclude Include="src\settings.h" />
     <ClInclude Include="src\shader.h" />
+    <ClInclude Include="src\shooter.h" />
     <ClInclude Include="src\sprite.h" />
     <ClInclude Include="src\batchSpriteRenderer.h" />
     <ClInclude Include="src\TextManager.h" />
