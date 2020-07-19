@@ -23,7 +23,7 @@ Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth,
 	ss << "projectile_" << this;
 	name = ss.str();
 
-	sr.addGameObject("trail", &trail, sr.getShader("trail"));
+	sr.addGameObject("trail" + name, &trail, sr.getShader("trail"));
 
 	sr.addGameObject(name, this, sr.getShader("default"));
 	origin = pos;
@@ -46,7 +46,7 @@ void Projectile::activate(vec2 dir) {
 
 void Projectile::Update()
 {
-
+	trail.setActive(active);
 	if (!active) // Only move when active
 		return;
 
@@ -102,6 +102,6 @@ void Projectile::Update()
 
 
 Projectile::~Projectile()  {
-	BatchSpriteRenderer::getInstance()->remove("trail");
+	BatchSpriteRenderer::getInstance()->remove("trail" + name);
 	BatchSpriteRenderer::getInstance()->remove(name);
 }

@@ -6,9 +6,11 @@
 class Trail : public GameObject {
 public:
 	glm::vec2 trajectory;
+	bool active;
 	Trail(float x, float y, Sprite sprite, vec2 scale, float depth, float angle) :
 		GameObject(x, y, sprite, scale, depth, angle) {
-		GameObject::scale(glm::vec2(3.0, 1.0));
+		GameObject::scale(glm::vec2(4.0, 1.0));
+		active = false;
 	};
 	void update(glm::vec2 traj, glm::vec2 pos) {
 		trajectory = traj;
@@ -16,6 +18,10 @@ public:
 		setRotation((std::atan2(trajectory.y, trajectory.x))/ M_PI * 180.0);
 	}
 	void draw(const Shader* s) const override {
+		glUniform1i(glGetUniformLocation(s->id, "active"), active);
 		GameObject::draw(s);
+	}
+	void setActive(bool active) {
+		this->active = active;
 	}
 };
