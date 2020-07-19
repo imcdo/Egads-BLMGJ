@@ -26,6 +26,7 @@ public:
 class Normal : public Element
 {
 public:
+	static Normal* GetNormal();
 	Normal();
 	float GetDamageMultiplierAgainst(static Element* otherElement) override;
 	settings::ELEMENTS GetElementEnum() override;
@@ -34,6 +35,7 @@ public:
 class Water : public Element
 {
 public:
+	static Water* GetWater();
 	Water();
 	float GetDamageMultiplierAgainst(static Element* otherElement) override;
 	settings::ELEMENTS GetElementEnum() override;
@@ -42,6 +44,7 @@ public:
 class Nature : public Element
 {
 public:
+	static Nature* GetNature();
 	Nature();
 	float GetDamageMultiplierAgainst(static Element* otherElement) override;
 	settings::ELEMENTS GetElementEnum() override;
@@ -50,6 +53,7 @@ public:
 static class Flame : public Element
 {
 public:
+	static Flame* GetFlame();
 	Flame();
 	float GetDamageMultiplierAgainst(static Element* otherElement) override;
 	settings::ELEMENTS GetElementEnum() override;
@@ -58,6 +62,7 @@ public:
 static class Abyssal : public Element
 {
 public:
+	static Abyssal* GetAbyssal();
 	Abyssal();
 	float GetDamageMultiplierAgainst(static Element* otherElement) override;
 	settings::ELEMENTS GetElementEnum() override;
@@ -111,3 +116,5 @@ static Bestiary* GetBestiary()
 
 	return staticBestiary;
 }
+
+

@@ -1,6 +1,7 @@
 #include "battlefield.h"
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
+#include "projectile.h"
 
 using namespace std;
 using namespace glm;
@@ -188,5 +189,11 @@ void Battlefield::Defend()
 {
 	// Damage player based on living enemies
 }
+
+void Battlefield::DestroyProjectile(Projectile* p) {
+	cout << "destroying projectile " << p << endl;
+	delete p;
+}
+
 
 

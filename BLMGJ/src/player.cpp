@@ -75,6 +75,10 @@ void Player::useCard(Card& card) {
 
 	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
 	MonsterData* mData = card.getMonsterData();
+	if (mData == nullptr) {
+		cout << "invalid card cannot load" << endl;
+		return;
+	}
 	loaded = new Projectile(0.0f, -settings::SCREEN_HEIGHT / 2 + sr.getGameObject("mat")->getRect().getHeight(), 
 		Sprite("src\\sprites\\ball.png"), vec2( 100, 100 ), 0.0f, 0.0f, mData, battlefield, &card);
 	card.decrementCardUse();
