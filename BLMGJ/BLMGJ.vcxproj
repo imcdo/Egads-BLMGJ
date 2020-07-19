@@ -181,6 +181,7 @@ xcopy /y /d "$(SolutionDir)packages\freetype.redist.2.8.0.1\build\native\bin\$(P
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\inputUpdater.cpp" />
     <ClCompile Include="src\batchSpriteRenderer.cpp" />
     <ClCompile Include="src\battlefield.cpp" />
     <ClCompile Include="src\card.cpp" />
@@ -210,6 +211,7 @@ xcopy /y /d "$(SolutionDir)packages\freetype.redist.2.8.0.1\build\native\bin\$(P
     <None Include="src\shaders\red.frag" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\inputUpdater.h" />
     <ClInclude Include="src\battlefield.h" />
     <ClInclude Include="src\card.h" />
     <ClInclude Include="src\CardRenderer.h" />

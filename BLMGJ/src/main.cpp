@@ -14,6 +14,7 @@
 #include "player.h"
 #include "projectile.h"
 #include "shooter.h"
+#include "inputUpdater.h"
 
 float _currentMouseX;
 float _currentMouseY;
@@ -32,6 +33,7 @@ Card* nextDraw;
     if (key == GLFW_KEY_V && action == GLFW_PRESS) {
         nextDraw->warp(100, 200);
     }
+    for (InputUpdater* iu : InputUpdater::_inputUpdaters) iu->MouseInput(key, action);
 }
 
 void Game::mouseCursorCallback(GLFWwindow* window, double mouseX, double mouseY) {
