@@ -14,6 +14,6 @@ public:
 		std::cout << "cursorrot " << x << " " << y << " pos " << getPosition().x << " " << getPosition().y << std::endl;
 		glm::vec2 dir = glm::normalize(glm::vec2(x, y) - getPosition());
 		std::cout << "dir " << dir.x << " " << dir.y  << std::endl;
-		setRotation(Math::angleBetween({0,1}, dir));
+		setRotation(glm::clamp<float>(Math::angleBetween({0,1}, dir), -90, 90));
 	}
 };
