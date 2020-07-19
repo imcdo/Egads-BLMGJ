@@ -3,7 +3,8 @@
 #include "settings.h"
 #include <algorithm>
 
-Player::Player(Bestiary* bestiary, Battlefield* field) : health(settings::PLAYER_HEALTH), bestiary(bestiary), battlefield(field) {
+Player::Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect) 
+	: health(settings::PLAYER_HEALTH), bestiary(bestiary), battlefield(field), hand(Hand(rect)) {
 	initDeck();
 }
 
@@ -19,6 +20,10 @@ void Player::initDeck() {
 
 int Player::getHealth() {
 	return health;
+}
+
+Hand Player::getHand() {
+	return hand;
 }
 
 void Player::useCard(Card card) {

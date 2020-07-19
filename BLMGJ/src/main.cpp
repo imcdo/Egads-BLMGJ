@@ -92,10 +92,6 @@ void Game::loop() {
     Sprite s = Sprite("src\\sprites\\UwU.png");
     Sprite ms = Sprite("src\\sprites\\mat.png");
 
-    Battlefield grid = Battlefield(0, 0, s);
-    Bestiary bestiary = Bestiary();
-    Player player = Player(&bestiary, &grid);
-
     BatchSpriteRenderer sr = BatchSpriteRenderer();
     sr.init();
 
@@ -110,6 +106,10 @@ void Game::loop() {
         << mat.getRect().getMin().y << " | "
         << mat.getRect().getMax().x << " "
         << mat.getRect().getMax().y << std::endl;
+
+    Battlefield grid = Battlefield(0, 0, s);
+    Bestiary bestiary = Bestiary();
+    Player player = Player(&bestiary, &grid, mat.getRect());
     
     Hand h = Hand(mat.getRect());
     hand = &h;
