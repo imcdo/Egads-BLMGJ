@@ -13,9 +13,6 @@ public:
 
 	DrawDeck(glm::vec2);
 
-	template<class Its>
-	DrawDeck(glm::vec2, Its iter);
-
 	template<class It>
 	DrawDeck(glm::vec2, It iter);
 

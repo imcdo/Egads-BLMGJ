@@ -2,6 +2,19 @@
 #include "batchSpriteRenderer.h"
 #include "settings.h"
 
+BatchSpriteRenderer::BatchSpriteRenderer() {
+	
+}
+
+Shader* BatchSpriteRenderer::getShader(std::string name) {
+	return &shaderBank[name];
+}
+
+const GameObject* BatchSpriteRenderer::getGameObject(std::string name) {
+	return gameObjects[name];
+}
+
+
 void BatchSpriteRenderer::init() {
 	std::vector<glm::vec2> verticies = {
 		{-0.5, -0.5},
@@ -45,6 +58,10 @@ void BatchSpriteRenderer::init() {
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+
+	Shader* sh = addShader("default",
+		"src\\shaders\\default.vert",
+		"src\\shaders\\default.frag");
 }
 
 Shader* BatchSpriteRenderer::addShader(std::string name, std::string pathVert, std::string pathFrag) {
@@ -89,3 +106,5 @@ void BatchSpriteRenderer::draw() const {
 	glBindVertexArray(0);
 
 }
+
+BatchSpriteRenderer* BatchSpriteRenderer::instance = new BatchSpriteRenderer();
