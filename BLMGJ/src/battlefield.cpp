@@ -97,46 +97,48 @@ pair<vec2, vec2> Battlefield::Raycast(vec2 origin, vec2 direction)
 		//cout << "STEPPING " << step.x << " " << step.y << " | now at " << origin.x << " " << origin.y << endl;
 		bool prevOutOfBounds = OutOfBounds(dest);
 		dest += step;
+
 		if (OutOfBounds(dest) && !prevOutOfBounds) {
-			ivec2 position = ToGridSpace(position);
+			ivec2 position = ToGridSpace(dest);
 			normal = { 0,0 };
 			if (position.x < 0)
 				normal += vec2(1, 0);
-			if (position.x > 0)
+			if (position.x > dimensions.x)
 				normal += vec2(-1, 0);
 			if (position.y < 0)
 				normal += vec2(0, 1);
-			if (position.y < 0)
+			if (position.y > dimensions.y)
 				normal += vec2(0, -1);
 			cout << "raycast out of bounds " << endl;
 
+			dest = clamp(dest, ToWorldSpace(0, 0), ToWorldSpace(grid.size(), grid[0].size()));
 
 			break;
 		}
 
 		else if (OutOfBounds(dest)) {
-			ivec2 position = ToGridSpace(position);
+			ivec2 position = ToGridSpace(dest);
 
 			normal = { 0,0 };
-			vec2 closest = clamp(origin, ToWorldSpace(0,0), ToWorldSpace(grid.size(), grid[0].size()));
+			vec2 closest = clamp(dest, ToWorldSpace(0,0), ToWorldSpace(grid.size(), grid[0].size()));
 			if (position.x < 0)
 				normal += vec2(1, 0);
-			if (position.x > 0)
+			if (position.x > dimensions.x)
 				normal += vec2(-1, 0);
 			if (position.y < 0)
 				normal += vec2(0, 1);
-			if (position.y < 0)
+			if (position.y > dimensions.y)
 				normal += vec2(0, -1);
 
 			closest += normal;
 			// cout << "origin " << glm::to_string(origin) << " closest " << to_string(closest) << " normal " << to_string(normal) << endl;
-			return { closest + normal ,normal };
+			cout << "THIS CASE" << endl;
+			return { closest + normal , normalize(reflect(-direction, normal)) };
 		}
 
 
 		Monster* monster = AtLocation(dest);
 		if (monster != nullptr) {
-			cout << "raycast hit" << endl;
 			normal = normalize(dest - monster->getPosition());
 			break;
 		}
