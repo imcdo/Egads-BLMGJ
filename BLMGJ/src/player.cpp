@@ -4,8 +4,9 @@
 #include <algorithm>
 
 // Need to add drawdeck and discard depending on how the positions are passed in
-Player::Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect) 
-	: health(settings::PLAYER_HEALTH), bestiary(bestiary), battlefield(field), hand(Hand(rect)) {
+Player::Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect, glm::vec2 drawDeckPos, glm::vec2 discardPos)
+	: health(settings::PLAYER_HEALTH), bestiary(bestiary), battlefield(field), 
+	  drawDeck(DrawDeck(drawDeckPos)), hand(Hand(rect)), discard(Discard(discardPos)) {
 	initDeck();
 }
 
@@ -66,7 +67,10 @@ void Player::cardPlayInputHandler(Card* card) {
 
 void Player::resetCards() {
 	discard.clear();
-	auto deckIter = deckPtrs.begin();
-	drawDeck.putTop(deckIter);
+	for (Card c : deck) {
+		drawDeck.putTop(&c);
+	}
+	//auto deckIter = deckPtrs.begin();
+	//drawDeck.putTop(deckIter);
 	drawDeck.shuffle();
 }

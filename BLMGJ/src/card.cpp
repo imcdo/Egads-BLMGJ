@@ -1,4 +1,5 @@
 #include "card.h"
+#include "batchSpriteRenderer.h"
 
 Card::Card(float x, float y, Sprite sprite, glm::vec2 scale, float depth, float angle, MonsterData* data) :
 	GameObject(x, y, sprite, scale, depth, angle), data(data) {
@@ -7,6 +8,9 @@ Card::Card(float x, float y, Sprite sprite, glm::vec2 scale, float depth, float 
 		decay = 0;
 	else
 		decay = data->decay;
+
+	BatchSpriteRenderer& sr = *BatchSpriteRenderer::getInstance();
+	sr.addGameObject(data->name + "_MonsterObject", this, sr.getShader("default"));
 }
 
 MonsterData* Card::getMonsterData() {

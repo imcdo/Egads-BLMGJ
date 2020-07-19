@@ -14,6 +14,8 @@
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\projectile.cpp" />
     <ClCompile Include="src\sprite.cpp" />
+    <ClCompile Include="src\discard.cpp" />
+    <ClCompile Include="src\drawDeck.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\battlefield.h" />
@@ -32,6 +34,10 @@
     <ClInclude Include="src\batchSpriteRenderer.h" />
     <ClInclude Include="src\TextManager.h" />
     <ClInclude Include="src\Time.h" />
+    <ClInclude Include="src\discard.h" />
+    <ClInclude Include="src\drawDeck.h" />
+    <ClInclude Include="src\hand.h" />
+    <ClInclude Include="src\math.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

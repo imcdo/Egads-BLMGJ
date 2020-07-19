@@ -19,12 +19,17 @@ float _currentMouseX;
 float _currentMouseY;
 float _lastMouseX;
 float _lastMouseY;
+ 
 
-Hand* hand;
-Card* nextDraw;
+// should be in player
+//Hand* hand;
+//Card* nextDraw;
 
+Player* player;
 
- void Game::inputCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+//don't need dis
+/*
+void Game::inputCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (key == GLFW_KEY_C && action == GLFW_PRESS) {
         hand->drawCard(nextDraw);
         nextDraw++;
@@ -33,6 +38,7 @@ Card* nextDraw;
         nextDraw->warp(100, 200);
     }
 }
+*/
 
 void Game::mouseCursorCallback(GLFWwindow* window, double mouseX, double mouseY) {
     _lastMouseX = _currentMouseX;
@@ -46,13 +52,11 @@ void Game::mouseButtonCallback(GLFWwindow* window, int button, int action, int m
 {
     if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
 
-        for (Card* c : hand->cards) {
+        for (Card* c : player->getHand().cards) {
             
             
             if (c->getRect().Contains(glm::vec2(_currentMouseX - settings::SCREEN_WIDTH/2, settings::SCREEN_HEIGHT/2 -_currentMouseY))) {
-                hand->playCard(c);
-                c->move(0,150);
-                c->rotate(90);
+                player->cardPlayInputHandler(c);
                 break;
             }
         }
@@ -112,11 +116,11 @@ void Game::loop() {
 
     Battlefield grid = Battlefield(0, 0, s);
     Bestiary bestiary = Bestiary();
-    Player player = Player(&bestiary, &grid, mat.getRect());
-    
-    Hand h = Hand(mat.getRect());
-    hand = &h;
+    Player p = Player(&bestiary, &grid, mat.getRect(), { -350,0 }, { 350,0 });
 
+    player = &p;
+
+    // need these in player
     std::vector<Card> cards = { Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
             Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
             Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}), 
@@ -129,7 +133,7 @@ void Game::loop() {
             Card(-350,0,s, {5,5}),Card(-350,10,s, {5,5}), Card(-350,20,s, {5,5}), Card(-350,30,s, {5,5}), Card(-350,40,s, {5,5}),
     };
     size_t idx = 0;
-    nextDraw = &cards[0];
+    //nextDraw = &cards[0];
 
     MonsterData* testMonster = bestiary.getRandomMonster();
     Card* testCard = new Card(-350, 200, s, { 5,5 }, 0, 0, testMonster);
@@ -146,7 +150,7 @@ void Game::loop() {
     glfwSetCursorPosCallback(window, mouseCursorCallback);
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
 
-
+    // need this in player?
     for (const Card& c : cards) {
         sr.addGameObject("card " + idx++, &c, sh);
     }

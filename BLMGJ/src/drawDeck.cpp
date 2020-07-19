@@ -3,7 +3,7 @@
 template<class It>
 DrawDeck::DrawDeck(glm::vec2 pos, It iter) : position(pos) {
 	for (Card* c : iter) {
-		deque.push_back(c);
+		deck.push_back(c);
 	}
 }
 

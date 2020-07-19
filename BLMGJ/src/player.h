@@ -21,7 +21,7 @@ private:
 	Bestiary* bestiary;
 	Battlefield* battlefield;
 public:
-	Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect);
+	Player(Bestiary* bestiary, Battlefield* field, Math::Rect rect, glm::vec2 drawDeckPos, glm::vec2 discardPos);
 	void initDeck();
 	int getHealth();
 	DrawDeck getDrawDeck();
