@@ -12,6 +12,7 @@
 #include "monsterData.h"
 #include "battlefield.h"
 #include "player.h"
+#include "projectile.h"
 // #include "monsterData.cpp";
 
 float _currentMouseX;
@@ -94,8 +95,7 @@ void Game::loop() {
 
     BatchSpriteRenderer sr = BatchSpriteRenderer();
     sr.init();
-
-    GameObject test = GameObject(0, 0, s, { 5,5 });
+    
     Shader* sh = sr.addShader("default", 
         "src\\shaders\\default.vert",
         "src\\shaders\\default.frag");
@@ -128,6 +128,17 @@ void Game::loop() {
     size_t idx = 0;
     nextDraw = &cards[0];
 
+    MonsterData* testMonster = bestiary.getRandomMonster();
+    Card* testCard = new Card(-350, 200, s, { 5,5 }, 0, 0, testMonster);
+
+
+    Projectile test = Projectile(0, 0, s, { 2,2 }, 0, 0, testMonster, { 1,1 }, &grid, testCard);
+
+
+    test.active = true;
+
+    
+
     glfwSetKeyCallback(window, inputCallback);
     glfwSetCursorPosCallback(window, mouseCursorCallback);
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
@@ -136,7 +147,7 @@ void Game::loop() {
     for (const Card& c : cards) {
         sr.addGameObject("card " + idx++, &c, sh);
     }
-    sr.addGameObject("test", &test, sh);
+
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
@@ -152,28 +163,6 @@ void Game::loop() {
         /* Poll for and process events */
         glfwPollEvents();
              
-        // test.scale({ .99f, .99f });
-        // test.rotate(.01f);
-
-        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-            test.move(0, 2);
-        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-            test.move(-2, 0);
-        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-            test.move(0, -2);
-        if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-            test.move(2, 0);
-
-        if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
-            test.rotate(1);
-        if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
-            test.rotate(-1);
-
-        if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-            test.scale({ 1.25f, 1.25f });
-        if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
-            test.scale({.8f, .8f});
-
         for (FrameUpdater* fu : FrameUpdater::_frameUpdaters) fu->Update();
     }
 

@@ -16,6 +16,7 @@ Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth,
 	card(card)
 {
 	
+		// bestiary.getRandomMonster();
 }
 
 void Projectile::Update()
