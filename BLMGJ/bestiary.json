@@ -8,7 +8,7 @@
         "attack": 3,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "01_boss_xxx.png",
         "flavor": "We have no idea what this is.",
         "size": "boss"
@@ -22,7 +22,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "01_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -36,7 +36,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 10,
         "sprite": "01_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -50,7 +50,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 12,
         "sprite": "01_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -64,7 +64,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 6,
         "sprite": "01_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -78,7 +78,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "02_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -92,7 +92,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 4,
         "sprite": "02_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -106,7 +106,7 @@
         "attack": 2,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 8,
         "sprite": "02_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -120,7 +120,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "02_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -134,7 +134,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "02_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -148,7 +148,7 @@
         "attack": 2,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "03_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -162,7 +162,7 @@
         "attack": 3,
         "decay": 2,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "03_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -176,7 +176,7 @@
         "attack": 2,
         "decay": 2,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "03_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -190,7 +190,7 @@
         "attack": 1,
         "decay": 3,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "03_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -204,7 +204,7 @@
         "attack": 1,
         "decay": 3,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 4,
         "sprite": "03_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -218,7 +218,7 @@
         "attack": 4,
         "decay": 1,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "04_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -232,7 +232,7 @@
         "attack": 3,
         "decay": 2,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "04_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -246,7 +246,7 @@
         "attack": 3,
         "decay": 2,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "04_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -260,7 +260,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "04_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -274,7 +274,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "04_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -288,7 +288,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "05_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -302,7 +302,7 @@
         "attack": 2,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "05_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -316,7 +316,7 @@
         "attack": 2,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "05_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -330,7 +330,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "05_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -344,7 +344,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "05_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -358,7 +358,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 5,
         "sprite": "06_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -372,7 +372,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 5,
         "sprite": "06_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -386,7 +386,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 5,
         "sprite": "06_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -400,7 +400,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "06_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -414,7 +414,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "06_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -428,7 +428,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "07_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -442,7 +442,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "07_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -456,7 +456,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "07_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -470,7 +470,7 @@
         "attack": 3,
         "decay": 2,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "08_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -484,7 +484,7 @@
         "attack": 2,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 4,
         "sprite": "08_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -498,7 +498,7 @@
         "attack": 2,
         "decay": 3,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "08_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -512,7 +512,7 @@
         "attack": 1,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "08_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -526,7 +526,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "08_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -540,7 +540,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "09_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -554,7 +554,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "09_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -568,7 +568,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "09_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -582,7 +582,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "09_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -596,7 +596,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "09_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -610,7 +610,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "10_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -624,7 +624,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "10_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -638,7 +638,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "10_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -652,7 +652,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 4,
         "sprite": "10_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -666,7 +666,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 4,
         "sprite": "11_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -680,7 +680,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "11_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -694,7 +694,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "11_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -708,7 +708,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 10,
         "sprite": "11_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -722,7 +722,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "11_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -736,7 +736,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 6,
         "sprite": "12_boss_xxx.png",
         "flavor": "Determined",
         "size": "boss"
@@ -750,7 +750,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 6,
         "sprite": "12_minion_01_xxx.png",
         "flavor": "Stabby",
         "size": "minion"
@@ -764,7 +764,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 4,
         "sprite": "12_minion_02_xxx.png",
         "flavor": "Relaxed",
         "size": "minion"
@@ -778,7 +778,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "12_minion_03_xxx.png",
         "flavor": "Apathetic",
         "size": "minion"
@@ -792,7 +792,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "12_minion_04_xxx.png",
         "flavor": "Annoyed",
         "size": "minion"
@@ -806,7 +806,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 6,
         "sprite": "13_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -820,7 +820,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "13_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -834,7 +834,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 4,
         "sprite": "13_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -848,7 +848,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 2,
         "sprite": "13_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -862,7 +862,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "13_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -876,7 +876,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 5,
         "sprite": "14_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -890,7 +890,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 5,
         "sprite": "14_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -904,7 +904,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "14_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -918,7 +918,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "14_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -932,7 +932,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "14_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -946,7 +946,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 5,
         "sprite": "15_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -960,7 +960,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 1,
         "sprite": "15_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -974,7 +974,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 10,
         "sprite": "15_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -988,7 +988,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "15_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1002,7 +1002,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "15_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1016,7 +1016,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "16_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1030,7 +1030,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "16_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1044,7 +1044,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "16_minion_02_xxx.png",
         "flavor": "He seems friendly.",
         "size": "minion"
@@ -1058,7 +1058,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "16_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1072,7 +1072,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "16_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1086,7 +1086,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "17_boss_xxx.png",
         "flavor": "He's seen a lot.",
         "size": "boss"
@@ -1100,7 +1100,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "17_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1114,7 +1114,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "17_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1128,7 +1128,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "17_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1142,7 +1142,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "17_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1156,7 +1156,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "18_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1170,7 +1170,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "18_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1184,7 +1184,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "18_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1198,7 +1198,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "18_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1212,7 +1212,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "18_minion_04_xxx.png",
         "flavor": "Is it a squid? Is it a jellyfish? Either way, it's attacks might be annoying but shouldn't hurt too badly.",
         "size": "minion"
@@ -1226,7 +1226,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "19_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1240,7 +1240,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "19_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1254,7 +1254,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "19_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1268,7 +1268,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "19_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1282,7 +1282,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "19_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1296,7 +1296,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "20_boss_xxx.png",
         "flavor": "There's something misleading about him, perhaps it's his sense of honor \nor perhaps it's simply a feeling of comfort. But nonetheless, people \ntend to worship him, while secretly training to become more like him.",
         "size": "boss"
@@ -1310,7 +1310,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "20_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1324,7 +1324,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "20_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1338,7 +1338,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "20_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1352,7 +1352,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "20_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1366,7 +1366,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "21_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1380,7 +1380,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "21_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1394,7 +1394,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "21_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1408,7 +1408,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "21_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1422,7 +1422,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "21_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1436,7 +1436,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "22_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1450,7 +1450,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "22_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1464,7 +1464,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "22_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1478,7 +1478,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "22_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1492,7 +1492,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "22_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1506,7 +1506,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "23_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1520,7 +1520,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "23_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1534,7 +1534,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "23_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1548,7 +1548,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "23_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1562,7 +1562,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "23_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1576,7 +1576,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "24_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1590,7 +1590,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "24_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1604,7 +1604,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "24_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1618,7 +1618,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "24_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1632,7 +1632,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "24_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1646,7 +1646,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "25_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1660,7 +1660,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "25_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1674,7 +1674,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "25_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1688,7 +1688,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "25_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1702,7 +1702,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "25_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1716,7 +1716,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "26_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1730,7 +1730,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "26_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1744,7 +1744,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "26_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1758,7 +1758,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "26_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1772,7 +1772,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "26_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1786,7 +1786,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "27_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1800,7 +1800,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "27_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1814,7 +1814,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "27_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1828,7 +1828,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "27_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1842,7 +1842,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "27_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1856,7 +1856,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "28_boss_xxx.png",
         "flavor": "Large and in-charge.",
         "size": "boss"
@@ -1870,7 +1870,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "28_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1884,7 +1884,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "28_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1898,7 +1898,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "28_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1912,7 +1912,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "28_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1926,7 +1926,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "29_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -1940,7 +1940,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "29_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1954,7 +1954,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "29_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1968,7 +1968,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "29_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1982,7 +1982,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "29_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -1996,7 +1996,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "30_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2010,7 +2010,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "30_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2024,7 +2024,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "30_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2038,7 +2038,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "30_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2052,7 +2052,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "30_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2066,7 +2066,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "31_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2080,7 +2080,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "31_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2094,7 +2094,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "31_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2108,7 +2108,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "31_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2122,7 +2122,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "31_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2136,7 +2136,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "32_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2150,7 +2150,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "32_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2164,7 +2164,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "32_minion_02_xxx.png",
         "flavor": "Spider chef?",
         "size": "minion"
@@ -2178,7 +2178,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "32_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2192,7 +2192,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "32_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2206,7 +2206,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "33_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2220,7 +2220,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "33_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2234,7 +2234,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "33_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2248,7 +2248,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "33_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2262,7 +2262,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "33_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2276,7 +2276,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "34_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2290,7 +2290,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "34_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2304,7 +2304,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "34_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2318,7 +2318,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "34_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2332,7 +2332,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "34_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2346,7 +2346,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "35_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2360,7 +2360,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "35_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2374,7 +2374,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "35_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2388,7 +2388,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "35_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2402,7 +2402,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "35_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2416,7 +2416,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "36_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2430,7 +2430,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "36_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2444,7 +2444,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "36_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2458,7 +2458,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "36_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2472,7 +2472,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "36_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2486,7 +2486,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "37_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2500,7 +2500,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "37_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2514,7 +2514,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "37_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2528,7 +2528,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "37_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2542,7 +2542,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "37_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2556,7 +2556,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "38_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2570,7 +2570,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "38_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2584,7 +2584,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "38_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2598,7 +2598,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "38_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2612,7 +2612,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "38_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2626,7 +2626,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "39_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2640,7 +2640,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "39_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2654,7 +2654,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "39_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2668,7 +2668,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "39_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2682,7 +2682,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "39_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2696,7 +2696,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "40_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2710,7 +2710,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "40_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2724,7 +2724,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "40_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2738,7 +2738,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "40_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2752,7 +2752,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "40_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2766,7 +2766,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "41_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2780,7 +2780,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "41_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2794,7 +2794,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "41_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2808,7 +2808,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "41_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2822,7 +2822,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "41_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2836,7 +2836,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "42_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2850,7 +2850,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "42_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2864,7 +2864,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "42_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2878,7 +2878,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "42_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2892,7 +2892,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "42_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2906,7 +2906,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "43_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2920,7 +2920,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "43_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2934,7 +2934,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "43_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2948,7 +2948,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "43_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2962,7 +2962,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "43_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -2976,7 +2976,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "44_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -2990,7 +2990,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "44_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3004,7 +3004,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "44_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3018,7 +3018,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "44_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3032,7 +3032,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "44_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3046,7 +3046,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "45_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -3060,7 +3060,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "45_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3074,7 +3074,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "45_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3088,7 +3088,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "45_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3102,7 +3102,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "45_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3116,7 +3116,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "46_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -3130,7 +3130,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "46_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3144,7 +3144,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "46_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3158,7 +3158,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "46_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3172,7 +3172,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "46_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3186,7 +3186,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "47_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -3200,7 +3200,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "47_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3214,7 +3214,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "47_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3228,7 +3228,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "47_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3242,7 +3242,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "47_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3256,7 +3256,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "48_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -3270,7 +3270,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "48_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3284,7 +3284,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "48_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3298,7 +3298,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "48_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3312,7 +3312,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "48_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3326,7 +3326,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "49_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -3340,7 +3340,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "49_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3354,7 +3354,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "49_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3368,7 +3368,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "49_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3382,7 +3382,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "49_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3396,7 +3396,7 @@
         "attack": 5,
         "decay": 1,
         "hp": 5,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "50_boss_xxx.png",
         "flavor": "NULL",
         "size": "boss"
@@ -3410,7 +3410,7 @@
         "attack": 4,
         "decay": 2,
         "hp": 4,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "50_minion_01_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3424,7 +3424,7 @@
         "attack": 3,
         "decay": 3,
         "hp": 3,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "50_minion_02_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3438,7 +3438,7 @@
         "attack": 2,
         "decay": 4,
         "hp": 2,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "50_minion_03_xxx.png",
         "flavor": "NULL",
         "size": "minion"
@@ -3452,7 +3452,7 @@
         "attack": 1,
         "decay": 5,
         "hp": 1,
-        "bounce": 1000,
+        "bounce": 3,
         "sprite": "50_minion_04_xxx.png",
         "flavor": "NULL",
         "size": "minion"

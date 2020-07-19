@@ -8,8 +8,8 @@ vec2 lerp(vec2 x, vec2 y, float t) {
 }
 
 Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth, float angle,
-	const MonsterData* data, Battlefield* field, Card* card) :
-	GameObject(x, y, sprite, scale, depth, angle),
+	const MonsterData * data, Battlefield * field, Card * card) :
+	GameObject(x, y, sprite, scale, depth, angle), FrameUpdater(),
 	name(name),
 	bounce(data->bounce),
 	damage(data->damage),
@@ -23,16 +23,12 @@ Projectile::Projectile(float x, float y, Sprite sprite, vec2 scale, float depth,
 	ss << "projectile_" << this;
 	name = ss.str();
 
-	sr.addGameObject(name, &trail, sr.getShader("trail"));
+	sr.addGameObject("trail", &trail, sr.getShader("trail"));
 
 	sr.addGameObject(name, this, sr.getShader("default"));
 	origin = pos;
 
-
-	bounce = 10;
-	
-
-		// bestiary.getRandomMonster();
+	//cout << "bounces " << bounce << endl;
 }
 
 void Projectile::activate(vec2 dir) {
@@ -98,10 +94,13 @@ void Projectile::Update()
 	{
 		// Destroy this projectile
 		// delete this;
+		active = false;
+		field->DestroyProjectile(this);
 	}
 }
 
 
-Projectile::~Projectile() {
+Projectile::~Projectile()  {
+	BatchSpriteRenderer::getInstance()->remove("trail");
 	BatchSpriteRenderer::getInstance()->remove(name);
 }
