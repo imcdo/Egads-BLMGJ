@@ -71,7 +71,7 @@ Discard Player::getDiscard() {
 	return discard;
 }
 
-void Player::useCard(Card card) {
+void Player::useCard(Card& card) {
 	MonsterData* mData = card.getMonsterData();
 	Projectile p(0, 0, Sprite("src\\sprites\\UwU.png"), { 1, 1 }, 0.0f, 0.0f, mData, { 0,1 }, battlefield, &card);
 	p.active = true;
@@ -109,7 +109,7 @@ void Player::resetCards() {
 	drawDeck.shuffle();
 }
 
-void Player::updateCard(Card card) {
+void Player::updateCard(Card& card) {
 	Sprite updatedSprite = card.generateUpdatedSprite();
 
 	std::stringstream ss;

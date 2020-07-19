@@ -30,11 +30,11 @@ public:
 	Hand getHand();
 	Discard getDiscard();
 	
-	void useCard(Card card);
+	void useCard(Card& card);
 
 	void drawToHand();
 	void cardPlayInputHandler(Card* card);
 	void resetCards();
 
-	void updateCard(Card card);
+	void updateCard(Card& card);
 };
