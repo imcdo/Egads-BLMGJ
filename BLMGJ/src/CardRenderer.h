@@ -6,18 +6,21 @@
 #include "settings.h"
 #include <vector>
 #include <glm/glm.hpp>
+#include "OffScreenRender.h"
+#include <map>
 
-class CardRenderer {
+class CardRenderer : public OffScreenRender {
 public:
-	static unsigned int drawCard();
+	static Sprite drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, settings::COLOR color = settings::COLOR_WHITE) {
+		return drawCard(name, description, spriteName, durability, rarity, settings::colors[color]);
+	}
+	static Sprite drawCard(std::string name, std::string description, std::string spriteName, int durability, int rarity, glm::vec3 color);
 private:
-	GLuint deferredFrameBuffer;
-	GLuint deferredTexture;
-	GLenum drawBuffer[1] = { GL_COLOR_ATTACHMENT0 };
-	GLuint VAO;
-	GLuint VBOs[2];
 	Shader shader;
+	Shader cardBackShader;
 	Sprite defaultCardBack;
+	std::map<std::string, GLuint> cache;
+
 
 	static CardRenderer& getInstance() {
 		static CardRenderer cr(settings::CARD_DEFAULT_PATH_VS, settings::CARD_DEFAULT_PATH_FS);
@@ -25,8 +28,5 @@ private:
 	}
 
 	CardRenderer(const char* vs, const char* fs);
-
-	void setupToTexture();
-
-	void revertFrameBuffer();
+	Sprite renderFromCache(std::string name, int durability);
 };

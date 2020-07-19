@@ -8,6 +8,8 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <vector>
+#include "shader.h"
+#include "OffScreenRender.h"
 
 struct Character {
 	unsigned int TextureID;  // ID handle of the glyph texture
@@ -16,74 +18,17 @@ struct Character {
 	unsigned int Advance;    // Offset to advance to next glyph
 };
 
-class TextManager {
+class TextManager : public OffScreenRender {
 public:
-
-	static std::vector<Character> charactersForString(std::string input, std::string font = "default") {
-		TextManager& tm = getInstance();
-		if (std::strcmp(font.c_str(), "default") == 0) {
-			if (tm.fonts.find(font) == tm.fonts.end()) {
-				loadFont("default", settings::FONT_DEFAULT_PATH);
-			}
-		}
-		std::map<char, Character>& fontTable = tm.fonts[font];
-		std::vector<Character> message;
-		for (char& c : input) {
-			message.push_back(tm.fonts[font][c]);
-		}
-		return message;
-	}
-
-	static void loadFont(std::string name, std::string path) {
-		TextManager& tm = getInstance();
-
-		FT_Face newFont;
-		if (FT_New_Face(tm.freeType, path.c_str(), 0, &newFont)) {
-			std::cout << "ERROR: FREETYPE COULDN'T LOAD " << name << " " << path << std::endl;
-		}
-
-		FT_Set_Pixel_Sizes(newFont, 0, 48);
-
-		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-
-		std::map<char, Character> font;
-
-		for (unsigned char i = 0; i < 127; i++) {
-			if (FT_Load_Char(newFont, i, FT_LOAD_RENDER)) {
-				std::cout << "ERROR: NO GLYPTH FOR " << i;
-			}
-
-			// Texture generation
-			GLuint tex;
-			glGenTextures(1, &tex);
-			glBindTexture(GL_TEXTURE_2D, tex);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 
-				newFont->glyph->bitmap.width, newFont->glyph->bitmap.rows, 
-				0, GL_RED, GL_UNSIGNED_BYTE, newFont->glyph->bitmap.buffer);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-			Character character = { tex, glm::ivec2(newFont->glyph->bitmap.width, newFont->glyph->bitmap.rows),
-				glm::ivec2(newFont->glyph->bitmap_left, newFont->glyph->bitmap_top), newFont->glyph->advance.x };
-
-			font.insert(std::make_pair(i, character));
-		}
-
-		tm.fonts.insert(std::make_pair(name, font));
-
-		FT_Done_Face(newFont);
-	}
+	static GLuint renderText(std::string text, float size, glm::ivec2 textureSize = { 200,200 }, glm::vec2 topLeft = { -1.0,1.0 }, glm::vec2 topRight = { 1.0, 1.0 }, std::string font = "default");
+	static void loadFont(std::string name, std::string path);
 private:
+	Shader textShader;
 	std::map<std::string, std::map<char, Character>> fonts;
 	FT_Library freeType;
-	TextManager() : freeType() {
-		if (FT_Init_FreeType(&freeType)) {
-			std::cout << "ERROR: FREETYPE COULDN'T INIT" << std::endl;
-		}
-	};
+	TextManager();
+
+	std::vector<Character> charactersForString(std::string input, std::string font = "default");
 
 	static TextManager& getInstance() {
 		static TextManager tm;
